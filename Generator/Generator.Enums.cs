@@ -7,9 +7,9 @@ using System.Xml;
 
 namespace FireburstGenerator
 {
-	public static class Generator
+	public class EnumGenerator : IGenerator
 	{
-		private static readonly Dictionary<string, string> s_knownEnumValueNames = new Dictionary<string, string>
+		private readonly Dictionary<string, string> s_knownEnumValueNames = new()
 		{
 			{ "VK_STENCIL_FRONT_AND_BACK", "FrontAndBack" },
 			{ "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO", "MemoryAllocateFlagsInfo" },
@@ -111,18 +111,41 @@ namespace FireburstGenerator
 			{ "VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL", "CommandQueueMetricsDiscoveryActivatedIntel" }
 		};
 
-		private record Enum(string name, bool bitmask, List<EnumMember> members);
+		private readonly Dictionary<string, string> s_knownEnumPrefixes = new()
+		{
+			{ "VkResult", "VK" },
+			{ "VkViewportCoordinateSwizzleNV", "VK_VIEWPORT_COORDINATE_SWIZZLE" },
+			{ "VkCoverageModulationModeNV", "VK_COVERAGE_MODULATION_MODE" },
+			{ "VkShadingRatePaletteEntryNV", "VK_SHADING_RATE_PALETTE_ENTRY" },
+			{ "VkCoarseSampleOrderTypeNV", "VK_COARSE_SAMPLE_ORDER_TYPE" },
+			{ "VkCopyAccelerationStructureModeNVX", "VK_COPY_ACCELERATION_STRUCTURE_MODE" },
+			{ "VkPipelineStageFlags2KHR", "VK_PIPELINE_STAGE_2" },
+			{ "VkAccessFlags2KHR", "VK_ACCESS_2" }
+		};
+
+		private static readonly HashSet<string> s_preserveCaps = new(StringComparer.OrdinalIgnoreCase)
+		{
+			"khr",
+			"khx",
+			"ext",
+			"nv",
+			"nvx",
+			"amd",
+			"intel"
+		};
+
+		private record Enum(string name, bool bitmask, int bitwidth, List<EnumMember> members);
 
 		private record EnumMember(string name, string value);
 
-		private static List<string> flags = new();
+		internal static Dictionary<string, string> TypeMap = new();
 
-		public static string GetEnumNamePrefix(string typeName)
+		public string GetEnumNamePrefix(string typeName)
 		{
-			// if (s_knownEnumPrefixes.TryGetValue(typeName, out string? knownValue))
-			// {
-			//     return knownValue;
-			// }
+			if (s_knownEnumPrefixes.TryGetValue(typeName, out string knownValue))
+			{
+				return knownValue;
+			}
 
 			List<string> parts = new List<string>(4);
 			int chunkStart = 0;
@@ -170,7 +193,7 @@ namespace FireburstGenerator
 			return string.Join("_", parts.Select(s => s.ToUpper()));
 		}
 
-		private static string GetName(string value, string enumPrefix)
+		private string GetName(string value, string enumPrefix)
 		{
 			if (s_knownEnumValueNames.TryGetValue(value, out string knownName))
 			{
@@ -180,6 +203,19 @@ namespace FireburstGenerator
 			if (value.IndexOf(enumPrefix) != 0)
 			{
 				return value;
+			}
+
+			if (value.EndsWith("EXT"))
+			{
+				value = value.Substring(0, value.Length - 3);
+			}
+			else if (value.EndsWith("NV"))
+			{
+				value = value.Substring(0, value.Length - 2);
+			}
+			else if (value.EndsWith("KHR"))
+			{
+				value = value.Substring(0, value.Length - 3);
 			}
 
 			string[] parts = value[enumPrefix.Length..].Split(new[] { '_' }, StringSplitOptions.RemoveEmptyEntries);
@@ -192,82 +228,36 @@ namespace FireburstGenerator
 				// 	continue;
 				// }
 				//
-				// if (s_preserveCaps.Contains(part))
-				// {
-				// 	sb.Append(part);
-				// }
-				// else
-				// {
-				sb.Append(char.ToUpper(part[0]));
-				for (int i = 1; i < part.Length; i++)
+				if (s_preserveCaps.Contains(part))
 				{
-					sb.Append(char.ToLower(part[i]));
+					sb.Append(part);
 				}
-
-				// }
+				else
+				{
+					sb.Append(char.ToUpper(part[0]));
+					for (int i = 1; i < part.Length; i++)
+					{
+						sb.Append(char.ToLower(part[i]));
+					}
+				}
 			}
 
 			string prettyName = sb.ToString();
 			return char.IsNumber(prettyName[0]) ? "_" + prettyName : prettyName;
 		}
 
-		internal static void GenerateEnums(XmlDocument xml)
+		public void Generate(XmlDocument xml, string outputDir)
 		{
-			List<Enum> enums = new();
-
-			foreach (XmlElement element in xml.GetElementsByTagName("enums"))
-			{
-				string type = element.GetAttribute("type");
-				string name = element.GetAttribute("name");
-				bool bitmask = type == "bitmask";
-
-				if (name == "API Constants") continue;
-
-				if (bitmask)
-				{
-					name = name.Replace("FlagBits", "Flags");
-					flags.Add(name);
-				}
-
-				List<EnumMember> members = new();
-				enums.Add(new Enum(name, bitmask, members));
-
-				foreach (XmlElement member in element.GetElementsByTagName("enum"))
-				{
-					if (member.HasAttribute("alias")) continue;
-
-					// todo: comments
-
-					var bitpos = member.GetAttributeNode("bitpos");
-					string mName = member.GetAttribute("name");
-
-					string value = bitpos != null ? (1 << int.Parse(bitpos.Value)).ToString() : member.GetAttribute("value");
-
-					members.Add(new EnumMember(mName, value));
-				}
-			}
-
-			foreach (XmlElement xn in xml.GetElementsByTagName("type"))
-			{
-				if (xn.GetAttributeNode("category") is not { Value: "bitmask" }) continue;
-
-				var xmlNode = xn.GetElementsByTagName("name")[0];
-				if (xmlNode == null) continue;
-				string name = xmlNode.InnerText;
-				if (flags.Contains(name)) continue;
-
-				List<EnumMember> members = new() { new EnumMember("None", "0") };
-				enums.Add(new Enum(name, true, members));
-			}
-
 			StringBuilder code = new StringBuilder();
 
 			code.AppendLine("using System;");
 			code.AppendLine("namespace Fireburst {");
-			foreach (var (name, bitmask, members) in enums)
+
+			foreach (var (name, bitmask, bitwidth, members) in GetEnums(xml))
 			{
 				if (bitmask) code.AppendLine("[Flags]");
-				code.AppendLine($"public enum {name} {{");
+
+				code.AppendLine(bitwidth == 64 ? $"public enum {name} :long {{" : $"public enum {name} {{");
 
 				if (members.Count == 0)
 				{
@@ -286,10 +276,74 @@ namespace FireburstGenerator
 				code.AppendLine("}");
 			}
 
-
 			code.Append('}');
 
-			File.WriteAllText("/home/itorius/Development/Proxima/VulkanGenerator/Generated/Vulkan.Enums.cs", code.ToString(), Encoding.UTF8);
+			File.WriteAllText(outputDir + "Vulkan.Enums.cs", code.ToString(), Encoding.UTF8);
+		}
+
+		private static IEnumerable<Enum> GetEnums(XmlDocument xml)
+		{
+			List<Enum> enums = new();
+
+			foreach (XmlElement element in xml.GetElementsByTagName("enums"))
+			{
+				string type = element.GetAttribute("type");
+				string name = element.GetAttribute("name");
+				string bitwidth = element.GetAttribute("bitwidth");
+				bool bitmask = type == "bitmask";
+
+				if (name == "API Constants") continue;
+
+				if (bitmask)
+				{
+					string orig = name;
+					name = name.Replace("FlagBits", "Flags");
+					TypeMap.Add(orig, name);
+				}
+
+				List<EnumMember> members = new();
+				enums.Add(new Enum(name, bitmask, bitwidth == string.Empty ? 32 : int.Parse(bitwidth), members));
+
+				foreach (XmlElement member in element.GetElementsByTagName("enum"))
+				{
+					if (member.HasAttribute("alias"))
+					{
+						continue;
+					}
+
+					// todo: comments
+
+					var bitpos = member.GetAttributeNode("bitpos");
+					string mName = member.GetAttribute("name");
+
+					string value = bitpos != null ? (1L << int.Parse(bitpos.Value)).ToString() : member.GetAttribute("value");
+
+					members.Add(new EnumMember(mName, value));
+				}
+			}
+
+			foreach (XmlElement xn in xml.GetElementsByTagName("type"))
+			{
+				if (xn.GetAttributeNode("category") is not { Value: "bitmask" or "enum" }) continue;
+
+				string alias = xn.GetAttribute("alias");
+				if (alias != string.Empty)
+				{
+					TypeMap.Add(xn.GetAttribute("name"), alias);
+					continue;
+				}
+
+				var xmlNode = xn.GetElementsByTagName("name")[0];
+				if (xmlNode == null) continue;
+				string name = xmlNode.InnerText;
+
+				if (TypeMap.ContainsValue(name)) continue;
+
+				List<EnumMember> members = new() { new EnumMember("None", "0") };
+				enums.Add(new Enum(name, xn.GetAttribute("category") == "bitmask", 32, members));
+			}
+
+			return enums;
 		}
 	}
 }

@@ -26,7 +26,7 @@ namespace Fireburst
 
 		public override string ToString() => value.ToString();
 
-		public override bool Equals(object obj) => obj is VkPointerSize other && Equals(other);
+		public override bool Equals(object? obj) => obj is VkPointerSize other && Equals(other);
 
 		public bool Equals(VkPointerSize other) => value == other.value;
 
