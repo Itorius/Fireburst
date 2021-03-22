@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -8,19 +9,28 @@ namespace FireburstGenerator
 {
 	public class StructGenerator : IGenerator
 	{
-		
-
 		private static List<string> IgnoredStructs = new()
 		{
 			"VkAllocationCallbacks",
 			"VkDebugReportCallbackCreateInfoEXT",
 			"VkDebugUtilsMessengerCreateInfoEXT",
-			"VkDeviceDeviceMemoryReportCreateInfoEXT"
+			"VkDeviceDeviceMemoryReportCreateInfoEXT",
+			"VkViewport",
+			"VkRect2D",
+			"VkComponentMapping"
+		};
+
+		public static readonly Dictionary<string, string> Remapping = new()
+		{
+			{ "VkExtent2D", "Vector2ui" },
+			{ "VkExtent3D", "Vector3ui" },
+			{ "VkOffset2D", "Vector2i" },
+			{ "VkOffset3D", "Vector3i" }
 		};
 
 		private record Struct(string name, bool union, List<StructMember> members);
 
-		private record StructMember(string name, string type, bool pointer);
+		private record StructMember(string name, string type, int pointer);
 
 		public void Generate(XmlDocument xml, string outputDir)
 		{
@@ -42,8 +52,8 @@ namespace FireburstGenerator
 					{
 						code.AppendLine("[FieldOffset(0)]");
 
-						if (pointer)
-							code.AppendLine($"public unsafe {type}* {mName};");
+						if (pointer> 0)
+							code.AppendLine($"public unsafe {type}{new string('*', pointer)} {mName};");
 						else
 							code.AppendLine($"public {type} {mName};");
 					}
@@ -52,14 +62,13 @@ namespace FireburstGenerator
 				}
 				else
 				{
-
 					code.AppendLine("[StructLayout(LayoutKind.Sequential)]");
 					code.AppendLine($"public struct {name} {{");
 
 					foreach (var (mName, type, pointer) in members)
 					{
-						if (pointer)
-							code.AppendLine($"public unsafe {type}* {mName};");
+						if (pointer > 0)
+							code.AppendLine($"public unsafe {type}{new string('*', pointer)} {mName};");
 						else
 							code.AppendLine($"public {type} {mName};");
 					}
@@ -79,32 +88,33 @@ namespace FireburstGenerator
 			foreach (XmlElement element in itemRefList)
 			{
 				if (element.GetAttributeNode("category") is not { Value: "struct" }) continue;
+
+				string n = element.GetAttribute("name");
 				if (element.HasAttribute("alias"))
 				{
-					EnumGenerator.TypeMap.Add(element.GetAttribute("name"), element.GetAttribute("alias"));
-					
+					Remapping.Add(n, element.GetAttribute("alias"));
+
 					continue;
 				}
 
 				List<StructMember> members = new List<StructMember>();
-				string n = element.GetAttribute("name");
-				if (IgnoredStructs.Contains(n)) continue;
+				if (IgnoredStructs.Contains(n) || Remapping.ContainsKey(n))
+					continue;
+
 				Struct @struct = new Struct(n, false, members);
 
 				foreach (XmlElement member in element.GetElementsByTagName("member"))
 				{
-					bool isPointer = member.InnerText.Contains("*");
-
 					string name = member["name"].InnerText;
 					if (name == "object") name = "@object";
 
-					members.Add(new StructMember(name, Utility.ResolveType(member["type"].InnerText), isPointer));
+					members.Add(new StructMember(name, Utility.ResolveType(member["type"].InnerText), member.InnerText.Count(x => x == '*')));
 				}
 
 				yield return @struct;
 			}
 		}
-		
+
 		private static IEnumerable<Struct> GetUnions(XmlDocument xml)
 		{
 			XmlNodeList itemRefList = xml.GetElementsByTagName("type");
@@ -115,16 +125,15 @@ namespace FireburstGenerator
 				List<StructMember> members = new List<StructMember>();
 				string n = xn.GetAttribute("name");
 				Struct @struct = new Struct(n, true, members);
-				if (IgnoredStructs.Contains(n)) continue;
+				if (IgnoredStructs.Contains(n) || Remapping.ContainsKey(n))
+					continue;
 
 				foreach (XmlElement member in xn.GetElementsByTagName("member"))
 				{
-					bool isPointer = member.InnerText.Contains("*");
-
 					string name = member["name"].InnerText;
 					if (name == "object") name = "@object";
 
-					members.Add(new StructMember(name, Utility.ResolveType(member["type"].InnerText), isPointer));
+					members.Add(new StructMember(name, Utility.ResolveType(member["type"].InnerText), member.InnerText.Count(x => x == '*')));
 				}
 
 				yield return @struct;

@@ -26,14 +26,13 @@ namespace FireburstGenerator
 				string template = $@"
 									public partial struct {name} : IEquatable<{name}>
 									{{
-										public readonly ulong Handle;
-										public {name}(ulong handle) {{ Handle = handle; }}
-										public static {name} Null => new(0);
-										public static implicit operator {name}(ulong handle) => new(handle);
+										public readonly IntPtr Handle;
+										public bool IsNull => Handle == IntPtr.Zero;
+										public {name}(IntPtr handle) {{ Handle = handle; }}
+										public static {name} Null => new(IntPtr.Zero);
+										//public static implicit operator {name}(ulong handle) => new(handle);
 										public static bool operator ==({name} left, {name} right) => left.Handle == right.Handle;
 										public static bool operator !=({name} left, {name} right) => left.Handle != right.Handle;
-										public static bool operator ==({name} left, ulong right) => left.Handle == right;
-										public static bool operator !=({name} left, ulong right) => left.Handle != right;
 										public bool Equals(ref {name} other) => Handle == other.Handle;
 										public bool Equals({name} other) => Handle == other.Handle;
 										public override bool Equals(object obj) => obj is {name} handle && Equals(ref handle);

@@ -26,19 +26,23 @@ namespace FireburstGenerator
 			"LPCWSTR",
 			"CAMetalLayer",
 			"AHardwareBuffer",
-			"GgpFrameToken"
+			"GgpFrameToken",
+			"xcb_visualid_t",
+			"VisualID",
+			"RROutput"
 		};
-		
+
 		public static string ResolveType(string orig)
 		{
 			if (PointerTypes.Contains(orig)) return "IntPtr";
 			if (EnumGenerator.TypeMap.TryGetValue(orig, out string v)) return v;
+			if (StructGenerator.Remapping.TryGetValue(orig, out v)) return v;
 
 			return orig switch
 			{
 				"PFN_vkVoidFunction" => "IntPtr",
 				"char" => "byte",
-				"size_t" => "VkPointerSize",
+				"size_t" => "nuint",
 				"int8_t" => "sbyte",
 				"int16_t" => "short",
 				"int32_t" => "int",
@@ -52,6 +56,11 @@ namespace FireburstGenerator
 				"VkDeviceAddress" => "IntPtr",
 				_ => orig
 			};
+		}
+
+		public static string JoinStrings(this IEnumerable<string> strings, string separator = ", ")
+		{
+			return System.Linq.Enumerable.Aggregate(strings, (x, y) => x + separator + y);
 		}
 	}
 }

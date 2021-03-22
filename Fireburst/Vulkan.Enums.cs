@@ -526,16 +526,17 @@ CommandPool = 25,
 }
 [Flags]
 public enum VkQueueFlags {
-GraphicsBit = 1,
-ComputeBit = 2,
-TransferBit = 4,
-SparseBindingBit = 8,
+None = 0,
+Graphics = 1,
+Compute = 2,
+Transfer = 4,
+SparseBinding = 8,
 }
 [Flags]
 public enum VkCullModeFlags {
 None = 0,
-FrontBit = 1,
-BackBit = 2,
+Front = 1,
+Back = 2,
 FrontAndBack = 0x00000003,
 }
 [Flags]
@@ -548,83 +549,91 @@ None = 0
 }
 [Flags]
 public enum VkMemoryPropertyFlags {
-DeviceLocalBit = 1,
-HostVisibleBit = 2,
-HostCoherentBit = 4,
-HostCachedBit = 8,
-LazilyAllocatedBit = 16,
+None = 0,
+DeviceLocal = 1,
+HostVisible = 2,
+HostCoherent = 4,
+HostCached = 8,
+LazilyAllocated = 16,
 }
 [Flags]
 public enum VkMemoryHeapFlags {
-DeviceLocalBit = 1,
+None = 0,
+DeviceLocal = 1,
 }
 [Flags]
 public enum VkAccessFlags {
-IndirectCommandReadBit = 1,
-IndexReadBit = 2,
-VertexAttributeReadBit = 4,
-UniformReadBit = 8,
-InputAttachmentReadBit = 16,
-ShaderReadBit = 32,
-ShaderWriteBit = 64,
-ColorAttachmentReadBit = 128,
-ColorAttachmentWriteBit = 256,
-DepthStencilAttachmentReadBit = 512,
-DepthStencilAttachmentWriteBit = 1024,
-TransferReadBit = 2048,
-TransferWriteBit = 4096,
-HostReadBit = 8192,
-HostWriteBit = 16384,
-MemoryReadBit = 32768,
-MemoryWriteBit = 65536,
+None = 0,
+IndirectCommandRead = 1,
+IndexRead = 2,
+VertexAttributeRead = 4,
+UniformRead = 8,
+InputAttachmentRead = 16,
+ShaderRead = 32,
+ShaderWrite = 64,
+ColorAttachmentRead = 128,
+ColorAttachmentWrite = 256,
+DepthStencilAttachmentRead = 512,
+DepthStencilAttachmentWrite = 1024,
+TransferRead = 2048,
+TransferWrite = 4096,
+HostRead = 8192,
+HostWrite = 16384,
+MemoryRead = 32768,
+MemoryWrite = 65536,
 }
 [Flags]
 public enum VkBufferUsageFlags {
-TransferSrcBit = 1,
-TransferDstBit = 2,
-UniformTexelBufferBit = 4,
-StorageTexelBufferBit = 8,
-UniformBufferBit = 16,
-StorageBufferBit = 32,
-IndexBufferBit = 64,
-VertexBufferBit = 128,
-IndirectBufferBit = 256,
+None = 0,
+TransferSrc = 1,
+TransferDst = 2,
+UniformTexelBuffer = 4,
+StorageTexelBuffer = 8,
+UniformBuffer = 16,
+StorageBuffer = 32,
+IndexBuffer = 64,
+VertexBuffer = 128,
+IndirectBuffer = 256,
 }
 [Flags]
 public enum VkBufferCreateFlags {
-SparseBindingBit = 1,
-SparseResidencyBit = 2,
-SparseAliasedBit = 4,
+None = 0,
+SparseBinding = 1,
+SparseResidency = 2,
+SparseAliased = 4,
 }
 [Flags]
 public enum VkShaderStageFlags {
-VertexBit = 1,
-TessellationControlBit = 2,
-TessellationEvaluationBit = 4,
-GeometryBit = 8,
-FragmentBit = 16,
-ComputeBit = 32,
+None = 0,
+Vertex = 1,
+TessellationControl = 2,
+TessellationEvaluation = 4,
+Geometry = 8,
+Fragment = 16,
+Compute = 32,
 AllGraphics = 0x0000001F,
 All = 0x7FFFFFFF,
 }
 [Flags]
 public enum VkImageUsageFlags {
-TransferSrcBit = 1,
-TransferDstBit = 2,
-SampledBit = 4,
-StorageBit = 8,
-ColorAttachmentBit = 16,
-DepthStencilAttachmentBit = 32,
-TransientAttachmentBit = 64,
-InputAttachmentBit = 128,
+None = 0,
+TransferSrc = 1,
+TransferDst = 2,
+Sampled = 4,
+Storage = 8,
+ColorAttachment = 16,
+DepthStencilAttachment = 32,
+TransientAttachment = 64,
+InputAttachment = 128,
 }
 [Flags]
 public enum VkImageCreateFlags {
-SparseBindingBit = 1,
-SparseResidencyBit = 2,
-SparseAliasedBit = 4,
-MutableFormatBit = 8,
-CubeCompatibleBit = 16,
+None = 0,
+SparseBinding = 1,
+SparseResidency = 2,
+SparseAliased = 4,
+MutableFormat = 8,
+CubeCompatible = 16,
 }
 [Flags]
 public enum VkImageViewCreateFlags {
@@ -636,9 +645,10 @@ None = 0
 }
 [Flags]
 public enum VkPipelineCreateFlags {
-DisableOptimizationBit = 1,
-AllowDerivativesBit = 2,
-DerivativeBit = 4,
+None = 0,
+DisableOptimization = 1,
+AllowDerivatives = 2,
+Derivative = 4,
 }
 [Flags]
 public enum VkPipelineShaderStageCreateFlags {
@@ -646,114 +656,130 @@ None = 0
 }
 [Flags]
 public enum VkColorComponentFlags {
-RBit = 1,
-GBit = 2,
-BBit = 4,
-ABit = 8,
+None = 0,
+R = 1,
+G = 2,
+B = 4,
+A = 8,
+All = R | G | B | A
 }
 [Flags]
 public enum VkFenceCreateFlags {
-SignaledBit = 1,
+None = 0,
+Signaled = 1,
 }
 [Flags]
 public enum VkFormatFeatureFlags {
-SampledImageBit = 1,
-StorageImageBit = 2,
-StorageImageAtomicBit = 4,
-UniformTexelBufferBit = 8,
-StorageTexelBufferBit = 16,
-StorageTexelBufferAtomicBit = 32,
-VertexBufferBit = 64,
-ColorAttachmentBit = 128,
-ColorAttachmentBlendBit = 256,
-DepthStencilAttachmentBit = 512,
-BlitSrcBit = 1024,
-BlitDstBit = 2048,
-SampledImageFilterLinearBit = 4096,
+None = 0,
+SampledImage = 1,
+StorageImage = 2,
+StorageImageAtomic = 4,
+UniformTexelBuffer = 8,
+StorageTexelBuffer = 16,
+StorageTexelBufferAtomic = 32,
+VertexBuffer = 64,
+ColorAttachment = 128,
+ColorAttachmentBlend = 256,
+DepthStencilAttachment = 512,
+BlitSrc = 1024,
+BlitDst = 2048,
+SampledImageFilterLinear = 4096,
 }
 [Flags]
 public enum VkQueryControlFlags {
-PreciseBit = 1,
+None = 0,
+Precise = 1,
 }
 [Flags]
 public enum VkQueryResultFlags {
-_64Bit = 1,
-WaitBit = 2,
-WithAvailabilityBit = 4,
-PartialBit = 8,
+None = 0,
+_64 = 1,
+Wait = 2,
+WithAvailability = 4,
+Partial = 8,
 }
 [Flags]
 public enum VkCommandBufferUsageFlags {
-OneTimeSubmitBit = 1,
-RenderPassContinueBit = 2,
-SimultaneousUseBit = 4,
+None = 0,
+OneTimeSubmit = 1,
+RenderPassContinue = 2,
+SimultaneousUse = 4,
 }
 [Flags]
 public enum VkQueryPipelineStatisticFlags {
-InputAssemblyVerticesBit = 1,
-InputAssemblyPrimitivesBit = 2,
-VertexShaderInvocationsBit = 4,
-GeometryShaderInvocationsBit = 8,
-GeometryShaderPrimitivesBit = 16,
-ClippingInvocationsBit = 32,
-ClippingPrimitivesBit = 64,
-FragmentShaderInvocationsBit = 128,
-TessellationControlShaderPatchesBit = 256,
-TessellationEvaluationShaderInvocationsBit = 512,
-ComputeShaderInvocationsBit = 1024,
+None = 0,
+InputAssemblyVertices = 1,
+InputAssemblyPrimitives = 2,
+VertexShaderInvocations = 4,
+GeometryShaderInvocations = 8,
+GeometryShaderPrimitives = 16,
+ClippingInvocations = 32,
+ClippingPrimitives = 64,
+FragmentShaderInvocations = 128,
+TessellationControlShaderPatches = 256,
+TessellationEvaluationShaderInvocations = 512,
+ComputeShaderInvocations = 1024,
 }
 [Flags]
 public enum VkImageAspectFlags {
-ColorBit = 1,
-DepthBit = 2,
-StencilBit = 4,
-MetadataBit = 8,
+None = 0,
+Color = 1,
+Depth = 2,
+Stencil = 4,
+Metadata = 8,
 }
 [Flags]
 public enum VkSparseImageFormatFlags {
-SingleMiptailBit = 1,
-AlignedMipSizeBit = 2,
-NonstandardBlockSizeBit = 4,
+None = 0,
+SingleMiptail = 1,
+AlignedMipSize = 2,
+NonstandardBlockSize = 4,
 }
 [Flags]
 public enum VkSparseMemoryBindFlags {
-MetadataBit = 1,
+None = 0,
+Metadata = 1,
 }
 [Flags]
 public enum VkPipelineStageFlags {
-TopOfPipeBit = 1,
-DrawIndirectBit = 2,
-VertexInputBit = 4,
-VertexShaderBit = 8,
-TessellationControlShaderBit = 16,
-TessellationEvaluationShaderBit = 32,
-GeometryShaderBit = 64,
-FragmentShaderBit = 128,
-EarlyFragmentTestsBit = 256,
-LateFragmentTestsBit = 512,
-ColorAttachmentOutputBit = 1024,
-ComputeShaderBit = 2048,
-TransferBit = 4096,
-BottomOfPipeBit = 8192,
-HostBit = 16384,
-AllGraphicsBit = 32768,
-AllCommandsBit = 65536,
+None = 0,
+TopOfPipe = 1,
+DrawIndirect = 2,
+VertexInput = 4,
+VertexShader = 8,
+TessellationControlShader = 16,
+TessellationEvaluationShader = 32,
+GeometryShader = 64,
+FragmentShader = 128,
+EarlyFragmentTests = 256,
+LateFragmentTests = 512,
+ColorAttachmentOutput = 1024,
+ComputeShader = 2048,
+Transfer = 4096,
+BottomOfPipe = 8192,
+Host = 16384,
+AllGraphics = 32768,
+AllCommands = 65536,
 }
 [Flags]
 public enum VkCommandPoolCreateFlags {
-TransientBit = 1,
-ResetCommandBufferBit = 2,
+None = 0,
+Transient = 1,
+ResetCommandBuffer = 2,
 }
 [Flags]
 public enum VkCommandPoolResetFlags {
-ReleaseResourcesBit = 1,
+None = 0,
+ReleaseResources = 1,
 }
 [Flags]
 public enum VkCommandBufferResetFlags {
-ReleaseResourcesBit = 1,
+None = 0,
+ReleaseResources = 1,
 }
 [Flags]
 public enum VkSampleCountFlags {
+None = 0,
 Count1 = 1,
 Count2 = 2,
 Count4 = 4,
@@ -764,21 +790,25 @@ Count64 = 64,
 }
 [Flags]
 public enum VkAttachmentDescriptionFlags {
-MayAliasBit = 1,
+None = 0,
+MayAlias = 1,
 }
 [Flags]
 public enum VkStencilFaceFlags {
-FrontBit = 1,
-BackBit = 2,
+None = 0,
+Front = 1,
+Back = 2,
 FrontAndBack = 0x00000003,
 }
 [Flags]
 public enum VkDescriptorPoolCreateFlags {
-FreeDescriptorSetBit = 1,
+None = 0,
+FreeDescriptorSet = 1,
 }
 [Flags]
 public enum VkDependencyFlags {
-ByRegionBit = 1,
+None = 0,
+ByRegion = 1,
 }
 public enum VkSemaphoreType {
 Binary = 0,
@@ -786,7 +816,8 @@ Timeline = 1,
 }
 [Flags]
 public enum VkSemaphoreWaitFlags {
-AnyBit = 1,
+None = 0,
+Any = 1,
 }
 public enum VkPresentModeKHR {
 Immediate = 0,
@@ -799,33 +830,37 @@ SrgbNonLinearKHR = 0,
 }
 [Flags]
 public enum VkDisplayPlaneAlphaFlagsKHR {
-OpaqueBit = 1,
-GlobalBit = 2,
-PerPixelBit = 4,
-PerPixelPremultipliedBit = 8,
+None = 0,
+Opaque = 1,
+Global = 2,
+PerPixel = 4,
+PerPixelPremultiplied = 8,
 }
 [Flags]
 public enum VkCompositeAlphaFlagsKHR {
-OpaqueBit = 1,
-PreMultipliedBit = 2,
-PostMultipliedBit = 4,
-InheritBit = 8,
+None = 0,
+Opaque = 1,
+PreMultiplied = 2,
+PostMultiplied = 4,
+Inherit = 8,
 }
 [Flags]
 public enum VkSurfaceTransformFlagsKHR {
-IdentityBit = 1,
-Rotate90Bit = 2,
-Rotate180Bit = 4,
-Rotate270Bit = 8,
-HorizontalMirrorBit = 16,
-HorizontalMirrorRotate90Bit = 32,
-HorizontalMirrorRotate180Bit = 64,
-HorizontalMirrorRotate270Bit = 128,
-InheritBit = 256,
+None = 0,
+Identity = 1,
+Rotate90 = 2,
+Rotate180 = 4,
+Rotate270 = 8,
+HorizontalMirror = 16,
+HorizontalMirrorRotate90 = 32,
+HorizontalMirrorRotate180 = 64,
+HorizontalMirrorRotate270 = 128,
+Inherit = 256,
 }
 [Flags]
 public enum VkSwapchainImageUsageFlagsANDROID {
-SharedBitAndroid = 1,
+None = 0,
+SharedAndroid = 1,
 }
 public enum VkTimeDomainEXT {
 Device = 0,
@@ -835,11 +870,12 @@ QueryPerformanceCounter = 3,
 }
 [Flags]
 public enum VkDebugReportFlagsEXT {
-InformationBit = 1,
-WarningBit = 2,
-PerformanceWarningBit = 4,
-ErrorBit = 8,
-DebugBit = 16,
+None = 0,
+Information = 1,
+Warning = 2,
+PerformanceWarning = 4,
+Error = 8,
+Debug = 16,
 }
 public enum VkDebugReportObjectTypeEXT {
 Unknown = 0,
@@ -888,16 +924,18 @@ RelaxedAMD = 1,
 }
 [Flags]
 public enum VkExternalMemoryHandleTypeFlagsNV {
-OpaqueWin32Bit = 1,
-OpaqueWin32KmtBit = 2,
-D3d11ImageBit = 4,
-D3d11ImageKmtBit = 8,
+None = 0,
+OpaqueWin32 = 1,
+OpaqueWin32Kmt = 2,
+D3d11Image = 4,
+D3d11ImageKmt = 8,
 }
 [Flags]
 public enum VkExternalMemoryFeatureFlagsNV {
-DedicatedOnlyBit = 1,
-ExportableBit = 2,
-ImportableBit = 4,
+None = 0,
+DedicatedOnly = 1,
+Exportable = 2,
+Importable = 4,
 }
 public enum VkValidationCheckEXT {
 All = 0,
@@ -921,28 +959,31 @@ UniqueHandles = 6,
 }
 [Flags]
 public enum VkSubgroupFeatureFlags {
-BasicBit = 1,
-VoteBit = 2,
-ArithmeticBit = 4,
-BallotBit = 8,
-ShuffleBit = 16,
-ShuffleRelativeBit = 32,
-ClusteredBit = 64,
-QuadBit = 128,
+None = 0,
+Basic = 1,
+Vote = 2,
+Arithmetic = 4,
+Ballot = 8,
+Shuffle = 16,
+ShuffleRelative = 32,
+Clustered = 64,
+Quad = 128,
 }
 [Flags]
 public enum VkIndirectCommandsLayoutUsageFlagsNV {
-ExplicitPreprocessBit = 1,
-IndexedSequencesBit = 2,
-UnorderedSequencesBit = 4,
+None = 0,
+ExplicitPreprocess = 1,
+IndexedSequences = 2,
+UnorderedSequences = 4,
 }
 [Flags]
 public enum VkIndirectStateFlagsNV {
-FlagFrontfaceBit = 1,
+None = 0,
+FlagFrontface = 1,
 }
 public enum VkIndirectCommandsTokenTypeNV {
 TypeShaderGroup = 0,
-TypeStateFlags = 1,
+TypeState = 1,
 TypeIndexBuffer = 2,
 TypeVertexBuffer = 3,
 TypePushConstant = 4,
@@ -960,56 +1001,65 @@ None = 0
 }
 [Flags]
 public enum VkExternalMemoryHandleTypeFlags {
-OpaqueFdBit = 1,
-OpaqueWin32Bit = 2,
-OpaqueWin32KmtBit = 4,
-D3d11TextureBit = 8,
-D3d11TextureKmtBit = 16,
-D3d12HeapBit = 32,
-D3d12ResourceBit = 64,
+None = 0,
+OpaqueFd = 1,
+OpaqueWin32 = 2,
+OpaqueWin32Kmt = 4,
+D3d11Texture = 8,
+D3d11TextureKmt = 16,
+D3d12Heap = 32,
+D3d12Resource = 64,
 }
 [Flags]
 public enum VkExternalMemoryFeatureFlags {
-DedicatedOnlyBit = 1,
-ExportableBit = 2,
-ImportableBit = 4,
+None = 0,
+DedicatedOnly = 1,
+Exportable = 2,
+Importable = 4,
 }
 [Flags]
 public enum VkExternalSemaphoreHandleTypeFlags {
-OpaqueFdBit = 1,
-OpaqueWin32Bit = 2,
-OpaqueWin32KmtBit = 4,
-D3d12FenceBit = 8,
-SyncFdBit = 16,
+None = 0,
+OpaqueFd = 1,
+OpaqueWin32 = 2,
+OpaqueWin32Kmt = 4,
+D3d12Fence = 8,
+SyncFd = 16,
 }
 [Flags]
 public enum VkExternalSemaphoreFeatureFlags {
-ExportableBit = 1,
-ImportableBit = 2,
+None = 0,
+Exportable = 1,
+Importable = 2,
 }
 [Flags]
 public enum VkSemaphoreImportFlags {
-TemporaryBit = 1,
+None = 0,
+Temporary = 1,
 }
 [Flags]
 public enum VkExternalFenceHandleTypeFlags {
-OpaqueFdBit = 1,
-OpaqueWin32Bit = 2,
-OpaqueWin32KmtBit = 4,
-SyncFdBit = 8,
+None = 0,
+OpaqueFd = 1,
+OpaqueWin32 = 2,
+OpaqueWin32Kmt = 4,
+SyncFd = 8,
 }
 [Flags]
 public enum VkExternalFenceFeatureFlags {
-ExportableBit = 1,
-ImportableBit = 2,
+None = 0,
+Exportable = 1,
+Importable = 2,
 }
 [Flags]
 public enum VkFenceImportFlags {
-TemporaryBit = 1,
+None = 0,
+Temporary = 1,
 }
 [Flags]
 public enum VkSurfaceCounterFlagsEXT {
-VblankBit = 1,
+None = 0,
+Vblank = 1,
 }
 public enum VkDisplayPowerStateEXT {
 Off = 0,
@@ -1024,21 +1074,24 @@ FirstPixelOut = 0,
 }
 [Flags]
 public enum VkPeerMemoryFeatureFlags {
-CopySrcBit = 1,
-CopyDstBit = 2,
-GenericSrcBit = 4,
-GenericDstBit = 8,
+None = 0,
+CopySrc = 1,
+CopyDst = 2,
+GenericSrc = 4,
+GenericDst = 8,
 }
 [Flags]
 public enum VkMemoryAllocateFlags {
-DeviceMaskBit = 1,
+None = 0,
+DeviceMask = 1,
 }
 [Flags]
 public enum VkDeviceGroupPresentModeFlagsKHR {
-LocalBit = 1,
-RemoteBit = 2,
-SumBit = 4,
-LocalMultiDeviceBit = 8,
+None = 0,
+Local = 1,
+Remote = 2,
+Sum = 4,
+LocalMultiDevice = 8,
 }
 [Flags]
 public enum VkSwapchainCreateFlagsKHR {
@@ -1121,16 +1174,18 @@ Realtime = 1024,
 }
 [Flags]
 public enum VkDebugUtilsMessageSeverityFlagsEXT {
-VerboseBit = 1,
-InfoBit = 16,
-WarningBit = 256,
-ErrorBit = 4096,
+None = 0,
+Verbose = 1,
+Info = 16,
+Warning = 256,
+Error = 4096,
 }
 [Flags]
 public enum VkDebugUtilsMessageTypeFlagsEXT {
-GeneralBit = 1,
-ValidationBit = 2,
-PerformanceBit = 4,
+None = 0,
+General = 1,
+Validation = 2,
+Performance = 4,
 }
 public enum VkConservativeRasterizationModeEXT {
 Disabled = 0,
@@ -1139,10 +1194,11 @@ Underestimate = 2,
 }
 [Flags]
 public enum VkDescriptorBindingFlags {
-UpdateAfterBindBit = 1,
-UpdateUnusedWhilePendingBit = 2,
-PartiallyBoundBit = 4,
-VariableDescriptorCountBit = 8,
+None = 0,
+UpdateAfterBind = 1,
+UpdateUnusedWhilePending = 2,
+PartiallyBound = 4,
+VariableDescriptorCount = 8,
 }
 public enum VkVendorId {
 Viv = 0x10001,
@@ -1170,15 +1226,16 @@ Moltenvk = 14,
 }
 [Flags]
 public enum VkConditionalRenderingFlagsEXT {
-InvertedBit = 1,
+None = 0,
+Inverted = 1,
 }
 [Flags]
 public enum VkResolveModeFlags {
 None = 0,
-SampleZeroBit = 1,
-AverageBit = 2,
-MinBit = 4,
-MaxBit = 8,
+SampleZero = 1,
+Average = 2,
+Min = 4,
+Max = 8,
 }
 public enum VkShadingRatePaletteEntryNV {
 NoInvocations = 0,
@@ -1202,27 +1259,31 @@ SampleMajor = 3,
 }
 [Flags]
 public enum VkGeometryInstanceFlagsKHR {
-TriangleFacingCullDisableBit = 1,
-TriangleFrontCounterclockwiseBit = 2,
-ForceOpaqueBit = 4,
-ForceNoOpaqueBit = 8,
+None = 0,
+TriangleFacingCullDisable = 1,
+TriangleFrontCounterclockwise = 2,
+ForceOpaque = 4,
+ForceNoOpaque = 8,
 }
 [Flags]
 public enum VkGeometryFlagsKHR {
-OpaqueBit = 1,
-NoDuplicateAnyHitInvocationBit = 2,
+None = 0,
+Opaque = 1,
+NoDuplicateAnyHitInvocation = 2,
 }
 [Flags]
 public enum VkBuildAccelerationStructureFlagsKHR {
-AllowUpdateBit = 1,
-AllowCompactionBit = 2,
-PreferFastTraceBit = 4,
-PreferFastBuildBit = 8,
-LowMemoryBit = 16,
+None = 0,
+AllowUpdate = 1,
+AllowCompaction = 2,
+PreferFastTrace = 4,
+PreferFastBuild = 8,
+LowMemory = 16,
 }
 [Flags]
 public enum VkAccelerationStructureCreateFlagsKHR {
-DeviceAddressCaptureReplayBit = 1,
+None = 0,
+DeviceAddressCaptureReplay = 1,
 }
 public enum VkCopyAccelerationStructureModeKHR {
 Clone = 0,
@@ -1299,15 +1360,17 @@ TypeUint64 = 10,
 }
 [Flags]
 public enum VkDeviceDiagnosticsConfigFlagsNV {
-EnableShaderDebugInfoBit = 1,
-EnableResourceTrackingBit = 2,
-EnableAutomaticCheckpointsBit = 4,
+None = 0,
+EnableShaderDebugInfo = 1,
+EnableResourceTracking = 2,
+EnableAutomaticCheckpoints = 4,
 }
 [Flags]
 public enum VkPipelineCreationFeedbackFlagsEXT {
-ValidBit = 1,
-ApplicationPipelineCacheHitBit = 2,
-BasePipelineAccelerationBit = 4,
+None = 0,
+Valid = 1,
+ApplicationPipelineCacheHit = 2,
+BasePipelineAcceleration = 4,
 }
 public enum VkFullScreenExclusiveEXT {
 Default = 0,
@@ -1343,8 +1406,9 @@ Float64 = 5,
 }
 [Flags]
 public enum VkPerformanceCounterDescriptionFlagsKHR {
-PerformanceImpactingBit = 1,
-ConcurrentlyImpactedBit = 2,
+None = 0,
+PerformanceImpacting = 1,
+ConcurrentlyImpacted = 2,
 }
 [Flags]
 public enum VkAcquireProfilingLockFlagsKHR {
@@ -1376,7 +1440,7 @@ TypeBoolINTEL = 3,
 TypeStringINTEL = 4,
 }
 public enum VkShaderFloatControlsIndependence {
-_32BitOnly = 0,
+_32Only = 0,
 All = 1,
 None = 2,
 }
@@ -1402,11 +1466,12 @@ None = 0
 }
 [Flags]
 public enum VkToolPurposeFlagsEXT {
-ValidationBit = 1,
-ProfilingBit = 2,
-TracingBit = 4,
-AdditionalFeaturesBit = 8,
-ModifyingFeaturesBit = 16,
+None = 0,
+Validation = 1,
+Profiling = 2,
+Tracing = 4,
+AdditionalFeatures = 8,
+ModifyingFeatures = 16,
 }
 public enum VkFragmentShadingRateCombinerOpKHR {
 Keep = 0,
@@ -1436,58 +1501,59 @@ TypeEnums = 1,
 [Flags]
 public enum VkAccessFlags2KHR :long {
 None = 0,
-IndirectCommandReadBit = 1,
-IndexReadBit = 2,
-VertexAttributeReadBit = 4,
-UniformReadBit = 8,
-InputAttachmentReadBit = 16,
-ShaderReadBit = 32,
-ShaderWriteBit = 64,
-ColorAttachmentReadBit = 128,
-ColorAttachmentWriteBit = 256,
-DepthStencilAttachmentReadBit = 512,
-DepthStencilAttachmentWriteBit = 1024,
-TransferReadBit = 2048,
-TransferWriteBit = 4096,
-HostReadBit = 8192,
-HostWriteBit = 16384,
-MemoryReadBit = 32768,
-MemoryWriteBit = 65536,
-ShaderSampledReadBit = 4294967296,
-ShaderStorageReadBit = 8589934592,
-ShaderStorageWriteBit = 17179869184,
+IndirectCommandRead = 1,
+IndexRead = 2,
+VertexAttributeRead = 4,
+UniformRead = 8,
+InputAttachmentRead = 16,
+ShaderRead = 32,
+ShaderWrite = 64,
+ColorAttachmentRead = 128,
+ColorAttachmentWrite = 256,
+DepthStencilAttachmentRead = 512,
+DepthStencilAttachmentWrite = 1024,
+TransferRead = 2048,
+TransferWrite = 4096,
+HostRead = 8192,
+HostWrite = 16384,
+MemoryRead = 32768,
+MemoryWrite = 65536,
+ShaderSampledRead = 4294967296,
+ShaderStorageRead = 8589934592,
+ShaderStorageWrite = 17179869184,
 }
 [Flags]
 public enum VkPipelineStageFlags2KHR :long {
 None = 0,
-TopOfPipeBit = 1,
-DrawIndirectBit = 2,
-VertexInputBit = 4,
-VertexShaderBit = 8,
-TessellationControlShaderBit = 16,
-TessellationEvaluationShaderBit = 32,
-GeometryShaderBit = 64,
-FragmentShaderBit = 128,
-EarlyFragmentTestsBit = 256,
-LateFragmentTestsBit = 512,
-ColorAttachmentOutputBit = 1024,
-ComputeShaderBit = 2048,
-AllTransferBit = 4096,
-BottomOfPipeBit = 8192,
-HostBit = 16384,
-AllGraphicsBit = 32768,
-AllCommandsBit = 65536,
-CopyBit = 4294967296,
-ResolveBit = 8589934592,
-BlitBit = 17179869184,
-ClearBit = 34359738368,
-IndexInputBit = 68719476736,
-VertexAttributeInputBit = 137438953472,
-PreRasterizationShadersBit = 274877906944,
+TopOfPipe = 1,
+DrawIndirect = 2,
+VertexInput = 4,
+VertexShader = 8,
+TessellationControlShader = 16,
+TessellationEvaluationShader = 32,
+GeometryShader = 64,
+FragmentShader = 128,
+EarlyFragmentTests = 256,
+LateFragmentTests = 512,
+ColorAttachmentOutput = 1024,
+ComputeShader = 2048,
+AllTransfer = 4096,
+BottomOfPipe = 8192,
+Host = 16384,
+AllGraphics = 32768,
+AllCommands = 65536,
+Copy = 4294967296,
+Resolve = 8589934592,
+Blit = 17179869184,
+Clear = 34359738368,
+IndexInput = 68719476736,
+VertexAttributeInput = 137438953472,
+PreRasterizationShaders = 274877906944,
 }
 [Flags]
 public enum VkSubmitFlagsKHR {
-ProtectedBit = 1,
+None = 0,
+Protected = 1,
 }
 [Flags]
 public enum VkEventCreateFlags {
@@ -1623,6 +1689,10 @@ None = 0,
 }
 [Flags]
 public enum VkHeadlessSurfaceCreateFlagsEXT {
+None = 0,
+}
+[Flags]
+public enum VkScreenSurfaceCreateFlagsQNX {
 None = 0,
 }
 [Flags]

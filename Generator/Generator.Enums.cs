@@ -134,6 +134,12 @@ namespace FireburstGenerator
 			"intel"
 		};
 
+		private static readonly HashSet<string> s_ignoredParts = new(StringComparer.OrdinalIgnoreCase)
+		{
+			"flags",
+			"bit"
+		};
+
 		private record Enum(string name, bool bitmask, int bitwidth, List<EnumMember> members);
 
 		private record EnumMember(string name, string value);
@@ -223,11 +229,9 @@ namespace FireburstGenerator
 			var sb = new StringBuilder();
 			foreach (string part in parts)
 			{
-				// if (s_ignoredParts.Contains(part))
-				// {
-				// 	continue;
-				// }
-				//
+				if (s_ignoredParts.Contains(part))
+					continue;
+
 				if (s_preserveCaps.Contains(part))
 				{
 					sb.Append(part);
@@ -266,10 +270,16 @@ namespace FireburstGenerator
 				else
 				{
 					string enumPrefix = GetEnumNamePrefix(name);
+					if (bitmask && members.All(x => x.value != "0")) code.AppendLine("None = 0,");
 
 					foreach (var (mName, value) in members)
 					{
 						code.AppendLine($"{GetName(mName, enumPrefix)} = {value},");
+					}
+					
+					if (name == "VkColorComponentFlags")
+					{
+						code.AppendLine("All = R | G | B | A");
 					}
 				}
 

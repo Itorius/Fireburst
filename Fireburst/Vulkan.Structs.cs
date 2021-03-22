@@ -13,53 +13,10 @@ public VkStructureType sType;
 public unsafe VkBaseInStructure* pNext;
 }
 [StructLayout(LayoutKind.Sequential)]
-public struct VkOffset2D {
-public int x;
-public int y;
-}
-[StructLayout(LayoutKind.Sequential)]
-public struct VkOffset3D {
-public int x;
-public int y;
-public int z;
-}
-[StructLayout(LayoutKind.Sequential)]
-public struct VkExtent2D {
-public uint width;
-public uint height;
-}
-[StructLayout(LayoutKind.Sequential)]
-public struct VkExtent3D {
-public uint width;
-public uint height;
-public uint depth;
-}
-[StructLayout(LayoutKind.Sequential)]
-public struct VkViewport {
-public float x;
-public float y;
-public float width;
-public float height;
-public float minDepth;
-public float maxDepth;
-}
-[StructLayout(LayoutKind.Sequential)]
-public struct VkRect2D {
-public VkOffset2D offset;
-public VkExtent2D extent;
-}
-[StructLayout(LayoutKind.Sequential)]
 public struct VkClearRect {
 public VkRect2D rect;
 public uint baseArrayLayer;
 public uint layerCount;
-}
-[StructLayout(LayoutKind.Sequential)]
-public struct VkComponentMapping {
-public VkComponentSwizzle r;
-public VkComponentSwizzle g;
-public VkComponentSwizzle b;
-public VkComponentSwizzle a;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkPhysicalDeviceProperties {
@@ -112,9 +69,9 @@ public VkDeviceCreateFlags flags;
 public uint queueCreateInfoCount;
 public unsafe VkDeviceQueueCreateInfo* pQueueCreateInfos;
 public uint enabledLayerCount;
-public unsafe byte* ppEnabledLayerNames;
+public unsafe byte** ppEnabledLayerNames;
 public uint enabledExtensionCount;
-public unsafe byte* ppEnabledExtensionNames;
+public unsafe byte** ppEnabledExtensionNames;
 public unsafe VkPhysicalDeviceFeatures* pEnabledFeatures;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -124,16 +81,16 @@ public unsafe void* pNext;
 public VkInstanceCreateFlags flags;
 public unsafe VkApplicationInfo* pApplicationInfo;
 public uint enabledLayerCount;
-public unsafe byte* ppEnabledLayerNames;
+public unsafe byte** ppEnabledLayerNames;
 public uint enabledExtensionCount;
-public unsafe byte* ppEnabledExtensionNames;
+public unsafe byte** ppEnabledExtensionNames;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkQueueFamilyProperties {
 public VkQueueFlags queueFlags;
 public uint queueCount;
 public uint timestampValidBits;
-public VkExtent3D minImageTransferGranularity;
+public Vector3ui minImageTransferGranularity;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkPhysicalDeviceMemoryProperties {
@@ -158,7 +115,7 @@ public uint memoryTypeBits;
 [StructLayout(LayoutKind.Sequential)]
 public struct VkSparseImageFormatProperties {
 public VkImageAspectFlags aspectMask;
-public VkExtent3D imageGranularity;
+public Vector3ui imageGranularity;
 public VkSparseImageFormatFlags flags;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -195,7 +152,7 @@ public VkFormatFeatureFlags bufferFeatures;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkImageFormatProperties {
-public VkExtent3D maxExtent;
+public Vector3ui maxExtent;
 public uint maxMipLevels;
 public uint maxArrayLayers;
 public VkSampleCountFlags sampleCounts;
@@ -319,7 +276,7 @@ public unsafe void* pNext;
 public VkImageCreateFlags flags;
 public VkImageType imageType;
 public VkFormat format;
-public VkExtent3D extent;
+public Vector3ui extent;
 public uint mipLevels;
 public uint arrayLayers;
 public VkSampleCountFlags samples;
@@ -366,8 +323,8 @@ public VkSparseMemoryBindFlags flags;
 [StructLayout(LayoutKind.Sequential)]
 public struct VkSparseImageMemoryBind {
 public VkImageSubresource subresource;
-public VkOffset3D offset;
-public VkExtent3D extent;
+public Vector3i offset;
+public Vector3ui extent;
 public VkDeviceMemory memory;
 public ulong memoryOffset;
 public VkSparseMemoryBindFlags flags;
@@ -408,17 +365,17 @@ public unsafe VkSemaphore* pSignalSemaphores;
 [StructLayout(LayoutKind.Sequential)]
 public struct VkImageCopy {
 public VkImageSubresourceLayers srcSubresource;
-public VkOffset3D srcOffset;
+public Vector3i srcOffset;
 public VkImageSubresourceLayers dstSubresource;
-public VkOffset3D dstOffset;
-public VkExtent3D extent;
+public Vector3i dstOffset;
+public Vector3ui extent;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkImageBlit {
 public VkImageSubresourceLayers srcSubresource;
-public VkOffset3D srcOffsets;
+public Vector3i srcOffsets;
 public VkImageSubresourceLayers dstSubresource;
-public VkOffset3D dstOffsets;
+public Vector3i dstOffsets;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkBufferImageCopy {
@@ -426,23 +383,23 @@ public ulong bufferOffset;
 public uint bufferRowLength;
 public uint bufferImageHeight;
 public VkImageSubresourceLayers imageSubresource;
-public VkOffset3D imageOffset;
-public VkExtent3D imageExtent;
+public Vector3i imageOffset;
+public Vector3ui imageExtent;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkImageResolve {
 public VkImageSubresourceLayers srcSubresource;
-public VkOffset3D srcOffset;
+public Vector3i srcOffset;
 public VkImageSubresourceLayers dstSubresource;
-public VkOffset3D dstOffset;
-public VkExtent3D extent;
+public Vector3i dstOffset;
+public Vector3ui extent;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkShaderModuleCreateInfo {
 public VkStructureType sType;
 public unsafe void* pNext;
 public VkShaderModuleCreateFlags flags;
-public VkPointerSize codeSize;
+public nuint codeSize;
 public unsafe uint* pCode;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -487,13 +444,13 @@ public unsafe VkDescriptorSetLayout* pSetLayouts;
 public struct VkSpecializationMapEntry {
 public uint constantID;
 public uint offset;
-public VkPointerSize size;
+public nuint size;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkSpecializationInfo {
 public uint mapEntryCount;
 public unsafe VkSpecializationMapEntry* pMapEntries;
-public VkPointerSize dataSize;
+public nuint dataSize;
 public unsafe void* pData;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -674,7 +631,7 @@ public struct VkPipelineCacheCreateInfo {
 public VkStructureType sType;
 public unsafe void* pNext;
 public VkPipelineCacheCreateFlags flags;
-public VkPointerSize initialDataSize;
+public nuint initialDataSize;
 public unsafe void* pInitialData;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -966,7 +923,7 @@ public uint maxViewports;
 public uint maxViewportDimensions;
 public float viewportBoundsRange;
 public uint viewportSubPixelBits;
-public VkPointerSize minMemoryMapAlignment;
+public nuint minMemoryMapAlignment;
 public ulong minTexelBufferOffsetAlignment;
 public ulong minUniformBufferOffsetAlignment;
 public ulong minStorageBufferOffsetAlignment;
@@ -1071,8 +1028,8 @@ public unsafe VkSemaphore* pSignalSemaphores;
 public struct VkDisplayPropertiesKHR {
 public VkDisplayKHR display;
 public unsafe byte* displayName;
-public VkExtent2D physicalDimensions;
-public VkExtent2D physicalResolution;
+public Vector2ui physicalDimensions;
+public Vector2ui physicalResolution;
 public VkSurfaceTransformFlagsKHR supportedTransforms;
 public VkBool32 planeReorderPossible;
 public VkBool32 persistentContent;
@@ -1084,7 +1041,7 @@ public uint currentStackIndex;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkDisplayModeParametersKHR {
-public VkExtent2D visibleRegion;
+public Vector2ui visibleRegion;
 public uint refreshRate;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1102,14 +1059,14 @@ public VkDisplayModeParametersKHR parameters;
 [StructLayout(LayoutKind.Sequential)]
 public struct VkDisplayPlaneCapabilitiesKHR {
 public VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
-public VkOffset2D minSrcPosition;
-public VkOffset2D maxSrcPosition;
-public VkExtent2D minSrcExtent;
-public VkExtent2D maxSrcExtent;
-public VkOffset2D minDstPosition;
-public VkOffset2D maxDstPosition;
-public VkExtent2D minDstExtent;
-public VkExtent2D maxDstExtent;
+public Vector2i minSrcPosition;
+public Vector2i maxSrcPosition;
+public Vector2ui minSrcExtent;
+public Vector2ui maxSrcExtent;
+public Vector2i minDstPosition;
+public Vector2i maxDstPosition;
+public Vector2ui minDstExtent;
+public Vector2ui maxDstExtent;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkDisplaySurfaceCreateInfoKHR {
@@ -1122,7 +1079,7 @@ public uint planeStackIndex;
 public VkSurfaceTransformFlagsKHR transform;
 public float globalAlpha;
 public VkDisplayPlaneAlphaFlagsKHR alphaMode;
-public VkExtent2D imageExtent;
+public Vector2ui imageExtent;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkDisplayPresentInfoKHR {
@@ -1136,9 +1093,9 @@ public VkBool32 persistent;
 public struct VkSurfaceCapabilitiesKHR {
 public uint minImageCount;
 public uint maxImageCount;
-public VkExtent2D currentExtent;
-public VkExtent2D minImageExtent;
-public VkExtent2D maxImageExtent;
+public Vector2ui currentExtent;
+public Vector2ui minImageExtent;
+public Vector2ui maxImageExtent;
 public uint maxImageArrayLayers;
 public VkSurfaceTransformFlagsKHR supportedTransforms;
 public VkSurfaceTransformFlagsKHR currentTransform;
@@ -1214,6 +1171,14 @@ public VkStreamDescriptorSurfaceCreateFlagsGGP flags;
 public IntPtr streamDescriptor;
 }
 [StructLayout(LayoutKind.Sequential)]
+public struct VkScreenSurfaceCreateInfoQNX {
+public VkStructureType sType;
+public unsafe void* pNext;
+public VkScreenSurfaceCreateFlagsQNX flags;
+public unsafe _screen_context* context;
+public unsafe _screen_window* window;
+}
+[StructLayout(LayoutKind.Sequential)]
 public struct VkSurfaceFormatKHR {
 public VkFormat format;
 public VkColorSpaceKHR colorSpace;
@@ -1227,7 +1192,7 @@ public VkSurfaceKHR surface;
 public uint minImageCount;
 public VkFormat imageFormat;
 public VkColorSpaceKHR imageColorSpace;
-public VkExtent2D imageExtent;
+public Vector2ui imageExtent;
 public uint imageArrayLayers;
 public VkImageUsageFlags imageUsage;
 public VkSharingMode imageSharingMode;
@@ -1287,7 +1252,7 @@ public unsafe void* pNext;
 public VkDebugReportObjectTypeEXT objectType;
 public ulong @object;
 public ulong tagName;
-public VkPointerSize tagSize;
+public nuint tagSize;
 public unsafe void* pTag;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1596,8 +1561,8 @@ public unsafe VkRectLayerKHR* pRectangles;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkRectLayerKHR {
-public VkOffset2D offset;
-public VkExtent2D extent;
+public Vector2i offset;
+public Vector2ui extent;
 public uint layer;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -1891,9 +1856,9 @@ public VkStructureType sType;
 public unsafe void* pNext;
 public uint minImageCount;
 public uint maxImageCount;
-public VkExtent2D currentExtent;
-public VkExtent2D minImageExtent;
-public VkExtent2D maxImageExtent;
+public Vector2ui currentExtent;
+public Vector2ui minImageExtent;
+public Vector2ui maxImageExtent;
 public uint maxImageArrayLayers;
 public VkSurfaceTransformFlagsKHR supportedTransforms;
 public VkSurfaceTransformFlagsKHR currentTransform;
@@ -2061,8 +2026,8 @@ public uint dstBinding;
 public uint dstArrayElement;
 public uint descriptorCount;
 public VkDescriptorType descriptorType;
-public VkPointerSize offset;
-public VkPointerSize stride;
+public nuint offset;
+public nuint stride;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkDescriptorUpdateTemplateCreateInfo {
@@ -2463,7 +2428,7 @@ public struct VkSampleLocationsInfoEXT {
 public VkStructureType sType;
 public unsafe void* pNext;
 public VkSampleCountFlags sampleLocationsPerPixel;
-public VkExtent2D sampleLocationGridSize;
+public Vector2ui sampleLocationGridSize;
 public uint sampleLocationsCount;
 public unsafe VkSampleLocationEXT* pSampleLocations;
 }
@@ -2498,7 +2463,7 @@ public struct VkPhysicalDeviceSampleLocationsPropertiesEXT {
 public VkStructureType sType;
 public unsafe void* pNext;
 public VkSampleCountFlags sampleLocationSampleCounts;
-public VkExtent2D maxSampleLocationGridSize;
+public Vector2ui maxSampleLocationGridSize;
 public float sampleLocationCoordinateRange;
 public uint sampleLocationSubPixelBits;
 public VkBool32 variableSampleLocations;
@@ -2507,7 +2472,7 @@ public VkBool32 variableSampleLocations;
 public struct VkMultisamplePropertiesEXT {
 public VkStructureType sType;
 public unsafe void* pNext;
-public VkExtent2D maxSampleLocationGridSize;
+public Vector2ui maxSampleLocationGridSize;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkSamplerReductionModeCreateInfo {
@@ -2592,7 +2557,7 @@ public struct VkValidationCacheCreateInfoEXT {
 public VkStructureType sType;
 public unsafe void* pNext;
 public VkValidationCacheCreateFlagsEXT flags;
-public VkPointerSize initialDataSize;
+public nuint initialDataSize;
 public unsafe void* pInitialData;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -2687,8 +2652,8 @@ public struct VkShaderResourceUsageAMD {
 public uint numUsedVgprs;
 public uint numUsedSgprs;
 public uint ldsSizePerLocalWorkGroup;
-public VkPointerSize ldsUsageSizeInBytes;
-public VkPointerSize scratchMemUsageInBytes;
+public nuint ldsUsageSizeInBytes;
+public nuint scratchMemUsageInBytes;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkShaderStatisticsInfoAMD {
@@ -2721,7 +2686,7 @@ public unsafe void* pNext;
 public VkObjectType objectType;
 public ulong objectHandle;
 public ulong tagName;
-public VkPointerSize tagSize;
+public nuint tagSize;
 public unsafe void* pTag;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -3312,7 +3277,7 @@ public VkBool32 shadingRateCoarseSampleOrder;
 public struct VkPhysicalDeviceShadingRateImagePropertiesNV {
 public VkStructureType sType;
 public unsafe void* pNext;
-public VkExtent2D shadingRateTexelSize;
+public Vector2ui shadingRateTexelSize;
 public uint shadingRatePaletteSize;
 public uint shadingRateMaxCoarseSamples;
 }
@@ -3655,8 +3620,8 @@ public VkBool32 fragmentDensityMapDeferred;
 public struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT {
 public VkStructureType sType;
 public unsafe void* pNext;
-public VkExtent2D minFragmentDensityTexelSize;
-public VkExtent2D maxFragmentDensityTexelSize;
+public Vector2ui minFragmentDensityTexelSize;
+public Vector2ui maxFragmentDensityTexelSize;
 public VkBool32 fragmentDensityInvocations;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -3873,7 +3838,7 @@ public VkStructureType sType;
 public unsafe void* pNext;
 public unsafe VkPipelineCreationFeedbackEXT* pPipelineCreationFeedback;
 public uint pipelineStageCreationFeedbackCount;
-public unsafe VkPipelineCreationFeedbackEXT* pPipelineStageCreationFeedbacks;
+public unsafe VkPipelineCreationFeedbackEXT** pPipelineStageCreationFeedbacks;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkSurfaceFullScreenExclusiveInfoEXT {
@@ -4119,7 +4084,7 @@ public unsafe void* pNext;
 public byte name;
 public byte description;
 public VkBool32 isText;
-public VkPointerSize dataSize;
+public nuint dataSize;
 public unsafe void* pData;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -4442,7 +4407,7 @@ public VkAccelerationStructureKHR srcAccelerationStructure;
 public VkAccelerationStructureKHR dstAccelerationStructure;
 public uint geometryCount;
 public unsafe VkAccelerationStructureGeometryKHR* pGeometries;
-public unsafe VkAccelerationStructureGeometryKHR* ppGeometries;
+public unsafe VkAccelerationStructureGeometryKHR** ppGeometries;
 public VkDeviceOrHostAddressKHR scratchData;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -4654,19 +4619,19 @@ public struct VkImageCopy2KHR {
 public VkStructureType sType;
 public unsafe void* pNext;
 public VkImageSubresourceLayers srcSubresource;
-public VkOffset3D srcOffset;
+public Vector3i srcOffset;
 public VkImageSubresourceLayers dstSubresource;
-public VkOffset3D dstOffset;
-public VkExtent3D extent;
+public Vector3i dstOffset;
+public Vector3ui extent;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkImageBlit2KHR {
 public VkStructureType sType;
 public unsafe void* pNext;
 public VkImageSubresourceLayers srcSubresource;
-public VkOffset3D srcOffsets;
+public Vector3i srcOffsets;
 public VkImageSubresourceLayers dstSubresource;
-public VkOffset3D dstOffsets;
+public Vector3i dstOffsets;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkBufferImageCopy2KHR {
@@ -4676,18 +4641,18 @@ public ulong bufferOffset;
 public uint bufferRowLength;
 public uint bufferImageHeight;
 public VkImageSubresourceLayers imageSubresource;
-public VkOffset3D imageOffset;
-public VkExtent3D imageExtent;
+public Vector3i imageOffset;
+public Vector3ui imageExtent;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkImageResolve2KHR {
 public VkStructureType sType;
 public unsafe void* pNext;
 public VkImageSubresourceLayers srcSubresource;
-public VkOffset3D srcOffset;
+public Vector3i srcOffset;
 public VkImageSubresourceLayers dstSubresource;
-public VkOffset3D dstOffset;
-public VkExtent3D extent;
+public Vector3i dstOffset;
+public Vector3ui extent;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkCopyBufferInfo2KHR {
@@ -4764,13 +4729,13 @@ public struct VkFragmentShadingRateAttachmentInfoKHR {
 public VkStructureType sType;
 public unsafe void* pNext;
 public unsafe VkAttachmentReference2* pFragmentShadingRateAttachment;
-public VkExtent2D shadingRateAttachmentTexelSize;
+public Vector2ui shadingRateAttachmentTexelSize;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkPipelineFragmentShadingRateStateCreateInfoKHR {
 public VkStructureType sType;
 public unsafe void* pNext;
-public VkExtent2D fragmentSize;
+public Vector2ui fragmentSize;
 public VkFragmentShadingRateCombinerOpKHR combinerOps;
 }
 [StructLayout(LayoutKind.Sequential)]
@@ -4785,13 +4750,13 @@ public VkBool32 attachmentFragmentShadingRate;
 public struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR {
 public VkStructureType sType;
 public unsafe void* pNext;
-public VkExtent2D minFragmentShadingRateAttachmentTexelSize;
-public VkExtent2D maxFragmentShadingRateAttachmentTexelSize;
+public Vector2ui minFragmentShadingRateAttachmentTexelSize;
+public Vector2ui maxFragmentShadingRateAttachmentTexelSize;
 public uint maxFragmentShadingRateAttachmentTexelSizeAspectRatio;
 public VkBool32 primitiveFragmentShadingRateWithMultipleViewports;
 public VkBool32 layeredShadingRateAttachments;
 public VkBool32 fragmentShadingRateNonTrivialCombinerOps;
-public VkExtent2D maxFragmentSize;
+public Vector2ui maxFragmentSize;
 public uint maxFragmentSizeAspectRatio;
 public uint maxFragmentShadingRateCoverageSamples;
 public VkSampleCountFlags maxFragmentShadingRateRasterizationSamples;
@@ -4808,7 +4773,7 @@ public struct VkPhysicalDeviceFragmentShadingRateKHR {
 public VkStructureType sType;
 public unsafe void* pNext;
 public VkSampleCountFlags sampleCounts;
-public VkExtent2D fragmentSize;
+public Vector2ui fragmentSize;
 }
 [StructLayout(LayoutKind.Sequential)]
 public struct VkPhysicalDeviceShaderTerminateInvocationFeaturesKHR {
