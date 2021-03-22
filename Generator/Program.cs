@@ -1,13 +1,14 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
-using System.Xml;
+using System.Xml.Serialization;
 
 namespace FireburstGenerator
 {
 	public interface IGenerator
 	{
-		void Generate(XmlDocument xml, string outputDir);
+		void Generate(Registry registry, string outputDir);
 
 		int Priority()
 		{
@@ -19,15 +20,17 @@ namespace FireburstGenerator
 	{
 		public static void Main(string[] args)
 		{
-			XmlDocument xml = new XmlDocument();
-			xml.Load("vk.xml");
+			XmlSerializer serializer = new(typeof(Registry));
+
+			using StreamReader reader = new("vk.xml");
+			Registry registry = (Registry)serializer.Deserialize(reader);
 
 			foreach (IGenerator generator in Assembly.GetExecutingAssembly().GetTypes()
 				.Where(x => x.GetInterface("IGenerator") != null)
 				.Select(x => (IGenerator)Activator.CreateInstance(x))
 				.OrderByDescending(x => x.Priority()))
 			{
-				generator.Generate(xml, "/home/itorius/Development/Fireburst/Fireburst/");
+				generator.Generate(registry, "../../../../Fireburst/");
 			}
 		}
 	}

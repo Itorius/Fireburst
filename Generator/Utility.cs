@@ -4,6 +4,14 @@ namespace FireburstGenerator
 {
 	public static class Utility
 	{
+		public static Dictionary<string, string> TypeMap = new()
+		{
+			{ "VkExtent2D", "Vector2ui" },
+			{ "VkExtent3D", "Vector3ui" },
+			{ "VkOffset2D", "Vector2i" },
+			{ "VkOffset3D", "Vector3i" }
+		};
+		
 		private static List<string> PointerTypes = new()
 		{
 			"ANativeWindow",
@@ -29,14 +37,15 @@ namespace FireburstGenerator
 			"GgpFrameToken",
 			"xcb_visualid_t",
 			"VisualID",
-			"RROutput"
+			"RROutput",
+			"_screen_context",
+			"_screen_window"
 		};
 
 		public static string ResolveType(string orig)
 		{
 			if (PointerTypes.Contains(orig)) return "IntPtr";
-			if (EnumGenerator.TypeMap.TryGetValue(orig, out string v)) return v;
-			if (StructGenerator.Remapping.TryGetValue(orig, out v)) return v;
+			if (TypeMap.TryGetValue(orig, out string v)) return v;
 
 			return orig switch
 			{

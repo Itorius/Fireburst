@@ -4,9 +4,17 @@ using System.Runtime.InteropServices;
 namespace Fireburst
 {
 	// BUG TODO:   extension_enum_offset = 1000000000 + ((extension.attribute('number').content.to_i - 1) * 1000)
-	
+
 	public static unsafe partial class Vulkan
 	{
+		public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, string name)
+		{
+			int byteCount = VulkanUtility.GetMaxByteCount(name);
+			byte* stringPtr = stackalloc byte[byteCount];
+			VulkanUtility.StringToPointer(name, stringPtr, byteCount);
+			return (delegate* unmanaged<void>)vkGetInstanceProcAddr(instance, stringPtr);
+		}
+
 		public static ReadOnlySpan<VkPhysicalDevice> vkEnumeratePhysicalDevices(VkInstance instance)
 		{
 			uint physicalDeviceCount = 0;
