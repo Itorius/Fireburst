@@ -13,7 +13,7 @@ namespace FireburstGenerator
 			{
 				string? name = type.ElementName;
 				if (name == null) continue;
-				
+
 				writer.WriteLine($"public partial struct {name} : IEquatable<{name}>");
 				writer.WriteLine("{");
 				writer.Indent();

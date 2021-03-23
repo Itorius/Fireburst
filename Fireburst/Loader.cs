@@ -1,4 +1,6 @@
 using System;
+using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 
 namespace Fireburst
@@ -6,7 +8,8 @@ namespace Fireburst
 	public static unsafe partial class Vulkan
 	{
 		private static IntPtr VulkanLibrary = IntPtr.Zero;
-
+		private static VkInstance Instance = VkInstance.Null;
+		
 		public static VkResult vkInitialize()
 		{
 			if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
@@ -37,6 +40,13 @@ namespace Fireburst
 			GenLoadLoader(VkInstance.Null, vkGetInstanceProcAddr);
 
 			return VkResult.Success;
+		}
+
+		public static void vkLoadInstance(VkInstance instance)
+		{
+			Instance = instance;
+			
+			LoadCommands(instance, vkGetInstanceProcAddr);
 		}
 
 		private delegate delegate* unmanaged<void> LoadFunction(VkInstance context, string name);

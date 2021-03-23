@@ -39,7 +39,7 @@ namespace FireburstGenerator
 			builder.Append(text);
 			builder.Append('\n');
 		}
-		
+
 		public void Write(string text)
 		{
 			builder.Append('\t', indentCount);
@@ -55,7 +55,7 @@ namespace FireburstGenerator
 		{
 			Unindent();
 			Write("}");
-			
+
 			return builder.ToString();
 		}
 	}

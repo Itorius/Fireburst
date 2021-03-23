@@ -33,8 +33,8 @@ namespace Fireburst
 		public uint vendorID;
 		public uint deviceID;
 		public VkPhysicalDeviceType deviceType;
-		public unsafe byte* deviceName;
-		public unsafe byte* pipelineCacheUUID;
+		public unsafe fixed byte deviceName[Constants.VK_MAX_PHYSICAL_DEVICE_NAME_SIZE];
+		public unsafe fixed byte pipelineCacheUUID[Constants.VK_UUID_SIZE];
 		public VkPhysicalDeviceLimits limits;
 		public VkPhysicalDeviceSparseProperties sparseProperties;
 	}
@@ -42,17 +42,17 @@ namespace Fireburst
 	[StructLayout(LayoutKind.Sequential)]
 	public struct VkExtensionProperties
 	{
-		public unsafe byte* extensionName;
+		public unsafe fixed byte extensionName[Constants.VK_MAX_EXTENSION_NAME_SIZE];
 		public uint specVersion;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
 	public struct VkLayerProperties
 	{
-		public unsafe byte* layerName;
+		public unsafe fixed byte layerName[Constants.VK_MAX_EXTENSION_NAME_SIZE];
 		public uint specVersion;
 		public uint implementationVersion;
-		public unsafe byte* description;
+		public unsafe fixed byte description[Constants.VK_MAX_DESCRIPTION_SIZE];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -119,9 +119,55 @@ namespace Fireburst
 	public struct VkPhysicalDeviceMemoryProperties
 	{
 		public uint memoryTypeCount;
-		public unsafe VkMemoryType* memoryTypes;
+		public VkMemoryType memoryTypes_0;
+		public VkMemoryType memoryTypes_1;
+		public VkMemoryType memoryTypes_2;
+		public VkMemoryType memoryTypes_3;
+		public VkMemoryType memoryTypes_4;
+		public VkMemoryType memoryTypes_5;
+		public VkMemoryType memoryTypes_6;
+		public VkMemoryType memoryTypes_7;
+		public VkMemoryType memoryTypes_8;
+		public VkMemoryType memoryTypes_9;
+		public VkMemoryType memoryTypes_10;
+		public VkMemoryType memoryTypes_11;
+		public VkMemoryType memoryTypes_12;
+		public VkMemoryType memoryTypes_13;
+		public VkMemoryType memoryTypes_14;
+		public VkMemoryType memoryTypes_15;
+		public VkMemoryType memoryTypes_16;
+		public VkMemoryType memoryTypes_17;
+		public VkMemoryType memoryTypes_18;
+		public VkMemoryType memoryTypes_19;
+		public VkMemoryType memoryTypes_20;
+		public VkMemoryType memoryTypes_21;
+		public VkMemoryType memoryTypes_22;
+		public VkMemoryType memoryTypes_23;
+		public VkMemoryType memoryTypes_24;
+		public VkMemoryType memoryTypes_25;
+		public VkMemoryType memoryTypes_26;
+		public VkMemoryType memoryTypes_27;
+		public VkMemoryType memoryTypes_28;
+		public VkMemoryType memoryTypes_29;
+		public VkMemoryType memoryTypes_30;
+		public VkMemoryType memoryTypes_31;
 		public uint memoryHeapCount;
-		public unsafe VkMemoryHeap* memoryHeaps;
+		public VkMemoryHeap memoryHeaps_0;
+		public VkMemoryHeap memoryHeaps_1;
+		public VkMemoryHeap memoryHeaps_2;
+		public VkMemoryHeap memoryHeaps_3;
+		public VkMemoryHeap memoryHeaps_4;
+		public VkMemoryHeap memoryHeaps_5;
+		public VkMemoryHeap memoryHeaps_6;
+		public VkMemoryHeap memoryHeaps_7;
+		public VkMemoryHeap memoryHeaps_8;
+		public VkMemoryHeap memoryHeaps_9;
+		public VkMemoryHeap memoryHeaps_10;
+		public VkMemoryHeap memoryHeaps_11;
+		public VkMemoryHeap memoryHeaps_12;
+		public VkMemoryHeap memoryHeaps_13;
+		public VkMemoryHeap memoryHeaps_14;
+		public VkMemoryHeap memoryHeaps_15;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -463,9 +509,11 @@ namespace Fireburst
 	public struct VkImageBlit
 	{
 		public VkImageSubresourceLayers srcSubresource;
-		public unsafe Vector3i* srcOffsets;
+		public Vector3i srcOffsets_0;
+		public Vector3i srcOffsets_1;
 		public VkImageSubresourceLayers dstSubresource;
-		public unsafe Vector3i* dstOffsets;
+		public Vector3i dstOffsets_0;
+		public Vector3i dstOffsets_1;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -703,7 +751,10 @@ namespace Fireburst
 		public VkLogicOp logicOp;
 		public uint attachmentCount;
 		public unsafe VkPipelineColorBlendAttachmentState* pAttachments;
-		public unsafe float* blendConstants;
+		public float blendConstants_0;
+		public float blendConstants_1;
+		public float blendConstants_2;
+		public float blendConstants_3;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1093,9 +1144,13 @@ namespace Fireburst
 		public uint maxFragmentDualSrcAttachments;
 		public uint maxFragmentCombinedOutputResources;
 		public uint maxComputeSharedMemorySize;
-		public unsafe uint* maxComputeWorkGroupCount;
+		public uint maxComputeWorkGroupCount_0;
+		public uint maxComputeWorkGroupCount_1;
+		public uint maxComputeWorkGroupCount_2;
 		public uint maxComputeWorkGroupInvocations;
-		public unsafe uint* maxComputeWorkGroupSize;
+		public uint maxComputeWorkGroupSize_0;
+		public uint maxComputeWorkGroupSize_1;
+		public uint maxComputeWorkGroupSize_2;
 		public uint subPixelPrecisionBits;
 		public uint subTexelPrecisionBits;
 		public uint mipmapPrecisionBits;
@@ -1104,8 +1159,10 @@ namespace Fireburst
 		public float maxSamplerLodBias;
 		public float maxSamplerAnisotropy;
 		public uint maxViewports;
-		public unsafe uint* maxViewportDimensions;
-		public unsafe float* viewportBoundsRange;
+		public uint maxViewportDimensions_0;
+		public uint maxViewportDimensions_1;
+		public float viewportBoundsRange_0;
+		public float viewportBoundsRange_1;
 		public uint viewportSubPixelBits;
 		public nuint minMemoryMapAlignment;
 		public ulong minTexelBufferOffsetAlignment;
@@ -1138,8 +1195,10 @@ namespace Fireburst
 		public uint maxCullDistances;
 		public uint maxCombinedClipAndCullDistances;
 		public uint discreteQueuePriorities;
-		public unsafe float* pointSizeRange;
-		public unsafe float* lineWidthRange;
+		public float pointSizeRange_0;
+		public float pointSizeRange_1;
+		public float lineWidthRange_0;
+		public float lineWidthRange_1;
 		public float pointSizeGranularity;
 		public float lineWidthGranularity;
 		public VkBool32 strictLines;
@@ -1514,7 +1573,10 @@ namespace Fireburst
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public unsafe byte* pMarkerName;
-		public unsafe float* color;
+		public float color_0;
+		public float color_1;
+		public float color_2;
+		public float color_3;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -1871,8 +1933,8 @@ namespace Fireburst
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkDriverId driverID;
-		public unsafe byte* driverName;
-		public unsafe byte* driverInfo;
+		public unsafe fixed byte driverName[Constants.VK_MAX_DRIVER_NAME_SIZE];
+		public unsafe fixed byte driverInfo[Constants.VK_MAX_DRIVER_INFO_SIZE];
 		public VkConformanceVersion conformanceVersion;
 	}
 
@@ -1956,9 +2018,9 @@ namespace Fireburst
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public unsafe byte* deviceUUID;
-		public unsafe byte* driverUUID;
-		public unsafe byte* deviceLUID;
+		public unsafe fixed byte deviceUUID[Constants.VK_UUID_SIZE];
+		public unsafe fixed byte driverUUID[Constants.VK_UUID_SIZE];
+		public unsafe fixed byte deviceLUID[Constants.VK_LUID_SIZE];
 		public uint deviceNodeMask;
 		public VkBool32 deviceLUIDValid;
 	}
@@ -2363,7 +2425,38 @@ namespace Fireburst
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public uint physicalDeviceCount;
-		public unsafe VkPhysicalDevice* physicalDevices;
+		public VkPhysicalDevice physicalDevices_0;
+		public VkPhysicalDevice physicalDevices_1;
+		public VkPhysicalDevice physicalDevices_2;
+		public VkPhysicalDevice physicalDevices_3;
+		public VkPhysicalDevice physicalDevices_4;
+		public VkPhysicalDevice physicalDevices_5;
+		public VkPhysicalDevice physicalDevices_6;
+		public VkPhysicalDevice physicalDevices_7;
+		public VkPhysicalDevice physicalDevices_8;
+		public VkPhysicalDevice physicalDevices_9;
+		public VkPhysicalDevice physicalDevices_10;
+		public VkPhysicalDevice physicalDevices_11;
+		public VkPhysicalDevice physicalDevices_12;
+		public VkPhysicalDevice physicalDevices_13;
+		public VkPhysicalDevice physicalDevices_14;
+		public VkPhysicalDevice physicalDevices_15;
+		public VkPhysicalDevice physicalDevices_16;
+		public VkPhysicalDevice physicalDevices_17;
+		public VkPhysicalDevice physicalDevices_18;
+		public VkPhysicalDevice physicalDevices_19;
+		public VkPhysicalDevice physicalDevices_20;
+		public VkPhysicalDevice physicalDevices_21;
+		public VkPhysicalDevice physicalDevices_22;
+		public VkPhysicalDevice physicalDevices_23;
+		public VkPhysicalDevice physicalDevices_24;
+		public VkPhysicalDevice physicalDevices_25;
+		public VkPhysicalDevice physicalDevices_26;
+		public VkPhysicalDevice physicalDevices_27;
+		public VkPhysicalDevice physicalDevices_28;
+		public VkPhysicalDevice physicalDevices_29;
+		public VkPhysicalDevice physicalDevices_30;
+		public VkPhysicalDevice physicalDevices_31;
 		public VkBool32 subsetAllocation;
 	}
 
@@ -2461,7 +2554,7 @@ namespace Fireburst
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public unsafe uint* presentMask;
+		public unsafe fixed uint presentMask[Constants.VK_MAX_DEVICE_GROUP_SIZE];
 		public VkDeviceGroupPresentModeFlagsKHR modes;
 	}
 
@@ -3094,7 +3187,8 @@ namespace Fireburst
 		public unsafe void* pNext;
 		public VkSampleCountFlags sampleLocationSampleCounts;
 		public Vector2ui maxSampleLocationGridSize;
-		public unsafe float* sampleLocationCoordinateRange;
+		public float sampleLocationCoordinateRange_0;
+		public float sampleLocationCoordinateRange_1;
 		public uint sampleLocationSubPixelBits;
 		public VkBool32 variableSampleLocations;
 	}
@@ -3343,7 +3437,9 @@ namespace Fireburst
 		public uint numPhysicalSgprs;
 		public uint numAvailableVgprs;
 		public uint numAvailableSgprs;
-		public unsafe uint* computeWorkGroupSize;
+		public uint computeWorkGroupSize_0;
+		public uint computeWorkGroupSize_1;
+		public uint computeWorkGroupSize_2;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -3382,7 +3478,10 @@ namespace Fireburst
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public unsafe byte* pLabelName;
-		public unsafe float* color;
+		public float color_0;
+		public float color_1;
+		public float color_2;
+		public float color_3;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4149,11 +4248,15 @@ namespace Fireburst
 		public unsafe void* pNext;
 		public uint maxDrawMeshTasksCount;
 		public uint maxTaskWorkGroupInvocations;
-		public unsafe uint* maxTaskWorkGroupSize;
+		public uint maxTaskWorkGroupSize_0;
+		public uint maxTaskWorkGroupSize_1;
+		public uint maxTaskWorkGroupSize_2;
 		public uint maxTaskTotalMemorySize;
 		public uint maxTaskOutputCount;
 		public uint maxMeshWorkGroupInvocations;
-		public unsafe uint* maxMeshWorkGroupSize;
+		public uint maxMeshWorkGroupSize_0;
+		public uint maxMeshWorkGroupSize_1;
+		public uint maxMeshWorkGroupSize_2;
 		public uint maxMeshTotalMemorySize;
 		public uint maxMeshOutputVertices;
 		public uint maxMeshOutputPrimitives;
@@ -4592,8 +4695,8 @@ namespace Fireburst
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public unsafe ulong* heapBudget;
-		public unsafe ulong* heapUsage;
+		public unsafe fixed ulong heapBudget[Constants.VK_MAX_MEMORY_HEAPS];
+		public unsafe fixed ulong heapUsage[Constants.VK_MAX_MEMORY_HEAPS];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4854,7 +4957,7 @@ namespace Fireburst
 		public VkPerformanceCounterUnitKHR unit;
 		public VkPerformanceCounterScopeKHR scope;
 		public VkPerformanceCounterStorageKHR storage;
-		public unsafe byte* uuid;
+		public unsafe fixed byte uuid[Constants.VK_UUID_SIZE];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -4863,9 +4966,9 @@ namespace Fireburst
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkPerformanceCounterDescriptionFlagsKHR flags;
-		public unsafe byte* name;
-		public unsafe byte* category;
-		public unsafe byte* description;
+		public unsafe fixed byte name[Constants.VK_MAX_DESCRIPTION_SIZE];
+		public unsafe fixed byte category[Constants.VK_MAX_DESCRIPTION_SIZE];
+		public unsafe fixed byte description[Constants.VK_MAX_DESCRIPTION_SIZE];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5087,8 +5190,8 @@ namespace Fireburst
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkShaderStageFlags stages;
-		public unsafe byte* name;
-		public unsafe byte* description;
+		public unsafe fixed byte name[Constants.VK_MAX_DESCRIPTION_SIZE];
+		public unsafe fixed byte description[Constants.VK_MAX_DESCRIPTION_SIZE];
 		public uint subgroupSize;
 	}
 
@@ -5106,8 +5209,8 @@ namespace Fireburst
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public unsafe byte* name;
-		public unsafe byte* description;
+		public unsafe fixed byte name[Constants.VK_MAX_DESCRIPTION_SIZE];
+		public unsafe fixed byte description[Constants.VK_MAX_DESCRIPTION_SIZE];
 		public VkPipelineExecutableStatisticFormatKHR format;
 		public VkPipelineExecutableStatisticValueKHR value;
 	}
@@ -5117,8 +5220,8 @@ namespace Fireburst
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public unsafe byte* name;
-		public unsafe byte* description;
+		public unsafe fixed byte name[Constants.VK_MAX_DESCRIPTION_SIZE];
+		public unsafe fixed byte description[Constants.VK_MAX_DESCRIPTION_SIZE];
 		public VkBool32 isText;
 		public nuint dataSize;
 		public unsafe void* pData;
@@ -5259,9 +5362,9 @@ namespace Fireburst
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public unsafe byte* deviceUUID;
-		public unsafe byte* driverUUID;
-		public unsafe byte* deviceLUID;
+		public unsafe fixed byte deviceUUID[Constants.VK_UUID_SIZE];
+		public unsafe fixed byte driverUUID[Constants.VK_UUID_SIZE];
+		public unsafe fixed byte deviceLUID[Constants.VK_LUID_SIZE];
 		public uint deviceNodeMask;
 		public VkBool32 deviceLUIDValid;
 		public uint subgroupSize;
@@ -5336,8 +5439,8 @@ namespace Fireburst
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkDriverId driverID;
-		public unsafe byte* driverName;
-		public unsafe byte* driverInfo;
+		public unsafe fixed byte driverName[Constants.VK_MAX_DRIVER_NAME_SIZE];
+		public unsafe fixed byte driverInfo[Constants.VK_MAX_DRIVER_INFO_SIZE];
 		public VkConformanceVersion conformanceVersion;
 		public VkShaderFloatControlsIndependence denormBehaviorIndependence;
 		public VkShaderFloatControlsIndependence roundingModeIndependence;
@@ -5410,11 +5513,11 @@ namespace Fireburst
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
-		public unsafe byte* name;
-		public unsafe byte* version;
+		public unsafe fixed byte name[Constants.VK_MAX_EXTENSION_NAME_SIZE];
+		public unsafe fixed byte version[Constants.VK_MAX_EXTENSION_NAME_SIZE];
 		public VkToolPurposeFlagsEXT purposes;
-		public unsafe byte* description;
-		public unsafe byte* layer;
+		public unsafe fixed byte description[Constants.VK_MAX_DESCRIPTION_SIZE];
+		public unsafe fixed byte layer[Constants.VK_MAX_EXTENSION_NAME_SIZE];
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5532,12 +5635,6 @@ namespace Fireburst
 		public float maxX;
 		public float maxY;
 		public float maxZ;
-	}
-
-	[StructLayout(LayoutKind.Sequential)]
-	public struct VkTransformMatrixKHR
-	{
-		public unsafe float* matrix;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5777,9 +5874,11 @@ namespace Fireburst
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public VkImageSubresourceLayers srcSubresource;
-		public unsafe Vector3i* srcOffsets;
+		public Vector3i srcOffsets_0;
+		public Vector3i srcOffsets_1;
 		public VkImageSubresourceLayers dstSubresource;
-		public unsafe Vector3i* dstOffsets;
+		public Vector3i dstOffsets_0;
+		public Vector3i dstOffsets_1;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5906,7 +6005,8 @@ namespace Fireburst
 		public VkStructureType sType;
 		public unsafe void* pNext;
 		public Vector2ui fragmentSize;
-		public unsafe VkFragmentShadingRateCombinerOpKHR* combinerOps;
+		public VkFragmentShadingRateCombinerOpKHR combinerOps_0;
+		public VkFragmentShadingRateCombinerOpKHR combinerOps_1;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
@@ -5985,7 +6085,8 @@ namespace Fireburst
 		public unsafe void* pNext;
 		public VkFragmentShadingRateTypeNV shadingRateType;
 		public VkFragmentShadingRateNV shadingRate;
-		public unsafe VkFragmentShadingRateCombinerOpKHR* combinerOps;
+		public VkFragmentShadingRateCombinerOpKHR combinerOps_0;
+		public VkFragmentShadingRateCombinerOpKHR combinerOps_1;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]

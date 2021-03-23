@@ -42,6 +42,20 @@ namespace Fireburst
 
 			return queueFamilyProperties;
 		}
+		
+		public static ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties()
+		{
+			uint extensionCount = 0;
+			vkEnumerateInstanceExtensionProperties(null, &extensionCount, null).CheckResult();
+
+			ReadOnlySpan<VkExtensionProperties> extensions = new VkExtensionProperties[extensionCount];
+			fixed (VkExtensionProperties* propertiesPtr = extensions)
+			{
+				vkEnumerateInstanceExtensionProperties(null, &extensionCount, propertiesPtr).CheckResult();
+			}
+
+			return extensions;
+		}
 
 		public static ReadOnlySpan<VkLayerProperties> vkEnumerateInstanceLayerProperties()
 		{

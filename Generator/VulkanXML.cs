@@ -102,7 +102,7 @@ namespace FireburstGenerator
 		[XmlAttribute(AttributeName = "noautovalidity")]
 		public string Noautovalidity { get; set; }
 
-		[XmlElement(ElementName = "enum")] public string Enum { get; set; }
+		[XmlElement(ElementName = "enum")] public string? Enum { get; set; }
 		[XmlElement(ElementName = "comment")] public string Comment { get; set; }
 
 		[XmlAttribute(AttributeName = "values")]
@@ -121,9 +121,8 @@ namespace FireburstGenerator
 
 		[XmlAttribute(AttributeName = "selector")]
 		public string Selector { get; set; }
-		
-		[XmlText]
-		public string? Text { get; set; }
+
+		[XmlText] public string? Text { get; set; }
 	}
 
 	[XmlRoot(ElementName = "types")]

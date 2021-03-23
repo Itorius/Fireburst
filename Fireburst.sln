@@ -4,6 +4,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fireburst", "Fireburst\Fire
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FireburstGenerator", "Generator\FireburstGenerator.csproj", "{DA31658E-9495-4BCB-888F-619DCCF59ECA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject", "TestProject\TestProject.csproj", "{42582ECD-6687-42DD-AB23-17CA40B2114A}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +20,9 @@ Global
 		{DA31658E-9495-4BCB-888F-619DCCF59ECA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DA31658E-9495-4BCB-888F-619DCCF59ECA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DA31658E-9495-4BCB-888F-619DCCF59ECA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42582ECD-6687-42DD-AB23-17CA40B2114A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42582ECD-6687-42DD-AB23-17CA40B2114A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42582ECD-6687-42DD-AB23-17CA40B2114A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42582ECD-6687-42DD-AB23-17CA40B2114A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

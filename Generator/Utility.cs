@@ -11,7 +11,7 @@ namespace FireburstGenerator
 			{ "VkOffset2D", "Vector2i" },
 			{ "VkOffset3D", "Vector3i" }
 		};
-		
+
 		private static List<string> PointerTypes = new()
 		{
 			"ANativeWindow",

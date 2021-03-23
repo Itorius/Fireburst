@@ -76,4 +76,26 @@ namespace Fireburst
 			this.depth = (uint)depth;
 		}
 	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public struct VkTransformMatrixKHR
+	{
+		[FieldOffset(0)] public unsafe fixed float matrix[3 * 4];
+
+		public unsafe VkTransformMatrixKHR(float m11, float m12, float m13, float m14, float m21, float m22, float m23, float m24, float m31, float m32, float m33, float m34)
+		{
+			matrix[0] = m11;
+			matrix[1] = m12;
+			matrix[2] = m13;
+			matrix[3] = m14;
+			matrix[4] = m21;
+			matrix[5] = m22;
+			matrix[6] = m23;
+			matrix[7] = m24;
+			matrix[8] = m31;
+			matrix[9] = m32;
+			matrix[10] = m33;
+			matrix[11] = m34;
+		}
+	}
 }

@@ -68,7 +68,7 @@ namespace Fireburst
 
 		public static VkMemoryType GetMemoryType(this VkPhysicalDeviceMemoryProperties memoryProperties, uint index)
 		{
-			return memoryProperties.memoryTypes[index];
+			return (&memoryProperties.memoryTypes_0)[index];
 		}
 
 		public static uint IndexOf(this VkPhysicalDeviceMemoryProperties memoryProperties, int memoryTypeBits, VkMemoryPropertyFlags properties)
@@ -76,7 +76,7 @@ namespace Fireburst
 			uint count = memoryProperties.memoryTypeCount;
 			for (uint i = 0; i < count; i++)
 			{
-				if ((memoryTypeBits & 1) == 1 && (memoryProperties.memoryTypes[i].propertyFlags & properties) == properties)
+				if ((memoryTypeBits & 1) == 1 && (memoryProperties.GetMemoryType(i).propertyFlags & properties) == properties)
 				{
 					return i;
 				}

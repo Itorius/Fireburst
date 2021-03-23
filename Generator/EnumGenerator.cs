@@ -9,7 +9,7 @@ namespace FireburstGenerator
 {
 	public class EnumGenerator : IGenerator
 	{
-		private readonly Dictionary<string, string> KnownNames = new()
+		private static readonly Dictionary<string, string> KnownNames = new()
 		{
 			{ "VK_STENCIL_FRONT_AND_BACK", "FrontAndBack" },
 			{ "VK_STRUCTURE_TYPE_MEMORY_ALLOCATE_FLAGS_INFO", "MemoryAllocateFlagsInfo" },
@@ -111,7 +111,7 @@ namespace FireburstGenerator
 			{ "VK_PERFORMANCE_CONFIGURATION_TYPE_COMMAND_QUEUE_METRICS_DISCOVERY_ACTIVATED_INTEL", "CommandQueueMetricsDiscoveryActivatedIntel" }
 		};
 
-		private readonly Dictionary<string, string> KnownPrefixes = new()
+		private static readonly Dictionary<string, string> KnownPrefixes = new()
 		{
 			{ "VkResult", "VK" },
 			{ "VkViewportCoordinateSwizzleNV", "VK_VIEWPORT_COORDINATE_SWIZZLE" },
@@ -147,7 +147,7 @@ namespace FireburstGenerator
 
 		private static readonly Regex PrefixRegex = new(@"(?<=[a-z])(?=[A-Z])", RegexOptions.Compiled);
 
-		public string GetPrefix(string typeName)
+		public static string GetPrefix(string typeName)
 		{
 			if (KnownPrefixes.TryGetValue(typeName, out string knownValue)) return knownValue;
 
@@ -177,7 +177,7 @@ namespace FireburstGenerator
 			return string.Join("_", parts.Select(s => s.ToUpper()));
 		}
 
-		private string GetName(string value, string enumPrefix)
+		private static string GetName(string value, string enumPrefix)
 		{
 			if (KnownNames.TryGetValue(value, out string knownName)) return knownName;
 			if (value.IndexOf(enumPrefix) != 0) return value;
@@ -253,32 +253,11 @@ namespace FireburstGenerator
 					writer.WriteLine();
 				}
 			}
-			
-			File.WriteAllText(outputDir + "Vulkan.EmptyEnums.cs", writer.ToString());
 
-			// foreach (XmlElement xn in xml.GetElementsByTagName("type"))
-			// {
-			// 	if (xn.GetAttributeNode("category") is not { Value: "bitmask" or "enum" }) continue;
-			//
-			// 	string alias = xn.GetAttribute("alias");
-			// 	if (alias != string.Empty)
-			// 	{
-			// 		TypeMap.Add(xn.GetAttribute("name"), alias);
-			// 		continue;
-			// 	}
-			//
-			// 	var xmlNode = xn.GetElementsByTagName("name")[0];
-			// 	if (xmlNode == null) continue;
-			// 	string name = xmlNode.InnerText;
-			//
-			// 	if (TypeMap.ContainsValue(name)) continue;
-			//
-			// 	List<EnumMember> members = new() { new EnumMember("None", "0") };
-			// 	enums.Add(new Enum(name, xn.GetAttribute("category") == "bitmask", 32, members));
-			// }
+			File.WriteAllText(outputDir + "Vulkan.EmptyEnums.cs", writer.ToString());
 		}
 
-		private void GenerateFlags(string outputDir, IEnumerable<Enum> enums)
+		private static void GenerateFlags(string outputDir, IEnumerable<Enum> enums)
 		{
 			CodeWriter writer = new("Fireburst", "System");
 
@@ -329,7 +308,7 @@ namespace FireburstGenerator
 			File.WriteAllText(outputDir + "Vulkan.Flags.cs", writer.ToString());
 		}
 
-		private void GenerateEnums(string outputDir, IEnumerable<Enum> enums)
+		private static void GenerateEnums(string outputDir, IEnumerable<Enum> enums)
 		{
 			CodeWriter writer = new("Fireburst", "System");
 
