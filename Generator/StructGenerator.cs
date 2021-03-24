@@ -77,7 +77,7 @@ namespace FireburstGenerator
 					continue;
 
 				writer.WriteLine("[StructLayout(LayoutKind.Explicit)]");
-				writer.WriteLine($"public struct {type.Name}");
+				writer.WriteLine($"public partial struct {type.Name}");
 				writer.WriteLine("{");
 				writer.Indent();
 
@@ -112,7 +112,7 @@ namespace FireburstGenerator
 					continue;
 
 				writer.WriteLine("[StructLayout(LayoutKind.Sequential)]");
-				writer.WriteLine($"public struct {type.Name}");
+				writer.WriteLine($"public partial struct {type.Name}");
 				writer.WriteLine("{");
 				writer.Indent();
 

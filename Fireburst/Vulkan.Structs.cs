@@ -4,21 +4,21 @@ using System.Runtime.InteropServices;
 namespace Fireburst
 {
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBaseOutStructure
+	public partial struct VkBaseOutStructure
 	{
 		public VkStructureType sType;
 		public unsafe VkBaseOutStructure* pNext;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBaseInStructure
+	public partial struct VkBaseInStructure
 	{
 		public VkStructureType sType;
 		public unsafe VkBaseInStructure* pNext;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkClearRect
+	public partial struct VkClearRect
 	{
 		public VkRect2D rect;
 		public uint baseArrayLayer;
@@ -26,7 +26,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceProperties
+	public partial struct VkPhysicalDeviceProperties
 	{
 		public uint apiVersion;
 		public uint driverVersion;
@@ -40,14 +40,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExtensionProperties
+	public partial struct VkExtensionProperties
 	{
 		public unsafe fixed byte extensionName[Constants.VK_MAX_EXTENSION_NAME_SIZE];
 		public uint specVersion;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkLayerProperties
+	public partial struct VkLayerProperties
 	{
 		public unsafe fixed byte layerName[Constants.VK_MAX_EXTENSION_NAME_SIZE];
 		public uint specVersion;
@@ -56,7 +56,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkApplicationInfo
+	public partial struct VkApplicationInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -68,7 +68,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceQueueCreateInfo
+	public partial struct VkDeviceQueueCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -79,7 +79,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceCreateInfo
+	public partial struct VkDeviceCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -94,7 +94,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkInstanceCreateInfo
+	public partial struct VkInstanceCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -107,7 +107,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkQueueFamilyProperties
+	public partial struct VkQueueFamilyProperties
 	{
 		public VkQueueFlags queueFlags;
 		public uint queueCount;
@@ -116,7 +116,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMemoryProperties
+	public partial struct VkPhysicalDeviceMemoryProperties
 	{
 		public uint memoryTypeCount;
 		public VkMemoryType memoryTypes_0;
@@ -171,7 +171,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryAllocateInfo
+	public partial struct VkMemoryAllocateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -180,7 +180,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryRequirements
+	public partial struct VkMemoryRequirements
 	{
 		public ulong size;
 		public ulong alignment;
@@ -188,7 +188,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSparseImageFormatProperties
+	public partial struct VkSparseImageFormatProperties
 	{
 		public VkImageAspectFlags aspectMask;
 		public Vector3ui imageGranularity;
@@ -196,7 +196,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSparseImageMemoryRequirements
+	public partial struct VkSparseImageMemoryRequirements
 	{
 		public VkSparseImageFormatProperties formatProperties;
 		public uint imageMipTailFirstLod;
@@ -206,21 +206,21 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryType
+	public partial struct VkMemoryType
 	{
 		public VkMemoryPropertyFlags propertyFlags;
 		public uint heapIndex;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryHeap
+	public partial struct VkMemoryHeap
 	{
 		public ulong size;
 		public VkMemoryHeapFlags flags;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMappedMemoryRange
+	public partial struct VkMappedMemoryRange
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -230,7 +230,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFormatProperties
+	public partial struct VkFormatProperties
 	{
 		public VkFormatFeatureFlags linearTilingFeatures;
 		public VkFormatFeatureFlags optimalTilingFeatures;
@@ -238,7 +238,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageFormatProperties
+	public partial struct VkImageFormatProperties
 	{
 		public Vector3ui maxExtent;
 		public uint maxMipLevels;
@@ -248,7 +248,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorBufferInfo
+	public partial struct VkDescriptorBufferInfo
 	{
 		public VkBuffer buffer;
 		public ulong offset;
@@ -256,7 +256,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorImageInfo
+	public partial struct VkDescriptorImageInfo
 	{
 		public VkSampler sampler;
 		public VkImageView imageView;
@@ -264,7 +264,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkWriteDescriptorSet
+	public partial struct VkWriteDescriptorSet
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -279,7 +279,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCopyDescriptorSet
+	public partial struct VkCopyDescriptorSet
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -293,7 +293,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferCreateInfo
+	public partial struct VkBufferCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -306,7 +306,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferViewCreateInfo
+	public partial struct VkBufferViewCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -318,7 +318,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageSubresource
+	public partial struct VkImageSubresource
 	{
 		public VkImageAspectFlags aspectMask;
 		public uint mipLevel;
@@ -326,7 +326,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageSubresourceLayers
+	public partial struct VkImageSubresourceLayers
 	{
 		public VkImageAspectFlags aspectMask;
 		public uint mipLevel;
@@ -335,7 +335,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageSubresourceRange
+	public partial struct VkImageSubresourceRange
 	{
 		public VkImageAspectFlags aspectMask;
 		public uint baseMipLevel;
@@ -345,7 +345,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryBarrier
+	public partial struct VkMemoryBarrier
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -354,7 +354,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferMemoryBarrier
+	public partial struct VkBufferMemoryBarrier
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -368,7 +368,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageMemoryBarrier
+	public partial struct VkImageMemoryBarrier
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -383,7 +383,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageCreateInfo
+	public partial struct VkImageCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -403,7 +403,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubresourceLayout
+	public partial struct VkSubresourceLayout
 	{
 		public ulong offset;
 		public ulong size;
@@ -413,7 +413,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageViewCreateInfo
+	public partial struct VkImageViewCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -426,7 +426,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferCopy
+	public partial struct VkBufferCopy
 	{
 		public ulong srcOffset;
 		public ulong dstOffset;
@@ -434,7 +434,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSparseMemoryBind
+	public partial struct VkSparseMemoryBind
 	{
 		public ulong resourceOffset;
 		public ulong size;
@@ -444,7 +444,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSparseImageMemoryBind
+	public partial struct VkSparseImageMemoryBind
 	{
 		public VkImageSubresource subresource;
 		public Vector3i offset;
@@ -455,7 +455,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSparseBufferMemoryBindInfo
+	public partial struct VkSparseBufferMemoryBindInfo
 	{
 		public VkBuffer buffer;
 		public uint bindCount;
@@ -463,7 +463,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSparseImageOpaqueMemoryBindInfo
+	public partial struct VkSparseImageOpaqueMemoryBindInfo
 	{
 		public VkImage image;
 		public uint bindCount;
@@ -471,7 +471,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSparseImageMemoryBindInfo
+	public partial struct VkSparseImageMemoryBindInfo
 	{
 		public VkImage image;
 		public uint bindCount;
@@ -479,7 +479,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindSparseInfo
+	public partial struct VkBindSparseInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -496,7 +496,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageCopy
+	public partial struct VkImageCopy
 	{
 		public VkImageSubresourceLayers srcSubresource;
 		public Vector3i srcOffset;
@@ -506,7 +506,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageBlit
+	public partial struct VkImageBlit
 	{
 		public VkImageSubresourceLayers srcSubresource;
 		public Vector3i srcOffsets_0;
@@ -517,7 +517,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferImageCopy
+	public partial struct VkBufferImageCopy
 	{
 		public ulong bufferOffset;
 		public uint bufferRowLength;
@@ -528,7 +528,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageResolve
+	public partial struct VkImageResolve
 	{
 		public VkImageSubresourceLayers srcSubresource;
 		public Vector3i srcOffset;
@@ -538,7 +538,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkShaderModuleCreateInfo
+	public partial struct VkShaderModuleCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -548,7 +548,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorSetLayoutBinding
+	public partial struct VkDescriptorSetLayoutBinding
 	{
 		public uint binding;
 		public VkDescriptorType descriptorType;
@@ -558,7 +558,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorSetLayoutCreateInfo
+	public partial struct VkDescriptorSetLayoutCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -568,14 +568,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorPoolSize
+	public partial struct VkDescriptorPoolSize
 	{
 		public VkDescriptorType type;
 		public uint descriptorCount;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorPoolCreateInfo
+	public partial struct VkDescriptorPoolCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -586,7 +586,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorSetAllocateInfo
+	public partial struct VkDescriptorSetAllocateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -596,7 +596,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSpecializationMapEntry
+	public partial struct VkSpecializationMapEntry
 	{
 		public uint constantID;
 		public uint offset;
@@ -604,7 +604,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSpecializationInfo
+	public partial struct VkSpecializationInfo
 	{
 		public uint mapEntryCount;
 		public unsafe VkSpecializationMapEntry* pMapEntries;
@@ -613,7 +613,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineShaderStageCreateInfo
+	public partial struct VkPipelineShaderStageCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -625,7 +625,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkComputePipelineCreateInfo
+	public partial struct VkComputePipelineCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -637,7 +637,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkVertexInputBindingDescription
+	public partial struct VkVertexInputBindingDescription
 	{
 		public uint binding;
 		public uint stride;
@@ -645,7 +645,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkVertexInputAttributeDescription
+	public partial struct VkVertexInputAttributeDescription
 	{
 		public uint location;
 		public uint binding;
@@ -654,7 +654,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineVertexInputStateCreateInfo
+	public partial struct VkPipelineVertexInputStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -666,7 +666,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineInputAssemblyStateCreateInfo
+	public partial struct VkPipelineInputAssemblyStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -676,7 +676,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineTessellationStateCreateInfo
+	public partial struct VkPipelineTessellationStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -685,7 +685,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineViewportStateCreateInfo
+	public partial struct VkPipelineViewportStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -697,7 +697,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineRasterizationStateCreateInfo
+	public partial struct VkPipelineRasterizationStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -715,7 +715,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineMultisampleStateCreateInfo
+	public partial struct VkPipelineMultisampleStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -729,7 +729,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineColorBlendAttachmentState
+	public partial struct VkPipelineColorBlendAttachmentState
 	{
 		public VkBool32 blendEnable;
 		public VkBlendFactor srcColorBlendFactor;
@@ -742,7 +742,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineColorBlendStateCreateInfo
+	public partial struct VkPipelineColorBlendStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -758,7 +758,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineDynamicStateCreateInfo
+	public partial struct VkPipelineDynamicStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -768,7 +768,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkStencilOpState
+	public partial struct VkStencilOpState
 	{
 		public VkStencilOp failOp;
 		public VkStencilOp passOp;
@@ -780,7 +780,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineDepthStencilStateCreateInfo
+	public partial struct VkPipelineDepthStencilStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -797,7 +797,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkGraphicsPipelineCreateInfo
+	public partial struct VkGraphicsPipelineCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -821,7 +821,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineCacheCreateInfo
+	public partial struct VkPipelineCacheCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -831,7 +831,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPushConstantRange
+	public partial struct VkPushConstantRange
 	{
 		public VkShaderStageFlags stageFlags;
 		public uint offset;
@@ -839,7 +839,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineLayoutCreateInfo
+	public partial struct VkPipelineLayoutCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -851,7 +851,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSamplerCreateInfo
+	public partial struct VkSamplerCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -874,7 +874,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCommandPoolCreateInfo
+	public partial struct VkCommandPoolCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -883,7 +883,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCommandBufferAllocateInfo
+	public partial struct VkCommandBufferAllocateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -893,7 +893,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCommandBufferInheritanceInfo
+	public partial struct VkCommandBufferInheritanceInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -906,7 +906,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCommandBufferBeginInfo
+	public partial struct VkCommandBufferBeginInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -915,7 +915,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRenderPassBeginInfo
+	public partial struct VkRenderPassBeginInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -927,14 +927,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkClearDepthStencilValue
+	public partial struct VkClearDepthStencilValue
 	{
 		public float depth;
 		public uint stencil;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkClearAttachment
+	public partial struct VkClearAttachment
 	{
 		public VkImageAspectFlags aspectMask;
 		public uint colorAttachment;
@@ -942,7 +942,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAttachmentDescription
+	public partial struct VkAttachmentDescription
 	{
 		public VkAttachmentDescriptionFlags flags;
 		public VkFormat format;
@@ -956,14 +956,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAttachmentReference
+	public partial struct VkAttachmentReference
 	{
 		public uint attachment;
 		public VkImageLayout layout;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubpassDescription
+	public partial struct VkSubpassDescription
 	{
 		public VkSubpassDescriptionFlags flags;
 		public VkPipelineBindPoint pipelineBindPoint;
@@ -978,7 +978,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubpassDependency
+	public partial struct VkSubpassDependency
 	{
 		public uint srcSubpass;
 		public uint dstSubpass;
@@ -990,7 +990,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRenderPassCreateInfo
+	public partial struct VkRenderPassCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1004,7 +1004,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkEventCreateInfo
+	public partial struct VkEventCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1012,7 +1012,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFenceCreateInfo
+	public partial struct VkFenceCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1020,7 +1020,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFeatures
+	public partial struct VkPhysicalDeviceFeatures
 	{
 		public VkBool32 robustBufferAccess;
 		public VkBool32 fullDrawIndexUint32;
@@ -1080,7 +1080,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSparseProperties
+	public partial struct VkPhysicalDeviceSparseProperties
 	{
 		public VkBool32 residencyStandard2DBlockShape;
 		public VkBool32 residencyStandard2DMultisampleBlockShape;
@@ -1090,7 +1090,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceLimits
+	public partial struct VkPhysicalDeviceLimits
 	{
 		public uint maxImageDimension1D;
 		public uint maxImageDimension2D;
@@ -1209,7 +1209,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSemaphoreCreateInfo
+	public partial struct VkSemaphoreCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1217,7 +1217,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkQueryPoolCreateInfo
+	public partial struct VkQueryPoolCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1228,7 +1228,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFramebufferCreateInfo
+	public partial struct VkFramebufferCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1242,7 +1242,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDrawIndirectCommand
+	public partial struct VkDrawIndirectCommand
 	{
 		public uint vertexCount;
 		public uint instanceCount;
@@ -1251,7 +1251,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDrawIndexedIndirectCommand
+	public partial struct VkDrawIndexedIndirectCommand
 	{
 		public uint indexCount;
 		public uint instanceCount;
@@ -1261,7 +1261,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDispatchIndirectCommand
+	public partial struct VkDispatchIndirectCommand
 	{
 		public uint x;
 		public uint y;
@@ -1269,7 +1269,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubmitInfo
+	public partial struct VkSubmitInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1283,7 +1283,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayPropertiesKHR
+	public partial struct VkDisplayPropertiesKHR
 	{
 		public VkDisplayKHR display;
 		public unsafe byte* displayName;
@@ -1295,28 +1295,28 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayPlanePropertiesKHR
+	public partial struct VkDisplayPlanePropertiesKHR
 	{
 		public VkDisplayKHR currentDisplay;
 		public uint currentStackIndex;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayModeParametersKHR
+	public partial struct VkDisplayModeParametersKHR
 	{
 		public Vector2ui visibleRegion;
 		public uint refreshRate;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayModePropertiesKHR
+	public partial struct VkDisplayModePropertiesKHR
 	{
 		public VkDisplayModeKHR displayMode;
 		public VkDisplayModeParametersKHR parameters;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayModeCreateInfoKHR
+	public partial struct VkDisplayModeCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1325,7 +1325,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayPlaneCapabilitiesKHR
+	public partial struct VkDisplayPlaneCapabilitiesKHR
 	{
 		public VkDisplayPlaneAlphaFlagsKHR supportedAlpha;
 		public Vector2i minSrcPosition;
@@ -1339,7 +1339,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplaySurfaceCreateInfoKHR
+	public partial struct VkDisplaySurfaceCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1354,7 +1354,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayPresentInfoKHR
+	public partial struct VkDisplayPresentInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1364,7 +1364,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSurfaceCapabilitiesKHR
+	public partial struct VkSurfaceCapabilitiesKHR
 	{
 		public uint minImageCount;
 		public uint maxImageCount;
@@ -1379,7 +1379,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAndroidSurfaceCreateInfoKHR
+	public partial struct VkAndroidSurfaceCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1388,7 +1388,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkViSurfaceCreateInfoNN
+	public partial struct VkViSurfaceCreateInfoNN
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1397,7 +1397,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkWaylandSurfaceCreateInfoKHR
+	public partial struct VkWaylandSurfaceCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1407,7 +1407,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkWin32SurfaceCreateInfoKHR
+	public partial struct VkWin32SurfaceCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1417,7 +1417,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkXlibSurfaceCreateInfoKHR
+	public partial struct VkXlibSurfaceCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1427,7 +1427,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkXcbSurfaceCreateInfoKHR
+	public partial struct VkXcbSurfaceCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1437,7 +1437,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDirectFBSurfaceCreateInfoEXT
+	public partial struct VkDirectFBSurfaceCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1447,7 +1447,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImagePipeSurfaceCreateInfoFUCHSIA
+	public partial struct VkImagePipeSurfaceCreateInfoFUCHSIA
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1456,7 +1456,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkStreamDescriptorSurfaceCreateInfoGGP
+	public partial struct VkStreamDescriptorSurfaceCreateInfoGGP
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1465,7 +1465,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkScreenSurfaceCreateInfoQNX
+	public partial struct VkScreenSurfaceCreateInfoQNX
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1475,14 +1475,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSurfaceFormatKHR
+	public partial struct VkSurfaceFormatKHR
 	{
 		public VkFormat format;
 		public VkColorSpaceKHR colorSpace;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSwapchainCreateInfoKHR
+	public partial struct VkSwapchainCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1505,7 +1505,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPresentInfoKHR
+	public partial struct VkPresentInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1518,7 +1518,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkValidationFlagsEXT
+	public partial struct VkValidationFlagsEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1527,7 +1527,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkValidationFeaturesEXT
+	public partial struct VkValidationFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1538,7 +1538,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineRasterizationStateRasterizationOrderAMD
+	public partial struct VkPipelineRasterizationStateRasterizationOrderAMD
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1546,7 +1546,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDebugMarkerObjectNameInfoEXT
+	public partial struct VkDebugMarkerObjectNameInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1556,7 +1556,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDebugMarkerObjectTagInfoEXT
+	public partial struct VkDebugMarkerObjectTagInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1568,7 +1568,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDebugMarkerMarkerInfoEXT
+	public partial struct VkDebugMarkerMarkerInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1580,7 +1580,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDedicatedAllocationImageCreateInfoNV
+	public partial struct VkDedicatedAllocationImageCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1588,7 +1588,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDedicatedAllocationBufferCreateInfoNV
+	public partial struct VkDedicatedAllocationBufferCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1596,7 +1596,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDedicatedAllocationMemoryAllocateInfoNV
+	public partial struct VkDedicatedAllocationMemoryAllocateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1605,7 +1605,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExternalImageFormatPropertiesNV
+	public partial struct VkExternalImageFormatPropertiesNV
 	{
 		public VkImageFormatProperties imageFormatProperties;
 		public VkExternalMemoryFeatureFlagsNV externalMemoryFeatures;
@@ -1614,7 +1614,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExternalMemoryImageCreateInfoNV
+	public partial struct VkExternalMemoryImageCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1622,7 +1622,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExportMemoryAllocateInfoNV
+	public partial struct VkExportMemoryAllocateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1630,7 +1630,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportMemoryWin32HandleInfoNV
+	public partial struct VkImportMemoryWin32HandleInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1639,7 +1639,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExportMemoryWin32HandleInfoNV
+	public partial struct VkExportMemoryWin32HandleInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1648,7 +1648,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkWin32KeyedMutexAcquireReleaseInfoNV
+	public partial struct VkWin32KeyedMutexAcquireReleaseInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1662,7 +1662,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV
+	public partial struct VkPhysicalDeviceDeviceGeneratedCommandsFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1670,7 +1670,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDevicePrivateDataCreateInfoEXT
+	public partial struct VkDevicePrivateDataCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1678,7 +1678,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPrivateDataSlotCreateInfoEXT
+	public partial struct VkPrivateDataSlotCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1686,7 +1686,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePrivateDataFeaturesEXT
+	public partial struct VkPhysicalDevicePrivateDataFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1694,7 +1694,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
+	public partial struct VkPhysicalDeviceDeviceGeneratedCommandsPropertiesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1710,7 +1710,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkGraphicsShaderGroupCreateInfoNV
+	public partial struct VkGraphicsShaderGroupCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1721,7 +1721,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkGraphicsPipelineShaderGroupsCreateInfoNV
+	public partial struct VkGraphicsPipelineShaderGroupsCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1732,13 +1732,13 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindShaderGroupIndirectCommandNV
+	public partial struct VkBindShaderGroupIndirectCommandNV
 	{
 		public uint groupIndex;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindIndexBufferIndirectCommandNV
+	public partial struct VkBindIndexBufferIndirectCommandNV
 	{
 		public IntPtr bufferAddress;
 		public uint size;
@@ -1746,7 +1746,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindVertexBufferIndirectCommandNV
+	public partial struct VkBindVertexBufferIndirectCommandNV
 	{
 		public IntPtr bufferAddress;
 		public uint size;
@@ -1754,20 +1754,20 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSetStateFlagsIndirectCommandNV
+	public partial struct VkSetStateFlagsIndirectCommandNV
 	{
 		public uint data;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkIndirectCommandsStreamNV
+	public partial struct VkIndirectCommandsStreamNV
 	{
 		public VkBuffer buffer;
 		public ulong offset;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkIndirectCommandsLayoutTokenNV
+	public partial struct VkIndirectCommandsLayoutTokenNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1787,7 +1787,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkIndirectCommandsLayoutCreateInfoNV
+	public partial struct VkIndirectCommandsLayoutCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1800,7 +1800,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkGeneratedCommandsInfoNV
+	public partial struct VkGeneratedCommandsInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1820,7 +1820,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkGeneratedCommandsMemoryRequirementsInfoNV
+	public partial struct VkGeneratedCommandsMemoryRequirementsInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1831,7 +1831,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFeatures2
+	public partial struct VkPhysicalDeviceFeatures2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1839,7 +1839,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceProperties2
+	public partial struct VkPhysicalDeviceProperties2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1847,7 +1847,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFormatProperties2
+	public partial struct VkFormatProperties2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1855,7 +1855,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageFormatProperties2
+	public partial struct VkImageFormatProperties2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1863,7 +1863,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceImageFormatInfo2
+	public partial struct VkPhysicalDeviceImageFormatInfo2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1875,7 +1875,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkQueueFamilyProperties2
+	public partial struct VkQueueFamilyProperties2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1883,7 +1883,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMemoryProperties2
+	public partial struct VkPhysicalDeviceMemoryProperties2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1891,7 +1891,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSparseImageFormatProperties2
+	public partial struct VkSparseImageFormatProperties2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1899,7 +1899,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSparseImageFormatInfo2
+	public partial struct VkPhysicalDeviceSparseImageFormatInfo2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1911,7 +1911,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePushDescriptorPropertiesKHR
+	public partial struct VkPhysicalDevicePushDescriptorPropertiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1919,7 +1919,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkConformanceVersion
+	public partial struct VkConformanceVersion
 	{
 		public byte major;
 		public byte minor;
@@ -1928,7 +1928,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDriverProperties
+	public partial struct VkPhysicalDeviceDriverProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1939,7 +1939,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPresentRegionsKHR
+	public partial struct VkPresentRegionsKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1948,14 +1948,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPresentRegionKHR
+	public partial struct VkPresentRegionKHR
 	{
 		public uint rectangleCount;
 		public unsafe VkRectLayerKHR* pRectangles;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRectLayerKHR
+	public partial struct VkRectLayerKHR
 	{
 		public Vector2i offset;
 		public Vector2ui extent;
@@ -1963,7 +1963,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceVariablePointersFeatures
+	public partial struct VkPhysicalDeviceVariablePointersFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1972,7 +1972,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExternalMemoryProperties
+	public partial struct VkExternalMemoryProperties
 	{
 		public VkExternalMemoryFeatureFlags externalMemoryFeatures;
 		public VkExternalMemoryHandleTypeFlags exportFromImportedHandleTypes;
@@ -1980,7 +1980,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceExternalImageFormatInfo
+	public partial struct VkPhysicalDeviceExternalImageFormatInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1988,7 +1988,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExternalImageFormatProperties
+	public partial struct VkExternalImageFormatProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -1996,7 +1996,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceExternalBufferInfo
+	public partial struct VkPhysicalDeviceExternalBufferInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2006,7 +2006,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExternalBufferProperties
+	public partial struct VkExternalBufferProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2014,7 +2014,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceIDProperties
+	public partial struct VkPhysicalDeviceIDProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2026,7 +2026,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExternalMemoryImageCreateInfo
+	public partial struct VkExternalMemoryImageCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2034,7 +2034,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExternalMemoryBufferCreateInfo
+	public partial struct VkExternalMemoryBufferCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2042,7 +2042,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExportMemoryAllocateInfo
+	public partial struct VkExportMemoryAllocateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2050,7 +2050,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportMemoryWin32HandleInfoKHR
+	public partial struct VkImportMemoryWin32HandleInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2060,7 +2060,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExportMemoryWin32HandleInfoKHR
+	public partial struct VkExportMemoryWin32HandleInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2070,7 +2070,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportMemoryZirconHandleInfoFUCHSIA
+	public partial struct VkImportMemoryZirconHandleInfoFUCHSIA
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2079,7 +2079,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryZirconHandlePropertiesFUCHSIA
+	public partial struct VkMemoryZirconHandlePropertiesFUCHSIA
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2087,7 +2087,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryGetZirconHandleInfoFUCHSIA
+	public partial struct VkMemoryGetZirconHandleInfoFUCHSIA
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2096,7 +2096,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryWin32HandlePropertiesKHR
+	public partial struct VkMemoryWin32HandlePropertiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2104,7 +2104,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryGetWin32HandleInfoKHR
+	public partial struct VkMemoryGetWin32HandleInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2113,7 +2113,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportMemoryFdInfoKHR
+	public partial struct VkImportMemoryFdInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2122,7 +2122,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryFdPropertiesKHR
+	public partial struct VkMemoryFdPropertiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2130,7 +2130,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryGetFdInfoKHR
+	public partial struct VkMemoryGetFdInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2139,7 +2139,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkWin32KeyedMutexAcquireReleaseInfoKHR
+	public partial struct VkWin32KeyedMutexAcquireReleaseInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2153,7 +2153,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceExternalSemaphoreInfo
+	public partial struct VkPhysicalDeviceExternalSemaphoreInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2161,7 +2161,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExternalSemaphoreProperties
+	public partial struct VkExternalSemaphoreProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2171,7 +2171,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExportSemaphoreCreateInfo
+	public partial struct VkExportSemaphoreCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2179,7 +2179,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportSemaphoreWin32HandleInfoKHR
+	public partial struct VkImportSemaphoreWin32HandleInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2191,7 +2191,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExportSemaphoreWin32HandleInfoKHR
+	public partial struct VkExportSemaphoreWin32HandleInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2201,7 +2201,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkD3D12FenceSubmitInfoKHR
+	public partial struct VkD3D12FenceSubmitInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2212,7 +2212,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSemaphoreGetWin32HandleInfoKHR
+	public partial struct VkSemaphoreGetWin32HandleInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2221,7 +2221,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportSemaphoreFdInfoKHR
+	public partial struct VkImportSemaphoreFdInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2232,7 +2232,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSemaphoreGetFdInfoKHR
+	public partial struct VkSemaphoreGetFdInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2241,7 +2241,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportSemaphoreZirconHandleInfoFUCHSIA
+	public partial struct VkImportSemaphoreZirconHandleInfoFUCHSIA
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2252,7 +2252,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSemaphoreGetZirconHandleInfoFUCHSIA
+	public partial struct VkSemaphoreGetZirconHandleInfoFUCHSIA
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2261,7 +2261,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceExternalFenceInfo
+	public partial struct VkPhysicalDeviceExternalFenceInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2269,7 +2269,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExternalFenceProperties
+	public partial struct VkExternalFenceProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2279,7 +2279,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExportFenceCreateInfo
+	public partial struct VkExportFenceCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2287,7 +2287,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportFenceWin32HandleInfoKHR
+	public partial struct VkImportFenceWin32HandleInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2299,7 +2299,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExportFenceWin32HandleInfoKHR
+	public partial struct VkExportFenceWin32HandleInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2309,7 +2309,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFenceGetWin32HandleInfoKHR
+	public partial struct VkFenceGetWin32HandleInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2318,7 +2318,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportFenceFdInfoKHR
+	public partial struct VkImportFenceFdInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2329,7 +2329,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFenceGetFdInfoKHR
+	public partial struct VkFenceGetFdInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2338,7 +2338,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMultiviewFeatures
+	public partial struct VkPhysicalDeviceMultiviewFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2348,7 +2348,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMultiviewProperties
+	public partial struct VkPhysicalDeviceMultiviewProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2357,7 +2357,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRenderPassMultiviewCreateInfo
+	public partial struct VkRenderPassMultiviewCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2370,7 +2370,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSurfaceCapabilities2EXT
+	public partial struct VkSurfaceCapabilities2EXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2388,7 +2388,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayPowerInfoEXT
+	public partial struct VkDisplayPowerInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2396,7 +2396,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceEventInfoEXT
+	public partial struct VkDeviceEventInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2404,7 +2404,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayEventInfoEXT
+	public partial struct VkDisplayEventInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2412,7 +2412,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSwapchainCounterCreateInfoEXT
+	public partial struct VkSwapchainCounterCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2420,7 +2420,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceGroupProperties
+	public partial struct VkPhysicalDeviceGroupProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2461,7 +2461,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryAllocateFlagsInfo
+	public partial struct VkMemoryAllocateFlagsInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2470,7 +2470,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindBufferMemoryInfo
+	public partial struct VkBindBufferMemoryInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2480,7 +2480,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindBufferMemoryDeviceGroupInfo
+	public partial struct VkBindBufferMemoryDeviceGroupInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2489,7 +2489,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindImageMemoryInfo
+	public partial struct VkBindImageMemoryInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2499,7 +2499,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindImageMemoryDeviceGroupInfo
+	public partial struct VkBindImageMemoryDeviceGroupInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2510,7 +2510,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceGroupRenderPassBeginInfo
+	public partial struct VkDeviceGroupRenderPassBeginInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2520,7 +2520,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceGroupCommandBufferBeginInfo
+	public partial struct VkDeviceGroupCommandBufferBeginInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2528,7 +2528,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceGroupSubmitInfo
+	public partial struct VkDeviceGroupSubmitInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2541,7 +2541,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceGroupBindSparseInfo
+	public partial struct VkDeviceGroupBindSparseInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2550,7 +2550,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceGroupPresentCapabilitiesKHR
+	public partial struct VkDeviceGroupPresentCapabilitiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2559,7 +2559,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageSwapchainCreateInfoKHR
+	public partial struct VkImageSwapchainCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2567,7 +2567,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindImageMemorySwapchainInfoKHR
+	public partial struct VkBindImageMemorySwapchainInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2576,7 +2576,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAcquireNextImageInfoKHR
+	public partial struct VkAcquireNextImageInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2588,7 +2588,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceGroupPresentInfoKHR
+	public partial struct VkDeviceGroupPresentInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2598,7 +2598,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceGroupDeviceCreateInfo
+	public partial struct VkDeviceGroupDeviceCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2607,7 +2607,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceGroupSwapchainCreateInfoKHR
+	public partial struct VkDeviceGroupSwapchainCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2615,7 +2615,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorUpdateTemplateEntry
+	public partial struct VkDescriptorUpdateTemplateEntry
 	{
 		public uint dstBinding;
 		public uint dstArrayElement;
@@ -2626,7 +2626,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorUpdateTemplateCreateInfo
+	public partial struct VkDescriptorUpdateTemplateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2641,14 +2641,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkXYColorEXT
+	public partial struct VkXYColorEXT
 	{
 		public float x;
 		public float y;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkHdrMetadataEXT
+	public partial struct VkHdrMetadataEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2663,7 +2663,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayNativeHdrSurfaceCapabilitiesAMD
+	public partial struct VkDisplayNativeHdrSurfaceCapabilitiesAMD
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2671,7 +2671,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSwapchainDisplayNativeHdrCreateInfoAMD
+	public partial struct VkSwapchainDisplayNativeHdrCreateInfoAMD
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2679,13 +2679,13 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRefreshCycleDurationGOOGLE
+	public partial struct VkRefreshCycleDurationGOOGLE
 	{
 		public ulong refreshDuration;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPastPresentationTimingGOOGLE
+	public partial struct VkPastPresentationTimingGOOGLE
 	{
 		public uint presentID;
 		public ulong desiredPresentTime;
@@ -2695,7 +2695,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPresentTimesInfoGOOGLE
+	public partial struct VkPresentTimesInfoGOOGLE
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2704,14 +2704,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPresentTimeGOOGLE
+	public partial struct VkPresentTimeGOOGLE
 	{
 		public uint presentID;
 		public ulong desiredPresentTime;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkIOSSurfaceCreateInfoMVK
+	public partial struct VkIOSSurfaceCreateInfoMVK
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2720,7 +2720,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMacOSSurfaceCreateInfoMVK
+	public partial struct VkMacOSSurfaceCreateInfoMVK
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2729,7 +2729,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMetalSurfaceCreateInfoEXT
+	public partial struct VkMetalSurfaceCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2738,14 +2738,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkViewportWScalingNV
+	public partial struct VkViewportWScalingNV
 	{
 		public float xcoeff;
 		public float ycoeff;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineViewportWScalingStateCreateInfoNV
+	public partial struct VkPipelineViewportWScalingStateCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2755,7 +2755,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkViewportSwizzleNV
+	public partial struct VkViewportSwizzleNV
 	{
 		public VkViewportCoordinateSwizzleNV x;
 		public VkViewportCoordinateSwizzleNV y;
@@ -2764,7 +2764,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineViewportSwizzleStateCreateInfoNV
+	public partial struct VkPipelineViewportSwizzleStateCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2774,7 +2774,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDiscardRectanglePropertiesEXT
+	public partial struct VkPhysicalDeviceDiscardRectanglePropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2782,7 +2782,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineDiscardRectangleStateCreateInfoEXT
+	public partial struct VkPipelineDiscardRectangleStateCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2793,7 +2793,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX
+	public partial struct VkPhysicalDeviceMultiviewPerViewAttributesPropertiesNVX
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2801,7 +2801,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkInputAttachmentAspectReference
+	public partial struct VkInputAttachmentAspectReference
 	{
 		public uint subpass;
 		public uint inputAttachmentIndex;
@@ -2809,7 +2809,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRenderPassInputAttachmentAspectCreateInfo
+	public partial struct VkRenderPassInputAttachmentAspectCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2818,7 +2818,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSurfaceInfo2KHR
+	public partial struct VkPhysicalDeviceSurfaceInfo2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2826,7 +2826,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSurfaceCapabilities2KHR
+	public partial struct VkSurfaceCapabilities2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2834,7 +2834,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSurfaceFormat2KHR
+	public partial struct VkSurfaceFormat2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2842,7 +2842,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayProperties2KHR
+	public partial struct VkDisplayProperties2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2850,7 +2850,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayPlaneProperties2KHR
+	public partial struct VkDisplayPlaneProperties2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2858,7 +2858,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayModeProperties2KHR
+	public partial struct VkDisplayModeProperties2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2866,7 +2866,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayPlaneInfo2KHR
+	public partial struct VkDisplayPlaneInfo2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2875,7 +2875,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDisplayPlaneCapabilities2KHR
+	public partial struct VkDisplayPlaneCapabilities2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2883,7 +2883,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSharedPresentSurfaceCapabilitiesKHR
+	public partial struct VkSharedPresentSurfaceCapabilitiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2891,7 +2891,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevice16BitStorageFeatures
+	public partial struct VkPhysicalDevice16BitStorageFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2902,7 +2902,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSubgroupProperties
+	public partial struct VkPhysicalDeviceSubgroupProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2913,7 +2913,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
+	public partial struct VkPhysicalDeviceShaderSubgroupExtendedTypesFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2921,7 +2921,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferMemoryRequirementsInfo2
+	public partial struct VkBufferMemoryRequirementsInfo2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2929,7 +2929,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageMemoryRequirementsInfo2
+	public partial struct VkImageMemoryRequirementsInfo2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2937,7 +2937,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageSparseMemoryRequirementsInfo2
+	public partial struct VkImageSparseMemoryRequirementsInfo2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2945,7 +2945,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryRequirements2
+	public partial struct VkMemoryRequirements2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2953,7 +2953,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSparseImageMemoryRequirements2
+	public partial struct VkSparseImageMemoryRequirements2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2961,7 +2961,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePointClippingProperties
+	public partial struct VkPhysicalDevicePointClippingProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2969,7 +2969,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryDedicatedRequirements
+	public partial struct VkMemoryDedicatedRequirements
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2978,7 +2978,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryDedicatedAllocateInfo
+	public partial struct VkMemoryDedicatedAllocateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2987,7 +2987,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageViewUsageCreateInfo
+	public partial struct VkImageViewUsageCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -2995,7 +2995,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineTessellationDomainOriginStateCreateInfo
+	public partial struct VkPipelineTessellationDomainOriginStateCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3003,7 +3003,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSamplerYcbcrConversionInfo
+	public partial struct VkSamplerYcbcrConversionInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3011,7 +3011,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSamplerYcbcrConversionCreateInfo
+	public partial struct VkSamplerYcbcrConversionCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3026,7 +3026,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindImagePlaneMemoryInfo
+	public partial struct VkBindImagePlaneMemoryInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3034,7 +3034,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImagePlaneMemoryRequirementsInfo
+	public partial struct VkImagePlaneMemoryRequirementsInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3042,7 +3042,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSamplerYcbcrConversionFeatures
+	public partial struct VkPhysicalDeviceSamplerYcbcrConversionFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3050,7 +3050,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSamplerYcbcrConversionImageFormatProperties
+	public partial struct VkSamplerYcbcrConversionImageFormatProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3058,7 +3058,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkTextureLODGatherFormatPropertiesAMD
+	public partial struct VkTextureLODGatherFormatPropertiesAMD
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3066,7 +3066,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkConditionalRenderingBeginInfoEXT
+	public partial struct VkConditionalRenderingBeginInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3076,7 +3076,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkProtectedSubmitInfo
+	public partial struct VkProtectedSubmitInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3084,7 +3084,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceProtectedMemoryFeatures
+	public partial struct VkPhysicalDeviceProtectedMemoryFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3092,7 +3092,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceProtectedMemoryProperties
+	public partial struct VkPhysicalDeviceProtectedMemoryProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3100,7 +3100,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceQueueInfo2
+	public partial struct VkDeviceQueueInfo2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3110,7 +3110,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineCoverageToColorStateCreateInfoNV
+	public partial struct VkPipelineCoverageToColorStateCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3120,7 +3120,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSamplerFilterMinmaxProperties
+	public partial struct VkPhysicalDeviceSamplerFilterMinmaxProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3129,14 +3129,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSampleLocationEXT
+	public partial struct VkSampleLocationEXT
 	{
 		public float x;
 		public float y;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSampleLocationsInfoEXT
+	public partial struct VkSampleLocationsInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3147,21 +3147,21 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAttachmentSampleLocationsEXT
+	public partial struct VkAttachmentSampleLocationsEXT
 	{
 		public uint attachmentIndex;
 		public VkSampleLocationsInfoEXT sampleLocationsInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubpassSampleLocationsEXT
+	public partial struct VkSubpassSampleLocationsEXT
 	{
 		public uint subpassIndex;
 		public VkSampleLocationsInfoEXT sampleLocationsInfo;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRenderPassSampleLocationsBeginInfoEXT
+	public partial struct VkRenderPassSampleLocationsBeginInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3172,7 +3172,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineSampleLocationsStateCreateInfoEXT
+	public partial struct VkPipelineSampleLocationsStateCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3181,7 +3181,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSampleLocationsPropertiesEXT
+	public partial struct VkPhysicalDeviceSampleLocationsPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3194,7 +3194,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMultisamplePropertiesEXT
+	public partial struct VkMultisamplePropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3202,7 +3202,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSamplerReductionModeCreateInfo
+	public partial struct VkSamplerReductionModeCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3210,7 +3210,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT
+	public partial struct VkPhysicalDeviceBlendOperationAdvancedFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3218,7 +3218,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT
+	public partial struct VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3231,7 +3231,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineColorBlendAdvancedStateCreateInfoEXT
+	public partial struct VkPipelineColorBlendAdvancedStateCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3241,7 +3241,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceInlineUniformBlockFeaturesEXT
+	public partial struct VkPhysicalDeviceInlineUniformBlockFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3250,7 +3250,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceInlineUniformBlockPropertiesEXT
+	public partial struct VkPhysicalDeviceInlineUniformBlockPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3262,7 +3262,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkWriteDescriptorSetInlineUniformBlockEXT
+	public partial struct VkWriteDescriptorSetInlineUniformBlockEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3271,7 +3271,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorPoolInlineUniformBlockCreateInfoEXT
+	public partial struct VkDescriptorPoolInlineUniformBlockCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3279,7 +3279,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineCoverageModulationStateCreateInfoNV
+	public partial struct VkPipelineCoverageModulationStateCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3291,7 +3291,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageFormatListCreateInfo
+	public partial struct VkImageFormatListCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3300,7 +3300,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkValidationCacheCreateInfoEXT
+	public partial struct VkValidationCacheCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3310,7 +3310,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkShaderModuleValidationCacheCreateInfoEXT
+	public partial struct VkShaderModuleValidationCacheCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3318,7 +3318,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMaintenance3Properties
+	public partial struct VkPhysicalDeviceMaintenance3Properties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3327,7 +3327,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorSetLayoutSupport
+	public partial struct VkDescriptorSetLayoutSupport
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3335,7 +3335,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderDrawParametersFeatures
+	public partial struct VkPhysicalDeviceShaderDrawParametersFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3343,7 +3343,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderFloat16Int8Features
+	public partial struct VkPhysicalDeviceShaderFloat16Int8Features
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3352,7 +3352,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFloatControlsProperties
+	public partial struct VkPhysicalDeviceFloatControlsProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3376,7 +3376,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceHostQueryResetFeatures
+	public partial struct VkPhysicalDeviceHostQueryResetFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3384,14 +3384,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkNativeBufferUsage2ANDROID
+	public partial struct VkNativeBufferUsage2ANDROID
 	{
 		public ulong consumer;
 		public ulong producer;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkNativeBufferANDROID
+	public partial struct VkNativeBufferANDROID
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3403,7 +3403,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSwapchainImageCreateInfoANDROID
+	public partial struct VkSwapchainImageCreateInfoANDROID
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3411,7 +3411,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePresentationPropertiesANDROID
+	public partial struct VkPhysicalDevicePresentationPropertiesANDROID
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3419,7 +3419,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkShaderResourceUsageAMD
+	public partial struct VkShaderResourceUsageAMD
 	{
 		public uint numUsedVgprs;
 		public uint numUsedSgprs;
@@ -3429,7 +3429,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkShaderStatisticsInfoAMD
+	public partial struct VkShaderStatisticsInfoAMD
 	{
 		public VkShaderStageFlags shaderStageMask;
 		public VkShaderResourceUsageAMD resourceUsage;
@@ -3443,7 +3443,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceQueueGlobalPriorityCreateInfoEXT
+	public partial struct VkDeviceQueueGlobalPriorityCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3451,7 +3451,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDebugUtilsObjectNameInfoEXT
+	public partial struct VkDebugUtilsObjectNameInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3461,7 +3461,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDebugUtilsObjectTagInfoEXT
+	public partial struct VkDebugUtilsObjectTagInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3473,7 +3473,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDebugUtilsLabelEXT
+	public partial struct VkDebugUtilsLabelEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3485,7 +3485,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDebugUtilsMessengerCallbackDataEXT
+	public partial struct VkDebugUtilsMessengerCallbackDataEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3502,7 +3502,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDeviceMemoryReportFeaturesEXT
+	public partial struct VkPhysicalDeviceDeviceMemoryReportFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3510,7 +3510,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceMemoryReportCallbackDataEXT
+	public partial struct VkDeviceMemoryReportCallbackDataEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3524,7 +3524,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportMemoryHostPointerInfoEXT
+	public partial struct VkImportMemoryHostPointerInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3533,7 +3533,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryHostPointerPropertiesEXT
+	public partial struct VkMemoryHostPointerPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3541,7 +3541,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT
+	public partial struct VkPhysicalDeviceExternalMemoryHostPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3549,7 +3549,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT
+	public partial struct VkPhysicalDeviceConservativeRasterizationPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3565,7 +3565,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCalibratedTimestampInfoEXT
+	public partial struct VkCalibratedTimestampInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3573,7 +3573,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderCorePropertiesAMD
+	public partial struct VkPhysicalDeviceShaderCorePropertiesAMD
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3594,7 +3594,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderCoreProperties2AMD
+	public partial struct VkPhysicalDeviceShaderCoreProperties2AMD
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3603,7 +3603,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineRasterizationConservativeStateCreateInfoEXT
+	public partial struct VkPipelineRasterizationConservativeStateCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3613,7 +3613,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDescriptorIndexingFeatures
+	public partial struct VkPhysicalDeviceDescriptorIndexingFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3640,7 +3640,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDescriptorIndexingProperties
+	public partial struct VkPhysicalDeviceDescriptorIndexingProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3670,7 +3670,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorSetLayoutBindingFlagsCreateInfo
+	public partial struct VkDescriptorSetLayoutBindingFlagsCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3679,7 +3679,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorSetVariableDescriptorCountAllocateInfo
+	public partial struct VkDescriptorSetVariableDescriptorCountAllocateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3688,7 +3688,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDescriptorSetVariableDescriptorCountLayoutSupport
+	public partial struct VkDescriptorSetVariableDescriptorCountLayoutSupport
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3696,7 +3696,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAttachmentDescription2
+	public partial struct VkAttachmentDescription2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3712,7 +3712,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAttachmentReference2
+	public partial struct VkAttachmentReference2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3722,7 +3722,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubpassDescription2
+	public partial struct VkSubpassDescription2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3740,7 +3740,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubpassDependency2
+	public partial struct VkSubpassDependency2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3755,7 +3755,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRenderPassCreateInfo2
+	public partial struct VkRenderPassCreateInfo2
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3771,7 +3771,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubpassBeginInfo
+	public partial struct VkSubpassBeginInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3779,14 +3779,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubpassEndInfo
+	public partial struct VkSubpassEndInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceTimelineSemaphoreFeatures
+	public partial struct VkPhysicalDeviceTimelineSemaphoreFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3794,7 +3794,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceTimelineSemaphoreProperties
+	public partial struct VkPhysicalDeviceTimelineSemaphoreProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3802,7 +3802,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSemaphoreTypeCreateInfo
+	public partial struct VkSemaphoreTypeCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3811,7 +3811,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkTimelineSemaphoreSubmitInfo
+	public partial struct VkTimelineSemaphoreSubmitInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3822,7 +3822,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSemaphoreWaitInfo
+	public partial struct VkSemaphoreWaitInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3833,7 +3833,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSemaphoreSignalInfo
+	public partial struct VkSemaphoreSignalInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3842,14 +3842,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkVertexInputBindingDivisorDescriptionEXT
+	public partial struct VkVertexInputBindingDivisorDescriptionEXT
 	{
 		public uint binding;
 		public uint divisor;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineVertexInputDivisorStateCreateInfoEXT
+	public partial struct VkPipelineVertexInputDivisorStateCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3858,7 +3858,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT
+	public partial struct VkPhysicalDeviceVertexAttributeDivisorPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3866,7 +3866,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePCIBusInfoPropertiesEXT
+	public partial struct VkPhysicalDevicePCIBusInfoPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3877,7 +3877,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImportAndroidHardwareBufferInfoANDROID
+	public partial struct VkImportAndroidHardwareBufferInfoANDROID
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3885,7 +3885,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAndroidHardwareBufferUsageANDROID
+	public partial struct VkAndroidHardwareBufferUsageANDROID
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3893,7 +3893,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAndroidHardwareBufferPropertiesANDROID
+	public partial struct VkAndroidHardwareBufferPropertiesANDROID
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3902,7 +3902,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryGetAndroidHardwareBufferInfoANDROID
+	public partial struct VkMemoryGetAndroidHardwareBufferInfoANDROID
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3910,7 +3910,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAndroidHardwareBufferFormatPropertiesANDROID
+	public partial struct VkAndroidHardwareBufferFormatPropertiesANDROID
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3925,7 +3925,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCommandBufferInheritanceConditionalRenderingInfoEXT
+	public partial struct VkCommandBufferInheritanceConditionalRenderingInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3933,7 +3933,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkExternalFormatANDROID
+	public partial struct VkExternalFormatANDROID
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3941,7 +3941,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevice8BitStorageFeatures
+	public partial struct VkPhysicalDevice8BitStorageFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3951,7 +3951,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceConditionalRenderingFeaturesEXT
+	public partial struct VkPhysicalDeviceConditionalRenderingFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3960,7 +3960,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceVulkanMemoryModelFeatures
+	public partial struct VkPhysicalDeviceVulkanMemoryModelFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3970,7 +3970,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderAtomicInt64Features
+	public partial struct VkPhysicalDeviceShaderAtomicInt64Features
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3979,7 +3979,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
+	public partial struct VkPhysicalDeviceShaderAtomicFloatFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -3998,7 +3998,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT
+	public partial struct VkPhysicalDeviceVertexAttributeDivisorFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4007,7 +4007,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkQueueFamilyCheckpointPropertiesNV
+	public partial struct VkQueueFamilyCheckpointPropertiesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4015,7 +4015,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCheckpointDataNV
+	public partial struct VkCheckpointDataNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4024,7 +4024,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDepthStencilResolveProperties
+	public partial struct VkPhysicalDeviceDepthStencilResolveProperties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4035,7 +4035,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubpassDescriptionDepthStencilResolve
+	public partial struct VkSubpassDescriptionDepthStencilResolve
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4045,7 +4045,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageViewASTCDecodeModeEXT
+	public partial struct VkImageViewASTCDecodeModeEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4053,7 +4053,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceASTCDecodeFeaturesEXT
+	public partial struct VkPhysicalDeviceASTCDecodeFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4061,7 +4061,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceTransformFeedbackFeaturesEXT
+	public partial struct VkPhysicalDeviceTransformFeedbackFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4070,7 +4070,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceTransformFeedbackPropertiesEXT
+	public partial struct VkPhysicalDeviceTransformFeedbackPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4087,7 +4087,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineRasterizationStateStreamCreateInfoEXT
+	public partial struct VkPipelineRasterizationStateStreamCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4096,7 +4096,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV
+	public partial struct VkPhysicalDeviceRepresentativeFragmentTestFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4104,7 +4104,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV
+	public partial struct VkPipelineRepresentativeFragmentTestStateCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4112,7 +4112,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceExclusiveScissorFeaturesNV
+	public partial struct VkPhysicalDeviceExclusiveScissorFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4120,7 +4120,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineViewportExclusiveScissorStateCreateInfoNV
+	public partial struct VkPipelineViewportExclusiveScissorStateCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4129,7 +4129,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceCornerSampledImageFeaturesNV
+	public partial struct VkPhysicalDeviceCornerSampledImageFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4137,7 +4137,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceComputeShaderDerivativesFeaturesNV
+	public partial struct VkPhysicalDeviceComputeShaderDerivativesFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4146,7 +4146,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV
+	public partial struct VkPhysicalDeviceFragmentShaderBarycentricFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4154,7 +4154,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderImageFootprintFeaturesNV
+	public partial struct VkPhysicalDeviceShaderImageFootprintFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4162,7 +4162,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV
+	public partial struct VkPhysicalDeviceDedicatedAllocationImageAliasingFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4170,14 +4170,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkShadingRatePaletteNV
+	public partial struct VkShadingRatePaletteNV
 	{
 		public uint shadingRatePaletteEntryCount;
 		public unsafe VkShadingRatePaletteEntryNV* pShadingRatePaletteEntries;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineViewportShadingRateImageStateCreateInfoNV
+	public partial struct VkPipelineViewportShadingRateImageStateCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4187,7 +4187,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShadingRateImageFeaturesNV
+	public partial struct VkPhysicalDeviceShadingRateImageFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4196,7 +4196,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShadingRateImagePropertiesNV
+	public partial struct VkPhysicalDeviceShadingRateImagePropertiesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4206,7 +4206,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCoarseSampleLocationNV
+	public partial struct VkCoarseSampleLocationNV
 	{
 		public uint pixelX;
 		public uint pixelY;
@@ -4214,7 +4214,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCoarseSampleOrderCustomNV
+	public partial struct VkCoarseSampleOrderCustomNV
 	{
 		public VkShadingRatePaletteEntryNV shadingRate;
 		public uint sampleCount;
@@ -4223,7 +4223,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV
+	public partial struct VkPipelineViewportCoarseSampleOrderStateCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4233,7 +4233,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMeshShaderFeaturesNV
+	public partial struct VkPhysicalDeviceMeshShaderFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4242,7 +4242,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMeshShaderPropertiesNV
+	public partial struct VkPhysicalDeviceMeshShaderPropertiesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4266,14 +4266,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDrawMeshTasksIndirectCommandNV
+	public partial struct VkDrawMeshTasksIndirectCommandNV
 	{
 		public uint taskCount;
 		public uint firstTask;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRayTracingShaderGroupCreateInfoNV
+	public partial struct VkRayTracingShaderGroupCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4285,7 +4285,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRayTracingShaderGroupCreateInfoKHR
+	public partial struct VkRayTracingShaderGroupCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4298,7 +4298,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRayTracingPipelineCreateInfoNV
+	public partial struct VkRayTracingPipelineCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4314,7 +4314,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRayTracingPipelineCreateInfoKHR
+	public partial struct VkRayTracingPipelineCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4333,7 +4333,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkGeometryTrianglesNV
+	public partial struct VkGeometryTrianglesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4351,7 +4351,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkGeometryAABBNV
+	public partial struct VkGeometryAABBNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4362,14 +4362,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkGeometryDataNV
+	public partial struct VkGeometryDataNV
 	{
 		public VkGeometryTrianglesNV triangles;
 		public VkGeometryAABBNV aabbs;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkGeometryNV
+	public partial struct VkGeometryNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4379,7 +4379,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureInfoNV
+	public partial struct VkAccelerationStructureInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4391,7 +4391,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureCreateInfoNV
+	public partial struct VkAccelerationStructureCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4400,7 +4400,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBindAccelerationStructureMemoryInfoNV
+	public partial struct VkBindAccelerationStructureMemoryInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4412,7 +4412,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkWriteDescriptorSetAccelerationStructureKHR
+	public partial struct VkWriteDescriptorSetAccelerationStructureKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4421,7 +4421,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkWriteDescriptorSetAccelerationStructureNV
+	public partial struct VkWriteDescriptorSetAccelerationStructureNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4430,7 +4430,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureMemoryRequirementsInfoNV
+	public partial struct VkAccelerationStructureMemoryRequirementsInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4439,7 +4439,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceAccelerationStructureFeaturesKHR
+	public partial struct VkPhysicalDeviceAccelerationStructureFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4451,7 +4451,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR
+	public partial struct VkPhysicalDeviceRayTracingPipelineFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4463,7 +4463,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceRayQueryFeaturesKHR
+	public partial struct VkPhysicalDeviceRayQueryFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4471,7 +4471,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceAccelerationStructurePropertiesKHR
+	public partial struct VkPhysicalDeviceAccelerationStructurePropertiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4486,7 +4486,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceRayTracingPipelinePropertiesKHR
+	public partial struct VkPhysicalDeviceRayTracingPipelinePropertiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4501,7 +4501,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceRayTracingPropertiesNV
+	public partial struct VkPhysicalDeviceRayTracingPropertiesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4516,7 +4516,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkStridedDeviceAddressRegionKHR
+	public partial struct VkStridedDeviceAddressRegionKHR
 	{
 		public IntPtr deviceAddress;
 		public ulong stride;
@@ -4524,7 +4524,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkTraceRaysIndirectCommandKHR
+	public partial struct VkTraceRaysIndirectCommandKHR
 	{
 		public uint width;
 		public uint height;
@@ -4532,7 +4532,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDrmFormatModifierPropertiesListEXT
+	public partial struct VkDrmFormatModifierPropertiesListEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4541,7 +4541,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDrmFormatModifierPropertiesEXT
+	public partial struct VkDrmFormatModifierPropertiesEXT
 	{
 		public ulong drmFormatModifier;
 		public uint drmFormatModifierPlaneCount;
@@ -4549,7 +4549,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT
+	public partial struct VkPhysicalDeviceImageDrmFormatModifierInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4560,7 +4560,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageDrmFormatModifierListCreateInfoEXT
+	public partial struct VkImageDrmFormatModifierListCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4569,7 +4569,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageDrmFormatModifierExplicitCreateInfoEXT
+	public partial struct VkImageDrmFormatModifierExplicitCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4579,7 +4579,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageDrmFormatModifierPropertiesEXT
+	public partial struct VkImageDrmFormatModifierPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4587,7 +4587,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageStencilUsageCreateInfo
+	public partial struct VkImageStencilUsageCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4595,7 +4595,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceMemoryOverallocationCreateInfoAMD
+	public partial struct VkDeviceMemoryOverallocationCreateInfoAMD
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4603,7 +4603,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT
+	public partial struct VkPhysicalDeviceFragmentDensityMapFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4613,7 +4613,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentDensityMap2FeaturesEXT
+	public partial struct VkPhysicalDeviceFragmentDensityMap2FeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4621,7 +4621,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT
+	public partial struct VkPhysicalDeviceFragmentDensityMapPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4631,7 +4631,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentDensityMap2PropertiesEXT
+	public partial struct VkPhysicalDeviceFragmentDensityMap2PropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4642,7 +4642,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRenderPassFragmentDensityMapCreateInfoEXT
+	public partial struct VkRenderPassFragmentDensityMapCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4650,7 +4650,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceScalarBlockLayoutFeatures
+	public partial struct VkPhysicalDeviceScalarBlockLayoutFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4658,7 +4658,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSurfaceProtectedCapabilitiesKHR
+	public partial struct VkSurfaceProtectedCapabilitiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4666,7 +4666,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures
+	public partial struct VkPhysicalDeviceUniformBufferStandardLayoutFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4674,7 +4674,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDepthClipEnableFeaturesEXT
+	public partial struct VkPhysicalDeviceDepthClipEnableFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4682,7 +4682,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineRasterizationDepthClipStateCreateInfoEXT
+	public partial struct VkPipelineRasterizationDepthClipStateCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4691,7 +4691,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMemoryBudgetPropertiesEXT
+	public partial struct VkPhysicalDeviceMemoryBudgetPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4700,7 +4700,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMemoryPriorityFeaturesEXT
+	public partial struct VkPhysicalDeviceMemoryPriorityFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4708,7 +4708,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryPriorityAllocateInfoEXT
+	public partial struct VkMemoryPriorityAllocateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4716,7 +4716,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceBufferDeviceAddressFeatures
+	public partial struct VkPhysicalDeviceBufferDeviceAddressFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4726,7 +4726,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT
+	public partial struct VkPhysicalDeviceBufferDeviceAddressFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4736,7 +4736,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferDeviceAddressInfo
+	public partial struct VkBufferDeviceAddressInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4744,7 +4744,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferOpaqueCaptureAddressCreateInfo
+	public partial struct VkBufferOpaqueCaptureAddressCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4752,7 +4752,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferDeviceAddressCreateInfoEXT
+	public partial struct VkBufferDeviceAddressCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4760,7 +4760,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceImageViewImageFormatInfoEXT
+	public partial struct VkPhysicalDeviceImageViewImageFormatInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4768,7 +4768,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFilterCubicImageViewImageFormatPropertiesEXT
+	public partial struct VkFilterCubicImageViewImageFormatPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4777,7 +4777,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceImagelessFramebufferFeatures
+	public partial struct VkPhysicalDeviceImagelessFramebufferFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4785,7 +4785,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFramebufferAttachmentsCreateInfo
+	public partial struct VkFramebufferAttachmentsCreateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4794,7 +4794,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFramebufferAttachmentImageInfo
+	public partial struct VkFramebufferAttachmentImageInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4808,7 +4808,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRenderPassAttachmentBeginInfo
+	public partial struct VkRenderPassAttachmentBeginInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4817,7 +4817,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT
+	public partial struct VkPhysicalDeviceTextureCompressionASTCHDRFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4825,7 +4825,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceCooperativeMatrixFeaturesNV
+	public partial struct VkPhysicalDeviceCooperativeMatrixFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4834,7 +4834,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceCooperativeMatrixPropertiesNV
+	public partial struct VkPhysicalDeviceCooperativeMatrixPropertiesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4842,7 +4842,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCooperativeMatrixPropertiesNV
+	public partial struct VkCooperativeMatrixPropertiesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4857,7 +4857,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT
+	public partial struct VkPhysicalDeviceYcbcrImageArraysFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4865,7 +4865,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageViewHandleInfoNVX
+	public partial struct VkImageViewHandleInfoNVX
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4875,7 +4875,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageViewAddressPropertiesNVX
+	public partial struct VkImageViewAddressPropertiesNVX
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4884,7 +4884,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPresentFrameTokenGGP
+	public partial struct VkPresentFrameTokenGGP
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4892,14 +4892,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineCreationFeedbackEXT
+	public partial struct VkPipelineCreationFeedbackEXT
 	{
 		public VkPipelineCreationFeedbackFlagsEXT flags;
 		public ulong duration;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineCreationFeedbackCreateInfoEXT
+	public partial struct VkPipelineCreationFeedbackCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4909,7 +4909,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSurfaceFullScreenExclusiveInfoEXT
+	public partial struct VkSurfaceFullScreenExclusiveInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4917,7 +4917,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSurfaceFullScreenExclusiveWin32InfoEXT
+	public partial struct VkSurfaceFullScreenExclusiveWin32InfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4925,7 +4925,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSurfaceCapabilitiesFullScreenExclusiveEXT
+	public partial struct VkSurfaceCapabilitiesFullScreenExclusiveEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4933,7 +4933,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePerformanceQueryFeaturesKHR
+	public partial struct VkPhysicalDevicePerformanceQueryFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4942,7 +4942,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePerformanceQueryPropertiesKHR
+	public partial struct VkPhysicalDevicePerformanceQueryPropertiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4950,7 +4950,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPerformanceCounterKHR
+	public partial struct VkPerformanceCounterKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4961,7 +4961,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPerformanceCounterDescriptionKHR
+	public partial struct VkPerformanceCounterDescriptionKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4972,7 +4972,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkQueryPoolPerformanceCreateInfoKHR
+	public partial struct VkQueryPoolPerformanceCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4982,7 +4982,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAcquireProfilingLockInfoKHR
+	public partial struct VkAcquireProfilingLockInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4991,7 +4991,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPerformanceQuerySubmitInfoKHR
+	public partial struct VkPerformanceQuerySubmitInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -4999,7 +4999,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkHeadlessSurfaceCreateInfoEXT
+	public partial struct VkHeadlessSurfaceCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5007,7 +5007,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceCoverageReductionModeFeaturesNV
+	public partial struct VkPhysicalDeviceCoverageReductionModeFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5015,7 +5015,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineCoverageReductionStateCreateInfoNV
+	public partial struct VkPipelineCoverageReductionStateCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5024,7 +5024,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFramebufferMixedSamplesCombinationNV
+	public partial struct VkFramebufferMixedSamplesCombinationNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5035,7 +5035,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL
+	public partial struct VkPhysicalDeviceShaderIntegerFunctions2FeaturesINTEL
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5043,14 +5043,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPerformanceValueINTEL
+	public partial struct VkPerformanceValueINTEL
 	{
 		public VkPerformanceValueTypeINTEL type;
 		public VkPerformanceValueDataINTEL data;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkInitializePerformanceApiInfoINTEL
+	public partial struct VkInitializePerformanceApiInfoINTEL
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5058,7 +5058,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkQueryPoolPerformanceQueryCreateInfoINTEL
+	public partial struct VkQueryPoolPerformanceQueryCreateInfoINTEL
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5066,7 +5066,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPerformanceMarkerInfoINTEL
+	public partial struct VkPerformanceMarkerInfoINTEL
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5074,7 +5074,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPerformanceStreamMarkerInfoINTEL
+	public partial struct VkPerformanceStreamMarkerInfoINTEL
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5082,7 +5082,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPerformanceOverrideInfoINTEL
+	public partial struct VkPerformanceOverrideInfoINTEL
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5092,7 +5092,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPerformanceConfigurationAcquireInfoINTEL
+	public partial struct VkPerformanceConfigurationAcquireInfoINTEL
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5100,7 +5100,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderClockFeaturesKHR
+	public partial struct VkPhysicalDeviceShaderClockFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5109,7 +5109,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceIndexTypeUint8FeaturesEXT
+	public partial struct VkPhysicalDeviceIndexTypeUint8FeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5117,7 +5117,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderSMBuiltinsPropertiesNV
+	public partial struct VkPhysicalDeviceShaderSMBuiltinsPropertiesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5126,7 +5126,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderSMBuiltinsFeaturesNV
+	public partial struct VkPhysicalDeviceShaderSMBuiltinsFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5134,7 +5134,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT
+	public partial struct VkPhysicalDeviceFragmentShaderInterlockFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5144,7 +5144,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
+	public partial struct VkPhysicalDeviceSeparateDepthStencilLayoutsFeatures
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5152,7 +5152,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAttachmentReferenceStencilLayout
+	public partial struct VkAttachmentReferenceStencilLayout
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5160,7 +5160,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAttachmentDescriptionStencilLayout
+	public partial struct VkAttachmentDescriptionStencilLayout
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5169,7 +5169,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR
+	public partial struct VkPhysicalDevicePipelineExecutablePropertiesFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5177,7 +5177,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineInfoKHR
+	public partial struct VkPipelineInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5185,7 +5185,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineExecutablePropertiesKHR
+	public partial struct VkPipelineExecutablePropertiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5196,7 +5196,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineExecutableInfoKHR
+	public partial struct VkPipelineExecutableInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5205,7 +5205,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineExecutableStatisticKHR
+	public partial struct VkPipelineExecutableStatisticKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5216,7 +5216,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineExecutableInternalRepresentationKHR
+	public partial struct VkPipelineExecutableInternalRepresentationKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5228,7 +5228,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT
+	public partial struct VkPhysicalDeviceShaderDemoteToHelperInvocationFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5236,7 +5236,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT
+	public partial struct VkPhysicalDeviceTexelBufferAlignmentFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5244,7 +5244,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT
+	public partial struct VkPhysicalDeviceTexelBufferAlignmentPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5255,7 +5255,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSubgroupSizeControlFeaturesEXT
+	public partial struct VkPhysicalDeviceSubgroupSizeControlFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5264,7 +5264,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSubgroupSizeControlPropertiesEXT
+	public partial struct VkPhysicalDeviceSubgroupSizeControlPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5275,7 +5275,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT
+	public partial struct VkPipelineShaderStageRequiredSubgroupSizeCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5283,7 +5283,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryOpaqueCaptureAddressAllocateInfo
+	public partial struct VkMemoryOpaqueCaptureAddressAllocateInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5291,7 +5291,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceMemoryOpaqueCaptureAddressInfo
+	public partial struct VkDeviceMemoryOpaqueCaptureAddressInfo
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5299,7 +5299,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceLineRasterizationFeaturesEXT
+	public partial struct VkPhysicalDeviceLineRasterizationFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5312,7 +5312,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceLineRasterizationPropertiesEXT
+	public partial struct VkPhysicalDeviceLineRasterizationPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5320,7 +5320,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineRasterizationLineStateCreateInfoEXT
+	public partial struct VkPipelineRasterizationLineStateCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5331,7 +5331,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT
+	public partial struct VkPhysicalDevicePipelineCreationCacheControlFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5339,7 +5339,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceVulkan11Features
+	public partial struct VkPhysicalDeviceVulkan11Features
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5358,7 +5358,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceVulkan11Properties
+	public partial struct VkPhysicalDeviceVulkan11Properties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5380,7 +5380,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceVulkan12Features
+	public partial struct VkPhysicalDeviceVulkan12Features
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5434,7 +5434,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceVulkan12Properties
+	public partial struct VkPhysicalDeviceVulkan12Properties
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5493,7 +5493,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineCompilerControlCreateInfoAMD
+	public partial struct VkPipelineCompilerControlCreateInfoAMD
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5501,7 +5501,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceCoherentMemoryFeaturesAMD
+	public partial struct VkPhysicalDeviceCoherentMemoryFeaturesAMD
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5509,7 +5509,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceToolPropertiesEXT
+	public partial struct VkPhysicalDeviceToolPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5521,7 +5521,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSamplerCustomBorderColorCreateInfoEXT
+	public partial struct VkSamplerCustomBorderColorCreateInfoEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5530,7 +5530,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceCustomBorderColorPropertiesEXT
+	public partial struct VkPhysicalDeviceCustomBorderColorPropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5538,7 +5538,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceCustomBorderColorFeaturesEXT
+	public partial struct VkPhysicalDeviceCustomBorderColorFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5547,7 +5547,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureGeometryTrianglesDataKHR
+	public partial struct VkAccelerationStructureGeometryTrianglesDataKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5561,7 +5561,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureGeometryAabbsDataKHR
+	public partial struct VkAccelerationStructureGeometryAabbsDataKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5570,7 +5570,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureGeometryInstancesDataKHR
+	public partial struct VkAccelerationStructureGeometryInstancesDataKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5579,7 +5579,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureGeometryKHR
+	public partial struct VkAccelerationStructureGeometryKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5589,7 +5589,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureBuildGeometryInfoKHR
+	public partial struct VkAccelerationStructureBuildGeometryInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5605,7 +5605,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureBuildRangeInfoKHR
+	public partial struct VkAccelerationStructureBuildRangeInfoKHR
 	{
 		public uint primitiveCount;
 		public uint primitiveOffset;
@@ -5614,7 +5614,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureCreateInfoKHR
+	public partial struct VkAccelerationStructureCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5627,7 +5627,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAabbPositionsKHR
+	public partial struct VkAabbPositionsKHR
 	{
 		public float minX;
 		public float minY;
@@ -5638,7 +5638,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureInstanceKHR
+	public partial struct VkAccelerationStructureInstanceKHR
 	{
 		public VkTransformMatrixKHR transform;
 		public uint instanceCustomIndex;
@@ -5649,7 +5649,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureDeviceAddressInfoKHR
+	public partial struct VkAccelerationStructureDeviceAddressInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5657,7 +5657,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureVersionInfoKHR
+	public partial struct VkAccelerationStructureVersionInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5665,7 +5665,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCopyAccelerationStructureInfoKHR
+	public partial struct VkCopyAccelerationStructureInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5675,7 +5675,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCopyAccelerationStructureToMemoryInfoKHR
+	public partial struct VkCopyAccelerationStructureToMemoryInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5685,7 +5685,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCopyMemoryToAccelerationStructureInfoKHR
+	public partial struct VkCopyMemoryToAccelerationStructureInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5695,7 +5695,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRayTracingPipelineInterfaceCreateInfoKHR
+	public partial struct VkRayTracingPipelineInterfaceCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5704,7 +5704,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineLibraryCreateInfoKHR
+	public partial struct VkPipelineLibraryCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5713,7 +5713,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceExtendedDynamicStateFeaturesEXT
+	public partial struct VkPhysicalDeviceExtendedDynamicStateFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5721,7 +5721,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkRenderPassTransformBeginInfoQCOM
+	public partial struct VkRenderPassTransformBeginInfoQCOM
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5729,7 +5729,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCopyCommandTransformInfoQCOM
+	public partial struct VkCopyCommandTransformInfoQCOM
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5737,7 +5737,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM
+	public partial struct VkCommandBufferInheritanceRenderPassTransformInfoQCOM
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5746,7 +5746,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceDiagnosticsConfigFeaturesNV
+	public partial struct VkPhysicalDeviceDiagnosticsConfigFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5754,7 +5754,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDeviceDiagnosticsConfigCreateInfoNV
+	public partial struct VkDeviceDiagnosticsConfigCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5762,7 +5762,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR
+	public partial struct VkPhysicalDeviceZeroInitializeWorkgroupMemoryFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5770,7 +5770,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceRobustness2FeaturesEXT
+	public partial struct VkPhysicalDeviceRobustness2FeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5780,7 +5780,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceRobustness2PropertiesEXT
+	public partial struct VkPhysicalDeviceRobustness2PropertiesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5789,7 +5789,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceImageRobustnessFeaturesEXT
+	public partial struct VkPhysicalDeviceImageRobustnessFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5797,7 +5797,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR
+	public partial struct VkPhysicalDeviceWorkgroupMemoryExplicitLayoutFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5808,7 +5808,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePortabilitySubsetFeaturesKHR
+	public partial struct VkPhysicalDevicePortabilitySubsetFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5830,7 +5830,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevicePortabilitySubsetPropertiesKHR
+	public partial struct VkPhysicalDevicePortabilitySubsetPropertiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5838,7 +5838,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDevice4444FormatsFeaturesEXT
+	public partial struct VkPhysicalDevice4444FormatsFeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5847,7 +5847,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferCopy2KHR
+	public partial struct VkBufferCopy2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5857,7 +5857,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageCopy2KHR
+	public partial struct VkImageCopy2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5869,7 +5869,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageBlit2KHR
+	public partial struct VkImageBlit2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5882,7 +5882,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferImageCopy2KHR
+	public partial struct VkBufferImageCopy2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5895,7 +5895,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageResolve2KHR
+	public partial struct VkImageResolve2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5907,7 +5907,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCopyBufferInfo2KHR
+	public partial struct VkCopyBufferInfo2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5918,7 +5918,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCopyImageInfo2KHR
+	public partial struct VkCopyImageInfo2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5931,7 +5931,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBlitImageInfo2KHR
+	public partial struct VkBlitImageInfo2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5945,7 +5945,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCopyBufferToImageInfo2KHR
+	public partial struct VkCopyBufferToImageInfo2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5957,7 +5957,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCopyImageToBufferInfo2KHR
+	public partial struct VkCopyImageToBufferInfo2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5969,7 +5969,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkResolveImageInfo2KHR
+	public partial struct VkResolveImageInfo2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5982,7 +5982,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT
+	public partial struct VkPhysicalDeviceShaderImageAtomicInt64FeaturesEXT
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -5991,7 +5991,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkFragmentShadingRateAttachmentInfoKHR
+	public partial struct VkFragmentShadingRateAttachmentInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6000,7 +6000,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineFragmentShadingRateStateCreateInfoKHR
+	public partial struct VkPipelineFragmentShadingRateStateCreateInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6010,7 +6010,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR
+	public partial struct VkPhysicalDeviceFragmentShadingRateFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6020,7 +6020,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR
+	public partial struct VkPhysicalDeviceFragmentShadingRatePropertiesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6044,7 +6044,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentShadingRateKHR
+	public partial struct VkPhysicalDeviceFragmentShadingRateKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6053,7 +6053,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceShaderTerminateInvocationFeaturesKHR
+	public partial struct VkPhysicalDeviceShaderTerminateInvocationFeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6061,7 +6061,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV
+	public partial struct VkPhysicalDeviceFragmentShadingRateEnumsFeaturesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6071,7 +6071,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV
+	public partial struct VkPhysicalDeviceFragmentShadingRateEnumsPropertiesNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6079,7 +6079,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV
+	public partial struct VkPipelineFragmentShadingRateEnumStateCreateInfoNV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6090,7 +6090,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkAccelerationStructureBuildSizesInfoKHR
+	public partial struct VkAccelerationStructureBuildSizesInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6100,7 +6100,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE
+	public partial struct VkPhysicalDeviceMutableDescriptorTypeFeaturesVALVE
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6108,14 +6108,14 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMutableDescriptorTypeListVALVE
+	public partial struct VkMutableDescriptorTypeListVALVE
 	{
 		public uint descriptorTypeCount;
 		public unsafe VkDescriptorType* pDescriptorTypes;
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMutableDescriptorTypeCreateInfoVALVE
+	public partial struct VkMutableDescriptorTypeCreateInfoVALVE
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6124,7 +6124,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkMemoryBarrier2KHR
+	public partial struct VkMemoryBarrier2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6135,7 +6135,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkImageMemoryBarrier2KHR
+	public partial struct VkImageMemoryBarrier2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6152,7 +6152,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkBufferMemoryBarrier2KHR
+	public partial struct VkBufferMemoryBarrier2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6168,7 +6168,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkDependencyInfoKHR
+	public partial struct VkDependencyInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6182,7 +6182,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSemaphoreSubmitInfoKHR
+	public partial struct VkSemaphoreSubmitInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6193,7 +6193,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCommandBufferSubmitInfoKHR
+	public partial struct VkCommandBufferSubmitInfoKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6202,7 +6202,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkSubmitInfo2KHR
+	public partial struct VkSubmitInfo2KHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6216,7 +6216,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkQueueFamilyCheckpointProperties2NV
+	public partial struct VkQueueFamilyCheckpointProperties2NV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6224,7 +6224,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkCheckpointData2NV
+	public partial struct VkCheckpointData2NV
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;
@@ -6233,7 +6233,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Sequential)]
-	public struct VkPhysicalDeviceSynchronization2FeaturesKHR
+	public partial struct VkPhysicalDeviceSynchronization2FeaturesKHR
 	{
 		public VkStructureType sType;
 		public unsafe void* pNext;

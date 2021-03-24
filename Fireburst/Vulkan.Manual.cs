@@ -3,8 +3,6 @@ using System.Runtime.InteropServices;
 
 namespace Fireburst
 {
-	// BUG TODO:   extension_enum_offset = 1000000000 + ((extension.attribute('number').content.to_i - 1) * 1000)
-
 	public static unsafe partial class Vulkan
 	{
 		public static delegate* unmanaged<void> vkGetInstanceProcAddr(VkInstance instance, string name)
@@ -42,7 +40,7 @@ namespace Fireburst
 
 			return queueFamilyProperties;
 		}
-		
+
 		public static ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties()
 		{
 			uint extensionCount = 0;
@@ -507,5 +505,35 @@ namespace Fireburst
 		public VkDeviceMemoryReportFlagsEXT flags;
 		public unsafe delegate* unmanaged<VkDeviceMemoryReportCallbackDataEXT*, void*, void> pfnUserCallback;
 		public unsafe void* pUserData;
+	}
+
+	public partial struct VkExtensionProperties
+	{
+		public unsafe string ExtensionName
+		{
+			get
+			{
+				fixed (byte* ptr = extensionName) return VulkanUtility.GetString(ptr);
+			}
+		}
+	}
+
+	public partial struct VkLayerProperties
+	{
+		public unsafe string LayerName
+		{
+			get
+			{
+				fixed (byte* ptr = layerName) return VulkanUtility.GetString(ptr);
+			}
+		}
+
+		public unsafe string Description
+		{
+			get
+			{
+				fixed (byte* ptr = description) return VulkanUtility.GetString(ptr);
+			}
+		}
 	}
 }

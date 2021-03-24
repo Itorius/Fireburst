@@ -177,17 +177,20 @@ namespace FireburstGenerator
 			return string.Join("_", parts.Select(s => s.ToUpper()));
 		}
 
-		private static string GetName(string value, string enumPrefix)
+		private static string GetName(string value, string enumPrefix, bool removeExt = true)
 		{
 			if (KnownNames.TryGetValue(value, out string knownName)) return knownName;
 			if (value.IndexOf(enumPrefix) != 0) return value;
 
-			foreach (string extension in IgnoredExtensions)
+			if (removeExt)
 			{
-				if (value.EndsWith(extension))
+				foreach (string extension in IgnoredExtensions)
 				{
-					value = value[..^extension.Length];
-					break;
+					if (value.EndsWith(extension))
+					{
+						value = value[..^extension.Length];
+						break;
+					}
 				}
 			}
 
@@ -217,8 +220,8 @@ namespace FireburstGenerator
 			registry.Enums.RemoveAt(0);
 			var grouped = registry.Enums.GroupBy(x => x.Type).ToDictionary(x => x.Key, x => x.ToList());
 
-			GenerateEnums(outputDir, grouped["enum"]);
-			GenerateFlags(outputDir, grouped["bitmask"]);
+			GenerateEnums(outputDir, grouped["enum"], registry);
+			GenerateFlags(outputDir, grouped["bitmask"], registry);
 
 			CodeWriter writer = new("Fireburst", "System");
 
@@ -257,9 +260,11 @@ namespace FireburstGenerator
 			File.WriteAllText(outputDir + "Vulkan.EmptyEnums.cs", writer.ToString());
 		}
 
-		private static void GenerateFlags(string outputDir, IEnumerable<Enum> enums)
+		private static void GenerateFlags(string outputDir, IEnumerable<Enum> enums, Registry registry)
 		{
 			CodeWriter writer = new("Fireburst", "System");
+
+			var ext = registry.Extensions.Extension.Select(x => { return (x.Number, x.Require.SelectMany(x => x.Enum).GroupBy(x => x.Extends ?? "").ToDictionary(x => x.Key, x => x.ToList())); }).ToList();
 
 			foreach (Enum @enum in enums)
 			{
@@ -294,6 +299,39 @@ namespace FireburstGenerator
 						writer.WriteLine($"{GetName(member.Name, prefix)} = {val},");
 					}
 
+					foreach (var (number, enumerable) in ext)
+					{
+						List<string> added = new ();
+						
+						if (enumerable.ContainsKey(@enum.Name))
+						{
+							int extension_enum_offset = 1000000000 + (int.Parse(number) - 1) * 1000;
+
+							foreach (EnumMember member in enumerable[@enum.Name])
+							{
+								if (member.Extnumber != null||added.Contains(member.Name)) continue;
+								added.Add(member.Name);
+
+								if (member.Bitpos != null)
+								{
+									int dir = member.Dir != null ? -1 : 1;
+									var val = ((1 << int.Parse(member.Bitpos)) + extension_enum_offset) * dir;
+									string sname = member.Name;
+
+									writer.WriteLine($"{GetName(sname, prefix, false)} = {val},");
+								}
+								else if (member.Offset != null)
+								{
+									int dir = member.Dir != null ? -1 : 1;
+									var val = (int.Parse(member.Offset) + extension_enum_offset) * dir;
+									string sname = member.Name;
+
+									writer.WriteLine($"{GetName(sname, prefix, false)} = {val},");
+								}
+							}
+						}
+					}
+
 					if (name == "VkColorComponentFlags")
 					{
 						writer.WriteLine("All = R | G | B | A");
@@ -308,9 +346,11 @@ namespace FireburstGenerator
 			File.WriteAllText(outputDir + "Vulkan.Flags.cs", writer.ToString());
 		}
 
-		private static void GenerateEnums(string outputDir, IEnumerable<Enum> enums)
+		private static void GenerateEnums(string outputDir, IEnumerable<Enum> enums, Registry registry)
 		{
 			CodeWriter writer = new("Fireburst", "System");
+
+			var ext = registry.Extensions.Extension.Select(x => { return (x.Number, x.Require.SelectMany(x => x.Enum).GroupBy(x => x.Extends ?? "").ToDictionary(x => x.Key, x => x.ToList())); }).ToList();
 
 			foreach (Enum @enum in enums)
 			{
@@ -337,10 +377,53 @@ namespace FireburstGenerator
 					}
 				}
 
+				foreach (var (number, enumerable) in ext)
+				{
+					if (enumerable.ContainsKey(name))
+					{
+						int extension_enum_offset = 1000000000 + (int.Parse(number) - 1) * 1000;
+
+						foreach (EnumMember member in enumerable[name])
+						{
+							if (member.Offset == null || member.Extnumber != null) continue;
+
+							int dir = member.Dir != null ? -1 : 1;
+							// if (member.Extnumber != null) val = (int.Parse(member.Offset) + 1000000000 + (int.Parse(member.Extnumber) - 1) * 1000) * dir;
+							var val = (int.Parse(member.Offset) + extension_enum_offset) * dir;
+							string sname = member.Name;
+
+							writer.WriteLine($"{GetName(sname, prefix, false)} = {val},");
+						}
+					}
+				}
+
 				writer.Unindent();
 				writer.WriteLine("}");
 				writer.WriteLine();
+
+				// foreach (Extension extension in registry.Extensions.Extension)
+				// {
+				// 	int extension_enum_offset = 1000000000 + (int.Parse(extension.Number) - 1) * 1000;
+				//
+				// 	foreach (Require require in extension.Require)
+				// 	{
+				// 		foreach (EnumMember member in require.Enum.Where(x=>x.Extends == name))
+				// 		{
+				// 			if (member.Offset == null) continue;
+				//
+				// 			int offset = 0;
+				// 			int dir = member.Dir != null ? -1 : 1;
+				// 			if (member.Extnumber != null) offset = (int.Parse(member.Offset) + 1000000000 + (int.Parse(member.Extnumber) - 1) * 1000) * dir;
+				// 			else offset = (int.Parse(member.Offset) + extension_enum_offset) * dir;
+				// 			string extends = member.Extends;
+				// 			string name = member.Name;
+				//
+				// 			Console.WriteLine($"{GetName(name, GetPrefix(extends))} = {offset}");
+				// 		}
+				// 	}
+				// }
 			}
+
 
 			File.WriteAllText(outputDir + "Vulkan.Enums.cs", writer.ToString());
 		}

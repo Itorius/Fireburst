@@ -41,9 +41,7 @@ namespace TestProject
 			var extensionProp = Vulkan.vkEnumerateInstanceExtensionProperties();
 			foreach (VkExtensionProperties properties in extensionProp)
 			{
-				if (properties.extensionName == null) continue;
-
-				Console.WriteLine(VulkanUtility.GetString(properties.extensionName));
+				Console.WriteLine(properties.ExtensionName);
 			}
 		}
 	}

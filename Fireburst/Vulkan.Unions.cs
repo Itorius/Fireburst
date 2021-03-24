@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace Fireburst
 {
 	[StructLayout(LayoutKind.Explicit)]
-	public struct VkClearColorValue
+	public partial struct VkClearColorValue
 	{
 		[FieldOffset(0)]
 		public float float32;
@@ -15,7 +15,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
-	public struct VkClearValue
+	public partial struct VkClearValue
 	{
 		[FieldOffset(0)]
 		public VkClearColorValue color;
@@ -24,7 +24,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
-	public struct VkPerformanceCounterResultKHR
+	public partial struct VkPerformanceCounterResultKHR
 	{
 		[FieldOffset(0)]
 		public int int32;
@@ -41,7 +41,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
-	public struct VkPerformanceValueDataINTEL
+	public partial struct VkPerformanceValueDataINTEL
 	{
 		[FieldOffset(0)]
 		public uint value32;
@@ -56,7 +56,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
-	public struct VkPipelineExecutableStatisticValueKHR
+	public partial struct VkPipelineExecutableStatisticValueKHR
 	{
 		[FieldOffset(0)]
 		public VkBool32 b32;
@@ -69,7 +69,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
-	public struct VkDeviceOrHostAddressKHR
+	public partial struct VkDeviceOrHostAddressKHR
 	{
 		[FieldOffset(0)]
 		public IntPtr deviceAddress;
@@ -78,7 +78,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
-	public struct VkDeviceOrHostAddressConstKHR
+	public partial struct VkDeviceOrHostAddressConstKHR
 	{
 		[FieldOffset(0)]
 		public IntPtr deviceAddress;
@@ -87,7 +87,7 @@ namespace Fireburst
 	}
 
 	[StructLayout(LayoutKind.Explicit)]
-	public struct VkAccelerationStructureGeometryDataKHR
+	public partial struct VkAccelerationStructureGeometryDataKHR
 	{
 		[FieldOffset(0)]
 		public VkAccelerationStructureGeometryTrianglesDataKHR triangles;

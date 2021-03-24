@@ -16,6 +16,8 @@ namespace Fireburst
 		Compute = 2,
 		Transfer = 4,
 		SparseBinding = 8,
+		Reserved6KHR = 1000023064,
+		Reserved5KHR = 1000024032,
 	}
 
 	[Flags]
@@ -48,6 +50,8 @@ namespace Fireburst
 		HostCoherent = 4,
 		HostCached = 8,
 		LazilyAllocated = 16,
+		DeviceCoherentAMD = 1000229064,
+		DeviceUncachedAMD = 1000229128,
 	}
 
 	[Flags]
@@ -55,6 +59,7 @@ namespace Fireburst
 	{
 		None = 0,
 		DeviceLocal = 1,
+		Reserved2KHR = 1000308004,
 	}
 
 	[Flags]
@@ -78,6 +83,17 @@ namespace Fireburst
 		HostWrite = 16384,
 		MemoryRead = 32768,
 		MemoryWrite = 65536,
+		TransformFeedbackWriteEXT = 1033582432,
+		TransformFeedbackCounterReadEXT = 1067136864,
+		TransformFeedbackCounterWriteEXT = 1134245728,
+		ConditionalRenderingReadEXT = 1001129576,
+		ColorAttachmentReadNoncoherentEXT = 1000672288,
+		AccelerationStructureReadKHR = 1002247152,
+		AccelerationStructureWriteKHR = 1004344304,
+		ShadingRateImageReadNV = 1008552608,
+		FragmentDensityMapReadEXT = 1016995216,
+		CommandPreprocessReadNV = 1000408072,
+		CommandPreprocessWriteNV = 1000539144,
 	}
 
 	[Flags]
@@ -93,6 +109,17 @@ namespace Fireburst
 		IndexBuffer = 64,
 		VertexBuffer = 128,
 		IndirectBuffer = 256,
+		Reserved15KHR = 1000055768,
+		Reserved16KHR = 1000088536,
+		Reserved13KHR = 1000032192,
+		Reserved14KHR = 1000040384,
+		TransformFeedbackBufferEXT = 1000030048,
+		TransformFeedbackCounterBufferEXT = 1000032096,
+		ConditionalRenderingEXT = 1000081512,
+		AccelerationStructureBuildInputReadOnlyKHR = 1000674288,
+		AccelerationStructureStorageKHR = 1001198576,
+		ShaderBindingTableKHR = 1000348024,
+		Reserved18Qcom = 1000434144,
 	}
 
 	[Flags]
@@ -102,6 +129,7 @@ namespace Fireburst
 		SparseBinding = 1,
 		SparseResidency = 2,
 		SparseAliased = 4,
+		Reserved5NV = 1000371032,
 	}
 
 	[Flags]
@@ -116,6 +144,14 @@ namespace Fireburst
 		Compute = 32,
 		AllGraphics = 0x0000001F,
 		All = 0x7FFFFFFF,
+		RaygenKHR = 1000347256,
+		AnyHitKHR = 1000347512,
+		ClosestHitKHR = 1000348024,
+		MissKHR = 1000349048,
+		IntersectionKHR = 1000351096,
+		CallableKHR = 1000355192,
+		TaskNV = 1000202064,
+		MeshNV = 1000202128,
 	}
 
 	[Flags]
@@ -130,6 +166,16 @@ namespace Fireburst
 		DepthStencilAttachment = 32,
 		TransientAttachment = 64,
 		InputAttachment = 128,
+		Reserved13KHR = 1000031192,
+		Reserved14KHR = 1000039384,
+		Reserved15KHR = 1000055768,
+		Reserved10KHR = 1000025024,
+		Reserved11KHR = 1000026048,
+		Reserved12KHR = 1000028096,
+		ShadingRateImageNV = 1000164256,
+		Reserved16Qcom = 1000237536,
+		Reserved17Qcom = 1000303072,
+		FragmentDensityMapEXT = 1000218512,
 	}
 
 	[Flags]
@@ -141,6 +187,10 @@ namespace Fireburst
 		SparseAliased = 4,
 		MutableFormat = 8,
 		CubeCompatible = 16,
+		CornerSampledNV = 1000058192,
+		SampleLocationsCompatibleDepthEXT = 1000147096,
+		SubsampledEXT = 1000234384,
+		Reserved15NV = 1000403768,
 	}
 
 	[Flags]
@@ -162,6 +212,21 @@ namespace Fireburst
 		DisableOptimization = 1,
 		AllowDerivatives = 2,
 		Derivative = 4,
+		RayTracingNoNullAnyHitShadersKHR = 1000363384,
+		RayTracingNoNullClosestHitShadersKHR = 1000379768,
+		RayTracingNoNullMissShadersKHR = 1000412536,
+		RayTracingNoNullIntersectionShadersKHR = 1000478072,
+		RayTracingSkipTrianglesKHR = 1000351096,
+		RayTracingSkipAabbsKHR = 1000355192,
+		RayTracingShaderGroupHandleCaptureReplayKHR = 1000871288,
+		DeferCompileNV = 1000165032,
+		CaptureStatisticsKHR = 1000269064,
+		CaptureInternalRepresentationsKHR = 1000269128,
+		IndirectBindableNV = 1000539144,
+		LibraryKHR = 1000292048,
+		FailOnPipelineCompileRequiredEXT = 1000297256,
+		EarlyReturnOnFailureEXT = 1000297512,
+		Reserved20NV = 1001375576,
 	}
 
 	[Flags]
@@ -205,6 +270,14 @@ namespace Fireburst
 		BlitSrc = 1024,
 		BlitDst = 2048,
 		SampledImageFilterLinear = 4096,
+		SampledImageFilterCubicImg = 1000023192,
+		Reserved27KHR = 1134240728,
+		Reserved28KHR = 1268458456,
+		Reserved25KHR = 1033578432,
+		Reserved26KHR = 1067132864,
+		AccelerationStructureVertexBufferKHR = 1537020912,
+		FragmentDensityMapEXT = 1016995216,
+		FragmentShadingRateAttachmentKHR = 2073967824,
 	}
 
 	[Flags]
@@ -258,6 +331,10 @@ namespace Fireburst
 		Depth = 2,
 		Stencil = 4,
 		Metadata = 8,
+		MemoryPlane0EXT = 1000158128,
+		MemoryPlane1EXT = 1000158256,
+		MemoryPlane2EXT = 1000158512,
+		MemoryPlane3EXT = 1000159024,
 	}
 
 	[Flags]
@@ -297,6 +374,15 @@ namespace Fireburst
 		Host = 16384,
 		AllGraphics = 32768,
 		AllCommands = 65536,
+		TransformFeedbackEXT = 1016805216,
+		ConditionalRenderingEXT = 1000343144,
+		AccelerationStructureBuildKHR = 1033704432,
+		RayTracingShaderKHR = 1002444152,
+		ShadingRateImageNV = 1004358304,
+		TaskShaderNV = 1000726288,
+		MeshShaderNV = 1001250576,
+		FragmentDensityProcessEXT = 1008606608,
+		CommandPreprocessNV = 1000408072,
 	}
 
 	[Flags]
@@ -355,6 +441,7 @@ namespace Fireburst
 	{
 		None = 0,
 		FreeDescriptorSet = 1,
+		HostOnlyValve = 1000351004,
 	}
 
 	[Flags]
@@ -455,6 +542,7 @@ namespace Fireburst
 		ShuffleRelative = 32,
 		Clustered = 64,
 		Quad = 128,
+		PartitionedNV = 1000198256,
 	}
 
 	[Flags]
@@ -496,6 +584,11 @@ namespace Fireburst
 		D3d11TextureKmt = 16,
 		D3d12Heap = 32,
 		D3d12Resource = 64,
+		DmaBufEXT = 1000125512,
+		AndroidHardwareBufferAndroid = 1000130024,
+		HostAllocationEXT = 1000178128,
+		HostMappedForeignMemoryEXT = 1000178256,
+		ZirconVmoFuchsia = 1000366048,
 	}
 
 	[Flags]
@@ -516,6 +609,9 @@ namespace Fireburst
 		OpaqueWin32Kmt = 4,
 		D3d12Fence = 8,
 		SyncFd = 16,
+		ZirconEventFuchsia = 1000365128,
+		Reserved5NV = 1000374032,
+		Reserved6NV = 1000374064,
 	}
 
 	[Flags]
@@ -541,6 +637,8 @@ namespace Fireburst
 		OpaqueWin32 = 2,
 		OpaqueWin32Kmt = 4,
 		SyncFd = 8,
+		Reserved4NV = 1000373016,
+		Reserved5NV = 1000373032,
 	}
 
 	[Flags]
@@ -631,6 +729,7 @@ namespace Fireburst
 		UpdateUnusedWhilePending = 2,
 		PartiallyBound = 4,
 		VariableDescriptorCount = 8,
+		Reserved4Qcom = 1000368016,
 	}
 
 	[Flags]
@@ -677,6 +776,7 @@ namespace Fireburst
 		PreferFastTrace = 4,
 		PreferFastBuild = 8,
 		LowMemory = 16,
+		Reserved5NV = 1000327032,
 	}
 
 	[Flags]
@@ -684,6 +784,7 @@ namespace Fireburst
 	{
 		None = 0,
 		DeviceAddressCaptureReplay = 1,
+		Reserved2NV = 1000327004,
 	}
 
 	[Flags]
@@ -751,6 +852,8 @@ namespace Fireburst
 		Tracing = 4,
 		AdditionalFeatures = 8,
 		ModifyingFeatures = 16,
+		DebugReportingEXT = 1000245032,
+		DebugMarkersEXT = 1000245064,
 	}
 
 	[Flags]
@@ -777,6 +880,21 @@ namespace Fireburst
 		ShaderSampledRead = 4294967296,
 		ShaderStorageRead = 8589934592,
 		ShaderStorageWrite = 17179869184,
+		ReservedRead35KHR = 1000023008,
+		ReservedWrite36KHR = 1000023016,
+		ReservedRead37KHR = 1000024032,
+		ReservedWrite38KHR = 1000024064,
+		TransformFeedbackWriteEXT = 1033868432,
+		TransformFeedbackCounterReadEXT = 1067422864,
+		TransformFeedbackCounterWriteEXT = 1134531728,
+		ConditionalRenderingReadEXT = 1001362576,
+		CommandPreprocessReadNV = 1000445072,
+		CommandPreprocessWriteNV = 1000576144,
+		FragmentShadingRateAttachmentReadKHR = 1008702608,
+		AccelerationStructureReadKHR = 1002411152,
+		AccelerationStructureWriteKHR = 1004508304,
+		FragmentDensityMapReadEXT = 1017091216,
+		ColorAttachmentReadNoncoherentEXT = 1000838288,
 	}
 
 	[Flags]
@@ -807,6 +925,17 @@ namespace Fireburst
 		IndexInput = 68719476736,
 		VertexAttributeInput = 137438953472,
 		PreRasterizationShaders = 274877906944,
+		Reserved26KHR = 1067131864,
+		Reserved27KHR = 1134241728,
+		TransformFeedbackEXT = 1017091216,
+		ConditionalRenderingEXT = 1000576144,
+		CommandPreprocessNV = 1000445072,
+		FragmentShadingRateAttachmentKHR = 1004508304,
+		AccelerationStructureBuildKHR = 1033868432,
+		RayTracingShaderKHR = 1002411152,
+		FragmentDensityProcessEXT = 1008702608,
+		TaskShaderNV = 1000838288,
+		MeshShaderNV = 1001362576,
 	}
 
 	[Flags]
