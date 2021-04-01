@@ -46,11 +46,6 @@ namespace Fireburst
 			}
 		}
 
-		public static string GetExtensionName(this VkExtensionProperties properties)
-		{
-			return GetString(properties.extensionName);
-		}
-
 		public static string GetLayerName(this VkLayerProperties properties)
 		{
 			return GetString(properties.layerName);

@@ -10,7 +10,14 @@ namespace Fireburst
 			int byteCount = VulkanUtility.GetMaxByteCount(name);
 			byte* stringPtr = stackalloc byte[byteCount];
 			VulkanUtility.StringToPointer(name, stringPtr, byteCount);
-			return (delegate* unmanaged<void>)vkGetInstanceProcAddr(instance, stringPtr);
+			return (delegate* unmanaged<void>)vkGetInstanceProcAddr(stringPtr, instance);
+		}
+
+		public static VkResult vkEnumerateInstanceVersion(out VkVersion version)
+		{
+			var result = vkEnumerateInstanceVersion_ptr(out uint v);
+			version = new VkVersion(v);
+			return result;
 		}
 
 		public static ReadOnlySpan<VkPhysicalDevice> vkEnumeratePhysicalDevices(VkInstance instance)
@@ -44,12 +51,26 @@ namespace Fireburst
 		public static ReadOnlySpan<VkExtensionProperties> vkEnumerateInstanceExtensionProperties()
 		{
 			uint extensionCount = 0;
-			vkEnumerateInstanceExtensionProperties(null, &extensionCount, null).CheckResult();
+			vkEnumerateInstanceExtensionProperties(&extensionCount).CheckResult();
 
 			ReadOnlySpan<VkExtensionProperties> extensions = new VkExtensionProperties[extensionCount];
 			fixed (VkExtensionProperties* propertiesPtr = extensions)
 			{
-				vkEnumerateInstanceExtensionProperties(null, &extensionCount, propertiesPtr).CheckResult();
+				vkEnumerateInstanceExtensionProperties(&extensionCount, pProperties: propertiesPtr).CheckResult();
+			}
+
+			return extensions;
+		}
+
+		public static ReadOnlySpan<VkExtensionProperties> vkEnumerateDeviceExtensionProperties(VkPhysicalDevice device)
+		{
+			uint extensionCount = 0;
+			vkEnumerateDeviceExtensionProperties(device, &extensionCount).CheckResult();
+
+			ReadOnlySpan<VkExtensionProperties> extensions = new VkExtensionProperties[extensionCount];
+			fixed (VkExtensionProperties* propertiesPtr = extensions)
+			{
+				vkEnumerateDeviceExtensionProperties(device, &extensionCount, pProperties: propertiesPtr).CheckResult();
 			}
 
 			return extensions;
@@ -83,16 +104,22 @@ namespace Fireburst
 			return properties;
 		}
 
+		public static VkResult vkCreateGraphicsPipeline(VkDevice device, VkGraphicsPipelineCreateInfo createInfo, out VkPipeline pipeline)
+		{
+			fixed (VkPipeline* ptr = &pipeline)
+				return vkCreateGraphicsPipelines(device, 1, createInfo, ptr);
+		}
+
 		public static VkResult vkQueueSubmit(VkQueue queue, VkSubmitInfo submit, VkFence fence)
 		{
-			return vkQueueSubmit(queue, 1, &submit, fence);
+			return vkQueueSubmit(queue, &submit, 1, fence);
 		}
 
 		public static VkResult vkQueueSubmit(VkQueue queue, ReadOnlySpan<VkSubmitInfo> submits, VkFence fence)
 		{
 			fixed (VkSubmitInfo* submitsPtr = submits)
 			{
-				return vkQueueSubmit(queue, (uint)submits.Length, submitsPtr, fence);
+				return vkQueueSubmit(queue, submitsPtr, (uint)submits.Length, fence);
 			}
 		}
 
@@ -152,14 +179,14 @@ namespace Fireburst
 
 		public static VkResult vkQueueBindSparse(VkQueue queue, VkBindSparseInfo bindInfo, VkFence fence)
 		{
-			return vkQueueBindSparse(queue, 1, &bindInfo, fence);
+			return vkQueueBindSparse(queue, &bindInfo, 1, fence);
 		}
 
 		public static VkResult vkQueueBindSparse(VkQueue queue, ReadOnlySpan<VkBindSparseInfo> bindInfo, VkFence fence)
 		{
 			fixed (VkBindSparseInfo* bindInfoPtr = bindInfo)
 			{
-				return vkQueueBindSparse(queue, (uint)bindInfo.Length, bindInfoPtr, fence);
+				return vkQueueBindSparse(queue, bindInfoPtr, (uint)bindInfo.Length, fence);
 			}
 		}
 
@@ -493,7 +520,7 @@ namespace Fireburst
 		public VkDebugUtilsMessengerCreateFlagsEXT flags;
 		public VkDebugUtilsMessageSeverityFlagsEXT messageSeverity;
 		public VkDebugUtilsMessageTypeFlagsEXT messageType;
-		public unsafe delegate* unmanaged<VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void*, VkBool32 > pfnUserCallback;
+		public unsafe delegate* managed<VkDebugUtilsMessageSeverityFlagsEXT, VkDebugUtilsMessageTypeFlagsEXT, VkDebugUtilsMessengerCallbackDataEXT*, void*, VkBool32 > pfnUserCallback;
 		public unsafe void* pUserData;
 	}
 
@@ -534,6 +561,57 @@ namespace Fireburst
 			{
 				fixed (byte* ptr = description) return VulkanUtility.GetString(ptr);
 			}
+		}
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public unsafe struct VkClearColorValue
+	{
+		[FieldOffset(0)] public fixed float float32[4];
+		[FieldOffset(0)] public fixed int int32[4];
+		[FieldOffset(0)] public fixed uint uint32[4];
+
+		public VkClearColorValue(float r, float g, float b, float a = 1.0f)
+		{
+			float32[0] = r;
+			float32[1] = g;
+			float32[2] = b;
+			float32[3] = a;
+		}
+
+		public VkClearColorValue(int r, int g, int b, int a = 255)
+		{
+			int32[0] = r;
+			int32[1] = g;
+			int32[2] = b;
+			int32[3] = a;
+		}
+
+		public VkClearColorValue(uint r, uint g, uint b, uint a = 255)
+		{
+			uint32[0] = r;
+			uint32[1] = g;
+			uint32[2] = b;
+			uint32[3] = a;
+		}
+	}
+
+	[StructLayout(LayoutKind.Explicit)]
+	public struct VkClearValue
+	{
+		[FieldOffset(0)] public VkClearColorValue color;
+		[FieldOffset(0)] public VkClearDepthStencilValue depthStencil;
+
+		public VkClearValue(float r, float g, float b, float a = 1.0f)
+		{
+			color = new VkClearColorValue(r, g, b, a);
+			depthStencil = default;
+		}
+		
+		public VkClearValue(int r, int g, int b, int a = 255)
+		{
+			color = new VkClearColorValue(r, g, b, a);
+			depthStencil = default;
 		}
 	}
 }

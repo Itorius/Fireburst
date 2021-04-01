@@ -53,10 +53,10 @@ namespace Fireburst
 
 		private static void GenLoadLoader(VkInstance context, LoadFunction load)
 		{
-			vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, VkInstance*, VkResult>)load(context, "vkCreateInstance");
+			vkCreateInstance_ptr = (delegate* unmanaged<VkInstanceCreateInfo*, VkAllocationCallbacks*, out VkInstance, VkResult>)load(context, "vkCreateInstance");
 			vkEnumerateInstanceExtensionProperties_ptr = (delegate* unmanaged<byte*, uint*, VkExtensionProperties*, VkResult>)load(context, "vkEnumerateInstanceExtensionProperties");
 			vkEnumerateInstanceLayerProperties_ptr = (delegate* unmanaged<uint*, VkLayerProperties*, VkResult>)load(context, "vkEnumerateInstanceLayerProperties");
-			vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<uint*, VkResult>)load(context, "vkEnumerateInstanceVersion");
+			vkEnumerateInstanceVersion_ptr = (delegate* unmanaged<out uint, VkResult>)load(context, "vkEnumerateInstanceVersion");
 		}
 	}
 }

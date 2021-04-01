@@ -38,12 +38,12 @@ namespace Fireburst
 
 	[StructLayout(LayoutKind.Sequential)]
 	// Vector2ui
-	public readonly struct Vector2ui
+	public struct Vector2ui
 	{
 		public static readonly Vector2ui Zero = new(0, 0);
 
-		public readonly uint width;
-		public readonly uint height;
+		public uint width;
+		public uint height;
 
 		public Vector2ui(uint width, uint height)
 		{

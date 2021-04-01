@@ -204,7 +204,7 @@ namespace FireburstGenerator
 		[XmlElement(ElementName = "name")] public string Name { get; set; }
 
 		[XmlAttribute(AttributeName = "optional")]
-		public string Optional { get; set; }
+		public string? Optional { get; set; }
 
 		[XmlAttribute(AttributeName = "externsync")]
 		public string Externsync { get; set; }
@@ -213,6 +213,9 @@ namespace FireburstGenerator
 
 		[XmlAttribute(AttributeName = "noautovalidity")]
 		public string Noautovalidity { get; set; }
+		
+		[XmlText]
+		public string? Text { get; set; }
 	}
 
 	[XmlRoot(ElementName = "command")]

@@ -7,7 +7,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <ProjectReference Include="..\..\glfw-net\GLFW.NET\GLFW.NET.csproj" />
 	  <ProjectReference Include="..\Fireburst\Fireburst.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="frag.spv" />
+	  <Content Include="frag.spv">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
+	  <None Remove="vert.spv" />
+	  <Content Include="vert.spv">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </Content>
 	</ItemGroup>
 
 </Project>

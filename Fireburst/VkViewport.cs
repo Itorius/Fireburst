@@ -2,9 +2,9 @@ using System.Numerics;
 
 namespace Fireburst
 {
-	public readonly struct VkViewport
+	public struct VkViewport
 	{
-		public readonly float x, y, width, height, minDepth, maxDepth;
+		public float x, y, width, height, minDepth, maxDepth;
 
 		public VkViewport(float width, float height)
 		{

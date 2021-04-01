@@ -4,26 +4,6 @@ using System.Runtime.InteropServices;
 namespace Fireburst
 {
 	[StructLayout(LayoutKind.Explicit)]
-	public partial struct VkClearColorValue
-	{
-		[FieldOffset(0)]
-		public float float32;
-		[FieldOffset(0)]
-		public int int32;
-		[FieldOffset(0)]
-		public uint uint32;
-	}
-
-	[StructLayout(LayoutKind.Explicit)]
-	public partial struct VkClearValue
-	{
-		[FieldOffset(0)]
-		public VkClearColorValue color;
-		[FieldOffset(0)]
-		public VkClearDepthStencilValue depthStencil;
-	}
-
-	[StructLayout(LayoutKind.Explicit)]
 	public partial struct VkPerformanceCounterResultKHR
 	{
 		[FieldOffset(0)]

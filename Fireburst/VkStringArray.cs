@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.InteropServices;
 
 namespace Fireburst
@@ -9,14 +10,20 @@ namespace Fireburst
 		private readonly VkString[] data;
 		private bool disposed;
 
-		public VkStringArray(string[] array) : this(array.Length)
+		public VkStringArray(params string[] array) : this(array.Length)
 		{
 			for (int i = 0; i < array.Length; i++) this[i] = array[i];
 		}
 
-		public VkStringArray(List<string> array) : this(array.Count)
+		public VkStringArray(IEnumerable<string> array)
 		{
-			for (int i = 0; i < array.Count; i++) this[i] = array[i];
+			var list = array.ToList();
+			
+			Length = (uint)list.Count;
+			Pointer = Marshal.AllocHGlobal((int)(sizeof(IntPtr) * Length));
+			data = new VkString[Length];
+			
+			for (int i = 0; i < list.Count; i++) this[i] = list[i];
 		}
 
 		private VkStringArray(int length)

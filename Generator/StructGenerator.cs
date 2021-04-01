@@ -45,7 +45,9 @@ namespace FireburstGenerator
 			"VkViewport",
 			"VkRect2D",
 			"VkComponentMapping",
-			"VkTransformMatrixKHR"
+			"VkTransformMatrixKHR",
+			"VkClearColorValue",
+			"VkClearValue"
 		};
 
 		private static readonly HashSet<string> ValidFixedBufferTypes = new()

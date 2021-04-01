@@ -2,10 +2,10 @@ using System;
 
 namespace Fireburst
 {
-	public readonly struct VkRect2D : IEquatable<VkRect2D>
+	public struct VkRect2D : IEquatable<VkRect2D>
 	{
-		public readonly Vector2i offset;
-		public readonly Vector2ui extent;
+		public Vector2i offset;
+		public Vector2ui extent;
 
 		public static readonly VkRect2D Zero = new(Vector2i.Zero, Vector2ui.Zero);
 
