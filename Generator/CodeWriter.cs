@@ -1,62 +1,61 @@
 using System;
 using System.Text;
 
-namespace FireburstGenerator
+namespace FireburstGenerator;
+
+public class CodeWriter
 {
-	public class CodeWriter
+	private StringBuilder builder;
+	private int indentCount;
+
+	public CodeWriter(string @namespace, params string[] usings)
 	{
-		private StringBuilder builder;
-		private int indentCount;
+		builder = new StringBuilder();
 
-		public CodeWriter(string @namespace, params string[] usings)
+		WriteLine("// ReSharper disable FieldCanBeMadeReadOnly.Global");
+		WriteLine("// ReSharper disable PartialTypeWithSinglePart");
+		WriteLine();
+
+		foreach (string @using in usings)
 		{
-			builder = new StringBuilder();
-			foreach (string @using in usings)
-			{
-				WriteLine($"using {@using};");
-			}
-
-			WriteLine();
-			WriteLine($"namespace {@namespace}");
-			WriteLine("{");
-			Indent();
+			WriteLine($"using {@using};");
 		}
 
-		public void Indent()
-		{
-			indentCount++;
-		}
+		WriteLine();
+		WriteLine($"namespace {@namespace};");
+	}
 
-		public void Unindent()
-		{
-			indentCount--;
-			if (indentCount < 0) throw new Exception("Indentation level can't be negative!");
-		}
+	public void Indent()
+	{
+		indentCount++;
+	}
 
-		public void WriteLine(string text)
-		{
-			builder.Append('\t', indentCount);
-			builder.Append(text);
-			builder.Append('\n');
-		}
+	public void Unindent()
+	{
+		indentCount--;
+		if (indentCount < 0) throw new Exception("Indentation level can't be negative!");
+	}
 
-		public void Write(string text)
-		{
-			builder.Append('\t', indentCount);
-			builder.Append(text);
-		}
+	public void WriteLine(string text)
+	{
+		builder.Append('\t', indentCount);
+		builder.Append(text);
+		builder.Append('\n');
+	}
 
-		public void WriteLine()
-		{
-			builder.Append('\n');
-		}
+	public void Write(string text)
+	{
+		builder.Append('\t', indentCount);
+		builder.Append(text);
+	}
 
-		public override string ToString()
-		{
-			Unindent();
-			Write("}");
+	public void WriteLine()
+	{
+		builder.Append('\n');
+	}
 
-			return builder.ToString();
-		}
+	public override string ToString()
+	{
+		return builder.ToString();
 	}
 }

@@ -4,33 +4,55 @@ using System.Linq;
 using System.Reflection;
 using System.Xml.Serialization;
 
-namespace FireburstGenerator
+namespace FireburstGenerator;
+
+public interface IGenerator
 {
-	public interface IGenerator
-	{
-		void Generate(Registry registry, string outputDir);
+	void Generate(Registry registry, string outputDir);
 
-		int Priority()
-		{
-			return 0;
-		}
+	int Priority()
+	{
+		return 0;
 	}
+}
 
-	public static class Program
+public static class Program
+{
+	public static void Main(string[] args)
 	{
-		public static void Main(string[] args)
+		XmlSerializer serializer = new(typeof(Registry));
+
 		{
-			XmlSerializer serializer = new(typeof(Registry));
+			using StreamReader reader = new("video.xml");
+			Registry? registry = (Registry?)serializer.Deserialize(reader);
 
-			using StreamReader reader = new("vk.xml");
-			Registry registry = (Registry)serializer.Deserialize(reader);
-
-			foreach (IGenerator generator in Assembly.GetExecutingAssembly().GetTypes()
-				.Where(x => x.GetInterface("IGenerator") != null)
-				.Select(x => (IGenerator)Activator.CreateInstance(x))
-				.OrderByDescending(x => x.Priority()))
+			if (registry is not null)
 			{
-				generator.Generate(registry, "../../../../Fireburst/");
+				if (!Directory.Exists("../Fireburst/Vulkan.Video/")) Directory.CreateDirectory("../Fireburst/Vulkan.Video/");
+				
+				var generatorTypes = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.GetInterface("IGenerator") is not null);
+
+				foreach (IGenerator? generator in generatorTypes.Select(x => (IGenerator?)Activator.CreateInstance(x)).OrderByDescending(x => x?.Priority()))
+				{
+					generator?.Generate(registry, "../Fireburst/Vulkan.Video/");
+				}
+			}
+		}
+
+		{
+			using StreamReader reader = new("vk.xml");
+			Registry? registry = (Registry?)serializer.Deserialize(reader);
+
+			if (registry is not null)
+			{
+				if (!Directory.Exists("../Fireburst/Vulkan/")) Directory.CreateDirectory("../Fireburst/Vulkan/");
+				
+				var generatorTypes = Assembly.GetExecutingAssembly().GetTypes().Where(x => x.GetInterface("IGenerator") is not null);
+
+				foreach (IGenerator? generator in generatorTypes.Select(x => (IGenerator?)Activator.CreateInstance(x)).OrderByDescending(x => x?.Priority()))
+				{
+					generator?.Generate(registry, "../Fireburst/Vulkan/");
+				}
 			}
 		}
 	}
